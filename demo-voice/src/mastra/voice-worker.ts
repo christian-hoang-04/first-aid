@@ -1,9 +1,12 @@
 import { fileURLToPath } from 'node:url';
+import { AgentSessionEventTypes } from '@livekit/agents';
 import { createLiveKitWorker, runLiveKitWorker } from '@mastra/livekit/worker';
 import { z } from 'zod';
 import { GREETING, LIVEKIT_AGENT_NAME } from '../lib/voice-events';
 import { USER_AWAY_SECONDS, attachSilenceCheckIn } from './first-aid/check-in';
 import { callStateOf, liveKitGuideBridge, registerVoiceSession } from './first-aid/client-bridge';
+import { attachLocalVoiceIntent } from './first-aid/local-voice-intent';
+import { interactionErrorText, logVoiceInteraction, shortenInteractionText } from './first-aid/interaction-logger';
 import { USER_TURN_LIMIT, attachLongSpeechGuards } from './first-aid/turn-guards';
 import { setVoiceGuideBridge } from './first-aid/voice-bridge';
 import { FunAsrSTT } from './funasr-stt';
@@ -63,7 +66,73 @@ export default createLiveKitWorker({
   },
   sessionOptions: { userAwayTimeout: USER_AWAY_SECONDS },
   onSessionStart: ({ session, ctx, agent }) => {
+    logVoiceInteraction('session_started', { roomName: ctx.room.name });
+    session.on(AgentSessionEventTypes.UserInputTranscribed, (event) => {
+      logVoiceInteraction(event.isFinal ? 'user_transcript_final' : 'user_transcript_interim', {
+        text: shortenInteractionText(event.transcript),
+        language: event.language,
+        itemId: event.itemId,
+      }, event.createdAt);
+    });
+    session.on(AgentSessionEventTypes.UserTranscriptionTimeout, (event) => {
+      logVoiceInteraction('user_transcription_timeout', {
+        speechDurationMs: event.speechDuration,
+        vadSpeechStartedAt: event.vadSpeechStartedAt,
+      }, event.createdAt);
+    });
+    session.on(AgentSessionEventTypes.AgentStateChanged, (event) => {
+      logVoiceInteraction('agent_state', { from: event.oldState, to: event.newState }, event.createdAt);
+    });
+    session.on(AgentSessionEventTypes.UserStateChanged, (event) => {
+      logVoiceInteraction('user_state', { from: event.oldState, to: event.newState }, event.createdAt);
+    });
+    session.on(AgentSessionEventTypes.ConversationItemAdded, (event) => {
+      if (event.item.type !== 'message' || event.item.role !== 'assistant') return;
+      const text = event.item.textContent;
+      if (!text?.trim()) return;
+      logVoiceInteraction('assistant_transcript', {
+        text: shortenInteractionText(text),
+        interrupted: event.item.interrupted,
+        latencyMs: {
+          onUserTurnCompleted: event.item.metrics.onUserTurnCompletedDelay,
+          llmFirstToken: event.item.metrics.llmNodeTtft,
+          ttsFirstByte: event.item.metrics.ttsNodeTtfb,
+          endToEnd: event.item.metrics.e2eLatency,
+        },
+      }, event.createdAt);
+    });
+    session.on(AgentSessionEventTypes.FunctionToolsExecuted, (event) => {
+      const calls = event.functionCalls.map((call, index) => {
+        const output = event.functionCallOutputs[index];
+        return {
+          name: call.name,
+          arguments: shortenInteractionText(call.args, 2000),
+          result: output ? shortenInteractionText(output.output) : undefined,
+          failed: output?.isError,
+          replyRequired: output?.replyRequired,
+        };
+      });
+      logVoiceInteraction('tools_executed', { calls, hasToolReply: event.hasToolReply }, event.createdAt);
+    });
+    session.on(AgentSessionEventTypes.SpeechCreated, (event) => {
+      logVoiceInteraction('speech_created', { source: event.source, userInitiated: event.userInitiated }, event.createdAt);
+    });
+    session.on(AgentSessionEventTypes.Error, (event) => {
+      logVoiceInteraction('session_error', {
+        source: event.source?.constructor.name,
+        errorName: event.error?.constructor.name,
+        message: shortenInteractionText(interactionErrorText(event.error)),
+      }, event.createdAt);
+    });
+    session.on(AgentSessionEventTypes.Close, (event) => {
+      logVoiceInteraction('session_closed', {
+        reason: event.reason,
+        error: event.error ? shortenInteractionText(interactionErrorText(event.error)) : undefined,
+      }, event.createdAt);
+    });
+
     attachSilenceCheckIn(session, () => callStateOf(ctx.room));
+    attachLocalVoiceIntent(agent);
     attachLongSpeechGuards(session, agent);
     const unregister = registerVoiceSession(ctx.room, session);
     ctx.addShutdownCallback(async () => {

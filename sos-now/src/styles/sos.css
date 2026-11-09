@@ -1,0 +1,23 @@
+/* Màn hình Nút SOS: câu hỏi, nút tròn đỏ lớn có sóng lan, lời nhắc bên dưới */
+.sos-screen { display: flex; flex-direction: column; align-items: center; min-height: calc(100svh - var(--nav-height)); padding: 40px var(--gutter) 48px; text-align: center; }
+.sos-screen-question { margin: 0; color: var(--ink); font: 900 clamp(28px, 4vw, 44px)/1.15 var(--font-heading); letter-spacing: -.01em; }
+.sos-screen-hint { max-width: 460px; margin: 12px 0 0; color: var(--muted); font: 400 16px/1.55 var(--font-body); }
+
+.sos-screen-stage { position: relative; display: grid; place-items: center; width: min(360px, 86vw); aspect-ratio: 1; margin: clamp(24px, 5vh, 48px) 0 clamp(16px, 3vh, 28px); }
+.sos-screen-ring { position: absolute; inset: 14%; border-radius: 50%; background: rgba(234, 84, 85, .14); animation: sos-wave 2.6s ease-out infinite; }
+.sos-screen-ring-2 { animation-delay: .85s; }
+.sos-screen-ring-3 { animation-delay: 1.7s; }
+@keyframes sos-wave { 0% { transform: scale(.8); opacity: 1; } 100% { transform: scale(1.35); opacity: 0; } }
+.sos-screen-button { position: relative; display: grid; place-items: center; width: 62%; aspect-ratio: 1; border-radius: 50%; background: linear-gradient(160deg, #e5484d, #f07b7b); color: #fff; font: 900 clamp(40px, 7vw, 58px)/1 var(--font-heading); letter-spacing: .04em; text-decoration: none; box-shadow: 0 18px 40px rgba(229, 72, 77, .45), inset 0 -6px 0 rgba(0, 0, 0, .08); transition: transform .15s, box-shadow .15s; border: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.sos-screen-button:hover { transform: scale(1.03); box-shadow: 0 22px 48px rgba(229, 72, 77, .5), inset 0 -6px 0 rgba(0, 0, 0, .08); }
+.sos-screen-button:active { transform: scale(.96); }
+.sos-screen-button:focus-visible { outline: 4px solid var(--yellow-500); outline-offset: 6px; }
+
+.sos-screen-cta { display: inline-flex; align-items: center; gap: 8px; margin: 0; color: var(--red-500); font: 700 18px var(--font); }
+.sos-screen-cta svg { width: 20px; height: 20px; }
+.sos-screen-note { margin: 8px 0 0; color: var(--muted); font: 400 13px/1.5 var(--font-body); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sos-screen-ring { animation: none; opacity: .5; }
+  .sos-screen-button { transition: none; }
+}

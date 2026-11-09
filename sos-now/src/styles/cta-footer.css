@@ -1,0 +1,54 @@
+/* Mục 9: lời mời tải app bên trái, điện thoại minh họa màn SOS bên phải, cắt ngang bởi đường kẻ cuối mục */
+.cta-band { margin-top: 40px; overflow: hidden; border-bottom: 1px solid #555; }
+.cta-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 32px; max-width: 1080px; padding-top: 48px; }
+.cta-copy { padding: 0 0 48px clamp(0px, 3vw, 32px); }
+.cta-title { max-width: 500px; margin: 0; color: var(--ink); font: 900 clamp(24px, 2.6vw, 34px)/1.2 var(--font-heading); letter-spacing: -.01em; text-shadow: 3px 4px 6px rgba(0, 0, 0, .22); }
+.cta-stores { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
+.cta-stores a { display: block; border-radius: 8px; transition: transform .15s, box-shadow .15s; }
+.cta-stores a:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 0, 0, .15); }
+.cta-stores img { display: block; width: 150px; height: auto; border-radius: 8px; }
+
+/* Khung điện thoại dựng bằng CSS; nội dung dùng lại các lớp sos-* của phần Tính năng */
+.cta-phone { position: relative; display: flex; flex-direction: column; align-items: center; align-self: end; width: 260px; height: 320px; margin-right: clamp(0px, 3vw, 32px); padding: 66px 8px 0; border: 7px solid #111; border-bottom: 0; border-radius: 42px 42px 0 0; background: #fff; box-shadow: 0 0 0 3px #cfcfcf; text-align: center; font-family: var(--font-nav); }
+.cta-phone::before, .cta-phone::after { content: ''; position: absolute; width: 4px; border-radius: 2px; background: #9a9a9a; }
+.cta-phone::before { left: -13px; top: 88px; height: 90px; box-shadow: 0 -40px 0 -1px #9a9a9a; }
+.cta-phone::after { right: -13px; top: 150px; height: 64px; }
+.cta-phone-island { position: absolute; top: 11px; left: 50%; width: 74px; height: 21px; border-radius: 999px; background: #111; transform: translateX(-50%); }
+.cta-phone .sos-question { font-size: 16px; white-space: nowrap; }
+.cta-phone .sos-hint { max-width: 190px; margin-top: 6px; font-size: 11px; }
+.cta-phone .sos-stage { margin-top: 10px; }
+.cta-phone .sos-ring { width: 160px; height: 160px; }
+.cta-phone .sos-ring-2 { width: 128px; height: 128px; }
+.cta-phone .sos-button { width: 112px; height: 112px; font-size: 24px; }
+
+/* Footer */
+.footer { padding: 32px 0 20px; color: var(--ink); font-family: var(--font-nav); }
+.footer-main { display: grid; grid-template-columns: 1fr minmax(0, 480px); gap: 32px; }
+.footer-brand p { margin: 10px 0 0; font-size: 14px; }
+.footer-brand a { color: var(--muted); }
+.footer-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.footer-columns h3 { margin: 4px 0 14px; font: 700 16px var(--font-nav); }
+.footer-columns ul { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.footer-columns a { color: #333; font-size: 14px; text-decoration: none; }
+.footer-columns a:hover, .footer-brand a:hover { color: var(--red-500); }
+.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+
+@media (max-width: 899px) {
+  .cta-inner { grid-template-columns: 1fr; gap: 8px; padding-top: 40px; }
+  .cta-copy { padding: 0; text-align: center; }
+  .cta-title { margin: 0 auto; }
+  .cta-stores { justify-content: center; }
+  .cta-phone { justify-self: center; width: 230px; height: 270px; margin: 28px 0 0; padding-top: 58px; }
+  .cta-phone .sos-question { font-size: 14px; }
+  .cta-phone .sos-ring { width: 136px; height: 136px; }
+  .cta-phone .sos-ring-2 { width: 108px; height: 108px; }
+  .cta-phone .sos-button { width: 94px; height: 94px; font-size: 20px; }
+  .footer-main { grid-template-columns: 1fr; gap: 24px; }
+}
+
+@media (max-width: 479px) {
+  .cta-title { font-size: 22px; }
+  .cta-stores { gap: 10px; }
+  .cta-stores img { width: 132px; }
+  .footer-columns { grid-template-columns: repeat(2, 1fr); }
+}

@@ -1,0 +1,256 @@
+/* Màn hình AI Voice: phẳng, tối giản; quả cầu màu chuyển ở giữa, gợi ý bay quanh, ô nhập ở dưới */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.voice { display: flex; flex-direction: column; align-items: center; max-width: 760px; min-height: calc(100svh - var(--nav-height)); padding-top: 24px; padding-bottom: 28px; text-align: center; }
+.voice-hero { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
+
+/* Quả cầu AI: nhiều lớp màu thương hiệu, đổi hình và xoay chậm */
+.voice-orb-wrap { position: relative; display: grid; place-items: center; width: 100%; max-width: 520px; height: 260px; }
+.voice .voice-orb, .voice .voice-orb-glow { position: absolute; width: 170px; height: 170px; border-radius: 44% 56% 58% 42% / 46% 44% 56% 54%; }
+.voice .voice-orb { background: radial-gradient(circle at 28% 26%, #ffd27a 0, transparent 45%), radial-gradient(circle at 76% 30%, #ff8fc0 0, transparent 46%), radial-gradient(circle at 70% 78%, #c2185b 0, transparent 50%), radial-gradient(circle at 30% 76%, #ff3a2d 0, transparent 55%), radial-gradient(circle at 55% 50%, #ff7a55 0, #f2552f 72%); filter: blur(7px) saturate(1.15); animation: orb-morph 9s ease-in-out infinite, orb-spin 16s linear infinite; }
+.voice .voice-orb-glow { background: radial-gradient(circle, rgba(255, 90, 60, .45), rgba(255, 158, 192, .25) 55%, transparent 72%); filter: blur(28px); transform: scale(1.5); animation: orb-glow 4s ease-in-out infinite; }
+@keyframes orb-morph { 50% { border-radius: 58% 42% 40% 60% / 56% 58% 42% 44%; } }
+@keyframes orb-spin { to { rotate: 360deg; } }
+@keyframes orb-glow { 50% { opacity: .6; transform: scale(1.35); } }
+
+/* Gợi ý tình huống: 4 thẻ nhỏ đặt quanh quả cầu */
+.voice-chips { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; }
+.voice-chips li { position: absolute; animation: chip-float 5s ease-in-out infinite; animation-delay: calc(var(--i) * -1.2s); }
+.voice-chips li:nth-child(1) { top: 30px; left: 2%; }
+.voice-chips li:nth-child(2) { top: 50px; right: 0; }
+.voice-chips li:nth-child(3) { bottom: 50px; left: 0; }
+@keyframes chip-float { 50% { transform: translateY(-6px); } }
+.voice-chips button { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, .9); color: var(--ink); font: 500 13px var(--font); cursor: pointer; box-shadow: 0 6px 16px rgba(0, 0, 0, .05); transition: border-color .15s, color .15s; }
+.voice-chips button:hover { border-color: var(--red-500); color: var(--red-500); }
+.voice-chips svg { width: 15px; height: 15px; color: var(--red-500); }
+
+.voice-chips button:disabled { opacity: .5; cursor: default; }
+
+/* Đang ghi: quả cầu phồng theo âm lượng; đang xử lý: quả cầu xoay nhanh hơn */
+.voice .is-recording .voice-orb { scale: calc(1 + var(--level, 0) * .35); transition: scale .08s linear; }
+.voice .is-recording .voice-orb-glow { opacity: calc(.6 + var(--level, 0) * .4); }
+.voice .is-busy .voice-orb { animation-duration: 3s, 3.5s; }
+
+.voice-question { margin: 20px 0 0; color: #5f5f5f; font: 900 clamp(24px, 3.2vw, 32px)/1.2 var(--font-heading); letter-spacing: -.01em; }
+.voice-question.is-error { color: var(--red-500); }
+.voice-sub { max-width: 480px; margin: 8px auto 0; color: var(--muted); font: 400 15px/1.5 var(--font-body); font-variant-numeric: tabular-nums; }
+
+/* Ô nhập: khung bo góc mảnh, hàng công cụ phía dưới */
+.voice-composer { width: 100%; margin-top: 24px; padding: 14px 14px 10px 16px; border: 1px solid #e3e3e3; border-radius: 18px; background: #fff; text-align: left; transition: border-color .15s, box-shadow .15s; }
+.voice-composer:focus-within { border-color: #f0b4a6; box-shadow: 0 0 0 4px rgba(218, 54, 26, .08); }
+.voice-composer textarea { width: 100%; border: 0; background: none; color: var(--ink); font: 400 15px/1.5 var(--font-body); resize: none; outline: none; }
+.voice-composer textarea::placeholder { color: #a8a8a8; }
+.voice-composer-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 6px; }
+.voice-composer-lang { display: inline-flex; align-items: center; gap: 5px; color: var(--muted); font: 500 13px var(--font-body); }
+.voice-composer-lang svg { width: 15px; height: 15px; }
+.voice-composer-actions { display: flex; gap: 8px; }
+.voice-composer-actions button { display: grid; place-items: center; width: 38px; height: 38px; border: 0; border-radius: 50%; cursor: pointer; transition: background .15s, transform .15s; }
+.voice-composer-actions button:active { transform: scale(.94); }
+.voice-composer-actions svg { width: 18px; height: 18px; }
+.voice-mic { background: #fdf0ed; color: var(--red-500); }
+.voice-mic:hover { background: #fbe0d9; }
+.voice-send { background: var(--red-500); color: #fff; }
+.voice-send:hover { background: var(--red-600); }
+.voice-composer-actions button:focus-visible { outline: 3px solid var(--yellow-500); outline-offset: 2px; }
+.voice-composer-actions button:disabled { opacity: .45; cursor: default; }
+.voice-mic.is-recording { background: var(--red-500); color: #fff; box-shadow: 0 0 0 6px rgba(218, 54, 26, .15); }
+.voice-mic.is-recording svg { width: 14px; height: 14px; fill: currentColor; }
+.voice-composer.is-review { border-color: #f0b4a6; box-shadow: 0 0 0 4px rgba(218, 54, 26, .08); }
+.voice-composer textarea:disabled { color: var(--muted); }
+
+/* Kết quả: xác nhận tình huống, chờ duyệt, hoặc từng bước hướng dẫn */
+.voice-result { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: center; width: 100%; max-width: 560px; }
+.voice-result-label { margin: 0; color: var(--red-500); font: 600 14px var(--font); }
+.voice-result-title { margin: 8px 0 0; color: var(--ink); font: 900 clamp(26px, 3.6vw, 36px)/1.2 var(--font-heading); }
+.voice-result-text { margin: 12px 0 0; color: var(--muted); font: 400 16px/1.6 var(--font-body); }
+.voice-result-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 24px; }
+.voice-result-actions .button { gap: 6px; }
+.voice-result-actions .button svg { width: 18px; height: 18px; }
+.voice-result-actions .button:disabled { opacity: .45; cursor: default; }
+.voice-steps-progress { display: flex; gap: 6px; width: min(100%, 320px); margin-top: 16px; }
+.voice-steps-progress span { flex: 1; height: 5px; border-radius: 3px; background: #ececec; }
+.voice-steps-progress span.done { background: var(--red-500); }
+.voice-step-count { margin: 16px 0 0; color: var(--muted); font: 700 12px var(--font); letter-spacing: .1em; text-transform: uppercase; }
+.voice-read, .voice-restart { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; padding: 8px 14px; border: 0; border-radius: 999px; background: #fdf0ed; color: var(--red-500); font: 600 14px var(--font); cursor: pointer; }
+.voice-read svg, .voice-restart svg { width: 16px; height: 16px; }
+.voice-restart { margin-top: 28px; background: none; color: var(--muted); }
+.voice-restart:hover { color: var(--red-500); }
+
+.voice-emergency { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; color: var(--red-500); font: 600 13px var(--font); text-decoration: none; }
+.voice-emergency:hover { text-decoration: underline; }
+.voice-emergency svg { width: 15px; height: 15px; }
+
+/* Màn hình hẹp: gợi ý xếp thành hàng dưới quả cầu thay vì bay quanh */
+@media (max-width: 599px) {
+  .voice-orb-wrap { height: auto; padding-top: 170px; }
+  .voice .voice-orb, .voice .voice-orb-glow { top: 10px; width: 140px; height: 140px; }
+  .voice-chips { position: static; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 24px; }
+  .voice-chips li { position: static; animation: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voice .voice-orb, .voice .voice-orb-glow, .voice .voice-chips li { animation: none; }
+}
+
+/* Màn hướng dẫn 3D: thanh mảnh phía trên, khung 3D chiếm phần còn lại của màn hình */
+.guide3d { display: flex; flex-direction: column; width: 100%; max-width: 100vw; height: 100svh; overflow: hidden; }
+.guide3d-bar { display: flex; flex: none; min-width: 0; align-items: center; gap: 12px; padding: 10px var(--gutter); border-bottom: 1px solid var(--line); background: var(--paper); }
+.guide3d-back, .guide3d-call { display: inline-flex; flex: none; align-items: center; gap: 6px; font: 600 14px var(--font); text-decoration: none; }
+.guide3d-back { color: var(--muted); }
+.guide3d-back:hover { color: var(--red-500); }
+.guide3d-title { flex: 1; min-width: 0; margin: 0; overflow: hidden; color: var(--ink); font: 900 17px/1.3 var(--font-heading); text-align: center; text-overflow: ellipsis; white-space: nowrap; }
+.guide3d-call { padding: 8px 14px; border-radius: 999px; background: var(--red-500); color: #fff; }
+.guide3d-call:hover { background: var(--red-600); }
+.guide3d-open { display: grid; flex: none; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: #f1f1f1; color: var(--ink); }
+.guide3d-open:hover { color: var(--red-500); }
+.guide3d-open svg { width: 16px; height: 16px; }
+.guide3d-back svg, .guide3d-call svg { width: 16px; height: 16px; }
+.guide3d-frame { flex: 1; width: 100%; min-width: 0; min-height: 0; border: 0; background: #e6ebf0; }
+.guide3d .navbar.scrolled .navbar-inner { box-shadow: inset 0 -1px 0 var(--line); }
+
+.voice-live-guide { display: flex; flex: 1; flex-direction: column; width: 100%; min-height: 0; text-align: left; }
+.voice-live-guide-head { display: flex; flex: none; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 0 14px; }
+.voice-live-back, .voice-live-end { display: inline-flex; flex: none; align-items: center; justify-content: center; gap: 7px; min-height: 40px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); color: var(--ink); font: 600 13px var(--font); cursor: pointer; }
+.voice-live-back:hover { border-color: var(--red-500); color: var(--red-500); }
+.voice-live-guide-frame { flex: 1; width: 100%; min-height: 420px; height: min(64svh, 720px); border: 1px solid var(--line); border-radius: 18px; background: #e6ebf0; }
+.voice-live-guide-dock { display: flex; flex: none; align-items: center; gap: 12px; min-height: 68px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); }
+.voice-live-guide-dock > div { flex: 1; min-width: 0; }
+.voice-live-guide-dock p { margin: 0; color: var(--ink); font: 600 14px/1.4 var(--font); }
+.voice-live-guide-dock small { display: block; margin-top: 3px; overflow: hidden; color: var(--muted); font: 400 12px/1.4 var(--font-body); text-overflow: ellipsis; white-space: nowrap; }
+.voice-live-guide-dock .voice-mic, .voice-live-end { width: 40px; min-width: 40px; height: 40px; padding: 0; border: 0; }
+.voice-live-guide-dock .voice-mic { display: grid; place-items: center; border-radius: 50%; cursor: pointer; }
+.voice-live-guide-dock .voice-mic svg, .voice-live-end svg { width: 18px; height: 18px; }
+.voice-live-end { display: grid; place-items: center; border-radius: 50%; background: #fbe6e5; color: var(--red-500); cursor: pointer; }
+.voice-live-end:hover { background: var(--red-500); color: #fff; }
+
+@media (max-width: 479px) {
+  .guide3d-title { font-size: 15px; }
+  .guide3d-back, .guide3d-call { font-size: 13px; }
+}
+
+@media (max-width: 599px) {
+  .voice-live-guide-head { align-items: flex-start; flex-direction: column; }
+  .voice-live-guide-frame { min-height: 52svh; height: 52svh; }
+  .voice-live-guide-dock { gap: 8px; padding: 8px; }
+  .voice-live-guide-dock p { font-size: 12px; }
+  .voice-live-guide-dock small { max-width: 48vw; }
+}
+
+/* The guide opened by the live assistant gets the same full-stage layout as the expanded guide. */
+.page.voice-page-live-guide {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+.page.voice-page-live-guide:has(.mobile-app-tabs) { padding: 0; }
+.voice-page-live-guide > .navbar,
+.voice-page-live-guide > .mobile-app-tabs { display: none; }
+.voice.voice-live-mode {
+  flex: 1;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  align-items: stretch;
+  text-align: left;
+}
+.voice-live-mode > .voice-live-guide { flex: 1; width: 100%; height: 100%; min-height: 0; overflow: hidden; }
+.voice-live-guide-head {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 12px;
+  min-height: 68px;
+  padding: 8px max(16px, env(safe-area-inset-right, 0px)) 8px max(16px, env(safe-area-inset-left, 0px));
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+.voice-live-guide-head .voice-live-back {
+  min-height: 40px;
+  padding: 0 8px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
+}
+.voice-live-guide-head .voice-live-back:hover { color: var(--red-500); }
+.voice-live-guide-head .voice-live-back svg { width: 18px; height: 18px; }
+.voice-live-guide-heading { flex: 1; min-width: 0; text-align: center; }
+.voice-live-guide-title {
+  margin: 0;
+  overflow: hidden;
+  color: var(--ink);
+  font: 900 clamp(15px, 1.2vw, 19px)/1.25 var(--font-heading);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.voice-live-guide-status,
+.voice-live-guide-transcript {
+  display: block;
+  margin: 2px 0 0;
+  overflow: hidden;
+  color: var(--muted);
+  font: 500 11px/1.25 var(--font-body);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.voice-live-guide-transcript { margin-top: 1px; font-size: 10px; }
+.voice-live-guide-actions { display: flex; flex: none; align-items: center; gap: 8px; }
+.voice-live-guide-actions .voice-live-call {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--red-500);
+  color: #fff;
+  font: 700 13px var(--font);
+  text-decoration: none;
+}
+.voice-live-guide-actions .voice-live-call:hover { background: var(--red-600); }
+.voice-live-guide-actions .voice-live-call svg { width: 16px; height: 16px; }
+.voice-live-guide-actions .voice-mic,
+.voice-live-guide-actions .voice-live-end { width: 40px; min-width: 40px; height: 40px; padding: 0; border: 0; }
+.voice-live-guide-actions .voice-mic { display: grid; place-items: center; border-radius: 50%; cursor: pointer; }
+.voice-live-guide-actions .voice-mic svg,
+.voice-live-guide-actions .voice-live-end svg { width: 18px; height: 18px; }
+.voice-live-guide-head :is(.voice-live-back, .voice-live-call, .voice-live-mic, .voice-live-end):focus-visible { outline: 3px solid var(--yellow-500); outline-offset: 2px; }
+.voice-live-mode .voice-live-guide-frame {
+  display: block;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+}
+.voice-live-mode > .voice-emergency { display: none; }
+
+@media (max-width: 600px) {
+  .voice-live-guide-head { gap: 4px; min-height: 60px; padding-block: 6px; }
+  .voice-live-guide-head .voice-live-back { width: 38px; min-width: 38px; padding: 0; font-size: 0; }
+  .voice-live-guide-head .voice-live-back span { display: none; }
+  .voice-live-guide-heading { padding-inline: 2px; }
+  .voice-live-guide-title { font-size: 14px; }
+  .voice-live-guide-status { font-size: 10px; }
+  .voice-live-guide-transcript { display: none; }
+  .voice-live-guide-actions { gap: 4px; }
+  .voice-live-guide-actions .voice-live-call { width: 38px; min-width: 38px; min-height: 38px; padding: 0; }
+  .voice-live-guide-actions .voice-live-call span { display: none; }
+  .voice-live-guide-actions .voice-mic,
+  .voice-live-guide-actions .voice-live-end { width: 38px; min-width: 38px; height: 38px; }
+}

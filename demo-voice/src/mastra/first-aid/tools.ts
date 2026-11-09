@@ -2,7 +2,7 @@ import { createTool } from '@mastra/core/tools';
 import { z } from 'zod';
 import { ANSWER_DESCRIPTION, answerInputSchema, composeAnswer } from '../../lib/first-aid/answer';
 import { handoffSummary, victimSignsSchema } from '../../lib/first-aid/call-state';
-import { getGuide, guideIdSchema, guideIntro, stepSpeech, type GuideId } from '../../lib/first-aid/guides';
+import { getGuide, guideIdSchema, type GuideId } from '../../lib/first-aid/guides';
 import {
   TOOL_DESCRIPTIONS,
   clampStep,
@@ -26,8 +26,8 @@ const listFirstAidGuides = createTool({
   execute: async () => listGuides(),
 });
 
-/** Voice agent: chuyển bước trên giao diện qua RPC, đọc nguyên văn bằng TTS, cập nhật trạng thái cuộc gọi. */
-async function presentStepByVoice(guideId: GuideId, stepIndex: number) {
+/** Voice agent: đọc lời mở đầu khi cần, rồi để giao diện hiển thị bước và phát audio có sẵn. */
+export async function presentStepByVoice(guideId: GuideId, stepIndex: number) {
   const bridge = voiceGuideBridge();
   const before = bridge.callState();
   const unconsciousStep = getGuide(guideId).unconsciousStep;
@@ -38,12 +38,6 @@ async function presentStepByVoice(guideId: GuideId, stepIndex: number) {
       ? unconsciousStep
       : clampStep(guideId, stepIndex);
   await bridge.showStep({ guideId, stepIndex: index });
-  // Vừa chuyển từ màn hình chính sang hướng dẫn: nhắc người dùng làm theo từng bước trước khi đọc bước.
-  if (before.guideId !== guideId) bridge.speak(guideIntro(getGuide(guideId)), { interruptible: false });
-  // Bước đầu tiên đọc trọn vẹn (người hoảng loạn hay nói chen); các bước sau cho ngắt để nói "xong", "nhắc lại".
-  bridge.speak(stepSpeech(getGuide(guideId), index), { interruptible: index !== 0 });
-  // Trong lúc người dùng làm bước này, tổng hợp sẵn bước kế tiếp để "xong" là đọc ngay.
-  if (index + 1 < getGuide(guideId).steps.length) bridge.prefetch(stepSpeech(getGuide(guideId), index + 1));
   await bridge.dispatch(
     before.guideId === guideId ? { type: 'step-changed', stepIndex: index } : { type: 'guide-opened', guideId, stepIndex: index },
   );
@@ -60,6 +54,23 @@ const guideProposalOutputSchema = z
   })
   .or(toolErrorSchema);
 
+export async function proposeGuideByVoice(guideId: GuideId) {
+  const bridge = voiceGuideBridge();
+  const state = bridge.callState();
+  const guide = getGuide(guideId);
+  if (state.phase !== 'triage') return { error: 'Chỉ có thể đề xuất hướng dẫn khi đang phân loại tình huống.' };
+
+  if (state.signs.awake === false || state.signs.breathing === false) {
+    await presentStepByVoice(guideId, 0);
+    return { status: 'started' as const, guideId, guideTitle: guide.title };
+  }
+
+  await bridge.dispatch({ type: 'guide-proposed', guideId });
+  const question = `Tôi hiểu là tình huống cần hướng dẫn ${guide.title.toLowerCase()}. Có đúng không?`;
+  bridge.speak(question, { interruptible: true });
+  return { status: 'awaiting_confirmation' as const, guideId, guideTitle: guide.title, question };
+}
+
 export const voiceFirstAidTools = {
   listFirstAidGuides,
   proposeFirstAidGuide: createTool({
@@ -68,22 +79,7 @@ export const voiceFirstAidTools = {
       'Đề xuất hướng dẫn sơ cứu phù hợp. Với tình huống chưa nguy kịch, hệ thống hỏi người dùng xác nhận bằng giọng nói trước khi mở hướng dẫn. Nếu nạn nhân bất tỉnh hoặc không thở, hệ thống mở hướng dẫn ngay và không chờ xác nhận.',
     inputSchema: z.object({ guideId: guideIdSchema }),
     outputSchema: guideProposalOutputSchema,
-    execute: async ({ guideId }) => {
-      const bridge = voiceGuideBridge();
-      const state = bridge.callState();
-      const guide = getGuide(guideId);
-      if (state.phase !== 'triage') return { error: 'Chỉ có thể đề xuất hướng dẫn khi đang phân loại tình huống.' };
-
-      if (state.signs.awake === false || state.signs.breathing === false) {
-        await presentStepByVoice(guideId, 0);
-        return { status: 'started' as const, guideId, guideTitle: guide.title };
-      }
-
-      await bridge.dispatch({ type: 'guide-proposed', guideId });
-      const question = `Tôi hiểu là tình huống cần hướng dẫn ${guide.title.toLowerCase()}. Có đúng không?`;
-      bridge.speak(question, { interruptible: true });
-      return { status: 'awaiting_confirmation' as const, guideId, guideTitle: guide.title, question };
-    },
+    execute: async ({ guideId }) => proposeGuideByVoice(guideId),
   }),
   confirmFirstAidGuide: createTool({
     id: 'confirm-first-aid-guide',

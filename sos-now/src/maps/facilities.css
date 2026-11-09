@@ -1,0 +1,80 @@
+.facility-finder { width: 100%; min-width: 0; padding: 28px 0; scroll-margin-top: 110px; color: var(--ink, #292624); }
+.facility-heading { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; margin-bottom: 18px; }
+.facility-heading h2 { display: flex; align-items: center; gap: 9px; font: inherit; font-size: 21px; font-weight: 600; margin: 0 0 8px; }
+.facility-heading p, .facility-feedback, .facility-results-status, .facility-footnote { font-size: 13px; line-height: 1.7; }
+.facility-heading p { margin: 0; color: var(--muted, #78736e); }
+.facility-call-115 { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; padding: 10px 15px; border-radius: 6px; background: #bf2b2f; color: #fff; font-size: 13px; font-weight: 600; }
+.facility-controls { display: flex; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+.facility-controls label { display: flex; flex-direction: column; gap: 6px; font-size: 12px; min-width: 220px; max-width: 100%; }
+.facility-controls select { min-height: 46px; padding: 9px 32px 9px 12px; border: 1px solid #d8cfc5; border-radius: 5px; background: #fff; color: #292624; font: inherit; }
+.facility-controls select:focus-visible, .facility-finder button:focus-visible, .facility-finder a:focus-visible { outline: 3px solid #3568b3; outline-offset: 3px; }
+.facility-feedback { margin: 12px 0; color: #942025; }
+.facility-feedback button { min-height: 44px; padding: 4px 12px; text-decoration: underline; border: 0; background: transparent; font: inherit; }
+.facility-workspace { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+.facility-map-panel { min-width: 0; border: 1px solid #e7e0d8; border-radius: 8px; overflow: hidden; background: #f2eee8; }
+/* Tự giữ position/overflow vì React đặt lại className và xóa class maplibregl-map mà MapLibre gắn vào */
+.facility-map-canvas { position: relative; overflow: hidden; height: 430px; width: 100%; isolation: isolate; z-index: 0; }
+.facility-map-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 430px; padding: 32px; }
+.facility-map-placeholder h3 { margin: 16px 0 12px; font-size: 18px; }
+.facility-map-placeholder p { max-width: 430px; font-size: 13px; line-height: 1.8; }
+.facility-map-legend { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 0; padding: 11px 13px; font-size: 11px; background: #fff; }
+.facility-pin-dot, .facility-user-dot { width: 10px; height: 10px; border-radius: 50%; background: #bf2b2f; display: inline-block; }
+.facility-user-dot { background: #2563eb; margin-left: 12px; }
+.facility-map-frame>.facility-feedback { padding: 0 14px; }
+.facility-map-canvas .leaflet-popup-content button { font: inherit; min-height: 40px; padding: 7px; border: 1px solid #d8cfc5; border-radius: 4px; background: #fff; cursor: pointer; }
+.facility-map-canvas .leaflet-popup-content { width: min(260px, calc(100vw - 128px)) !important; overflow-wrap: anywhere; }
+.facility-map-canvas .leaflet-control-attribution { font-size: 11px; }
+.facility-map-canvas .leaflet-control-attribution a { text-decoration: underline; color: #075985; }
+.facility-map-canvas .leaflet-interactive { cursor: pointer; }
+.facility-map-canvas--vector { background: #e8efe8; color: #292624; font-family: inherit; }
+.facility-map-canvas .maplibregl-ctrl-group { overflow: hidden; border: 1px solid #e7e0d8; border-radius: 6px; box-shadow: 0 2px 8px rgb(34 38 41 / 18%); }
+.facility-map-canvas .maplibregl-ctrl-group button { width: 34px; min-height: 34px; height: 34px; padding: 0; border: 0; border-radius: 0; background-color: #fff; color: #292624; }
+.facility-map-canvas .maplibregl-ctrl-group button:hover { background-color: #f4f8f7; }
+.facility-map-canvas .maplibregl-ctrl-attrib { max-width: min(70vw, 390px); background: rgb(255 255 255 / 92%); color: #46423e; font-size: 10px; }
+.facility-map-canvas .maplibregl-ctrl-attrib a { color: #075985; }
+.facility-map-canvas .maplibregl-popup-content { max-width: min(280px, calc(100vw - 48px)); padding: 14px; border-radius: 7px; color: #292624; font: inherit; overflow-wrap: anywhere; }
+.facility-map-canvas .maplibregl-popup-content strong { display: block; margin-bottom: 7px; font-size: 14px; line-height: 1.5; }
+.facility-map-canvas .maplibregl-popup-content p { margin: 0 0 10px; font-size: 12px; line-height: 1.7; }
+.facility-map-canvas .maplibregl-popup-content button { min-height: 40px; padding: 7px 10px; border: 1px solid #d8cfc5; border-radius: 4px; background: #fff; color: #942025; font: inherit; cursor: pointer; }
+.facility-map-marker { position: relative; display: grid; width: 32px; height: 32px; place-items: center; padding: 0; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 2px 7px rgb(34 38 41 / 32%); color: #fff; font: inherit; font-size: 11px; font-weight: 700; line-height: 1; cursor: pointer; }
+.facility-map-marker::after { position: absolute; z-index: 0; bottom: -5px; left: 8px; width: 10px; height: 10px; border-right: 3px solid #fff; border-bottom: 3px solid #fff; background: inherit; content: ''; transform: rotate(45deg); }
+.facility-map-marker span { position: relative; z-index: 1; }
+.facility-map-marker--facility { background: #bf2b2f; }
+.facility-map-marker--user { background: #2563eb; cursor: default; }
+/* MapLibre tự đặt vị trí ghim bằng position: absolute + transform; position: relative ở trên làm các ghim xếp chồng và lệch dần */
+.maplibregl-marker.facility-map-marker { position: absolute; }
+.facility-map-marker:focus-visible { outline: 3px solid #f5cc53; outline-offset: 3px; }
+.facility-results { min-width: 0; }
+.facility-results-status { margin: 0 0 12px; }
+.facility-results ol { list-style: none; padding: 0; margin: 0; max-height: 470px; overflow-y: auto; }
+.facility-results li { padding: 16px; margin: 0 0 10px; border: 1px solid #e7e0d8; border-radius: 6px; background: #fff; }
+.facility-results li.facility-selected { border-color: #bf2b2f; box-shadow: inset 3px 0 #bf2b2f; }
+.facility-results h3 { display: flex; align-items: start; gap: 9px; font-size: 15px; line-height: 1.6; margin: 0 0 9px; }
+.facility-results h3>span { display: inline-grid; place-items: center; flex-shrink: 0; min-width: 24px; height: 24px; font-size: 12px; color: #942025; background: #f7e9e5; border-radius: 50%; }
+.facility-results li>p { font-size: 12px; line-height: 1.8; margin: 0 0 9px; }
+.facility-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.facility-tags span { padding: 3px 8px; border-radius: 4px; background: #f2eee8; font-size: 10px; }
+.facility-card-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.facility-card-actions button, .facility-card-actions a { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; padding: 8px 10px; font: inherit; font-size: 11px; border: 1px solid #d8cfc5; border-radius: 4px; background: #fff; color: #942025; cursor: pointer; overflow-wrap: anywhere; }
+.facility-footnote { color: var(--muted, #78736e); margin: 12px 0 0; font-size: 11px; }
+.facility-finder-embedded { margin-top: 18px; padding: 18px 0 0; border-top: 1px solid var(--line, #e7e0d8); }
+.location-section>.facility-finder-embedded { flex: 1 0 100%; }
+.facility-finder-embedded .facility-workspace { grid-template-columns: minmax(0, 1fr); }
+.facility-finder-embedded .facility-controls label { width: 100%; min-width: 0; }
+.facility-finder-embedded .facility-map-canvas { height: 320px; }
+.facility-finder-embedded .facility-map-placeholder { min-height: 260px; padding: 20px; }
+.facility-finder-embedded .facility-results ol { max-height: 340px; }
+.facility-finder-embedded .facility-map-canvas .leaflet-popup-content { width: min(220px, calc(100vw - 172px)) !important; }
+.location-card .facility-finder-embedded { color: var(--navy); }
+.location-card .facility-finder-embedded .facility-call-115 { background: var(--teal); }
+.location-card .facility-finder-embedded .facility-map-panel { background: #edf4f2; border-radius: 12px; }
+@media (max-width: 760px) {
+  .facility-heading h2 { font-size: 18px; }
+  .facility-controls { align-items: stretch; }
+  .facility-controls label { min-width: 0; flex: 1 1 100%; }
+  .facility-controls>button { width: 100%; }
+  .facility-workspace { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .facility-map-canvas { height: 320px; }
+  .facility-map-placeholder { min-height: 320px; padding: 24px; }
+  .facility-results ol { max-height: none; }
+}

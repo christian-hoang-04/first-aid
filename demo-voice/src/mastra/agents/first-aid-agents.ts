@@ -107,7 +107,7 @@ RÀNG BUỘC ĐẦU RA ƯU TIÊN CAO NHẤT:
     options: { lastMessages: 40, semanticRecall: false, workingMemory: { enabled: false }, observationalMemory: false },
   }),
   // Tool đã tự đọc nội dung thì kết thúc lượt, không chờ LLM sinh thêm câu dẫn (giảm độ trễ vài giây).
-  defaultOptions: { stopWhen: stopAfterSystemSpeech, modelSettings: { maxOutputTokens: 1024 } },
+  defaultOptions: { stopWhen: stopAfterSystemSpeech, modelSettings: { maxOutputTokens: 128 } },
   inputProcessors: [
     // Giai đoạn cuộc gọi: thêm mô tả giai đoạn vào prompt và chỉ mở tool hợp lệ.
     new CallPhaseProcessor(),

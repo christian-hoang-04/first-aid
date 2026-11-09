@@ -10,16 +10,15 @@ import {
   type CallState,
 } from '../../lib/first-aid/call-state';
 import {
-  FIRST_AID_GUIDES,
   GUIDE_ATTRIBUTE,
   SHOW_STEP_RPC,
   getGuide,
   guideIntro,
   guideIdSchema,
-  stepSpeech,
   type ShowStepPayload,
 } from '../../lib/first-aid/guides';
 import { USER_IDENTITY_PREFIX } from '../../lib/voice-events';
+import { logVoiceInteraction, shortenInteractionText } from './interaction-logger';
 import type { VoiceGuideBridge } from './voice-bridge';
 
 type Room = NonNullable<ReturnType<typeof getJobContext>>['room'];
@@ -40,12 +39,7 @@ export function registerVoiceSession(room: Room, session: voice.AgentSession) {
   const call: CallEntry = { room, session, state: createCallState(), lastUi: {} };
   calls.set(key, call);
   void publishCallState(call, '');
-  // Câu có thể phải đọc ngay đầu cuộc gọi: bước đầu của mỗi guide (và bước cho nạn nhân bất tỉnh), câu nhắc 115.
-  for (const guide of FIRST_AID_GUIDES) {
-    prefetchSpeech(session, guideIntro(guide));
-    prefetchSpeech(session, stepSpeech(guide, 0));
-    if (guide.unconsciousStep !== undefined) prefetchSpeech(session, stepSpeech(guide, guide.unconsciousStep));
-  }
+  // Keep the emergency warning ready; guide step audio is bundled with the displayed guide.
   prefetchSpeech(session, RED_FLAG_LINE);
   return () => calls.delete(key);
 }
@@ -62,8 +56,12 @@ function prefetchSpeech(session: voice.AgentSession, text: string) {
  * chước và tự đọc bước bằng chữ thay vì gọi tool. Bước hiện tại đã có trong mô tả giai đoạn mỗi lượt.
  */
 function sayVerbatim(session: voice.AgentSession, text: string, allowInterruptions: boolean) {
+  logVoiceInteraction('scripted_speech_requested', {
+    text: shortenInteractionText(text),
+    allowInterruptions,
+  });
   const audio = session.tts instanceof OpenRouterTTS ? session.tts.speech(text) : undefined;
-  session.say(text, { allowInterruptions, audio, addToChatCtx: false });
+  return session.say(text, { allowInterruptions, audio, addToChatCtx: false });
 }
 
 function currentCall() {
@@ -111,6 +109,19 @@ async function showStepOnClient(room: Room, payload: ShowStepPayload) {
   });
   const result = showStepResponseSchema.parse(JSON.parse(response));
   if (!result.ok) throw new Error(result.error ?? 'Giao diện không chuyển được bước');
+  logVoiceInteraction('guide_step_displayed', payload);
+}
+
+async function showGuideStep(call: CallEntry, payload: ShowStepPayload) {
+  if (call.lastUi.guideId !== payload.guideId) {
+    try {
+      await sayVerbatim(call.session, guideIntro(getGuide(payload.guideId)), false).waitForPlayout();
+    } catch (error) {
+      console.warn('Guide introduction speech failed; displaying the guide anyway.', error);
+    }
+  }
+  await showStepOnClient(call.room, payload);
+  call.lastUi = payload;
 }
 
 /** Giao diện tự đọc giai đoạn và phiếu bàn giao từ attributes của agent. */
@@ -131,9 +142,7 @@ export async function dispatchCallEvent(call: CallEntry, event: CallEvent) {
     if (effect.type === 'say') {
       sayVerbatim(call.session, effect.text, effect.interruptible);
     } else {
-      await showStepOnClient(call.room, { guideId: effect.guideId, stepIndex: effect.stepIndex });
-      call.lastUi = { guideId: effect.guideId, stepIndex: effect.stepIndex };
-      sayVerbatim(call.session, stepSpeech(getGuide(effect.guideId), effect.stepIndex), false);
+      await showGuideStep(call, { guideId: effect.guideId, stepIndex: effect.stepIndex });
     }
   }
   // Phiếu bàn giao chính là câu được đọc khi bàn giao; giao diện hiển thị lại để đưa nhân viên y tế xem.
@@ -173,12 +182,7 @@ export function callStateOf(room: Room) {
 
 /** Implementation của VoiceGuideBridge qua LiveKit: attributes, RPC tới client và session.say(). */
 export const liveKitGuideBridge: VoiceGuideBridge = {
-  prefetch: (text) => prefetchSpeech(currentCall().session, text),
-  showStep: async (payload) => {
-    const call = currentCall();
-    await showStepOnClient(call.room, payload);
-    call.lastUi = payload;
-  },
+  showStep: async (payload) => showGuideStep(currentCall(), payload),
   // Đọc nguyên văn qua TTS, không qua LLM, để nội dung sơ cứu không bị diễn đạt sai.
   speak: (text, { interruptible = true } = {}) => {
     sayVerbatim(currentCall().session, text, interruptible);

@@ -9,10 +9,8 @@ import type { ShowStepPayload } from '../../lib/first-aid/guides';
 export interface VoiceGuideBridge {
   /** Client tool qua RPC: giao diện chuyển animation tới bước. */
   showStep(payload: ShowStepPayload): Promise<void>;
-  /** Đọc nguyên văn qua TTS, không qua LLM. `interruptible: false` để người dùng không nói chen làm mất lời. */
+  /** Đọc nguyên văn qua TTS, không qua LLM. */
   speak(text: string, options?: { interruptible?: boolean }): void;
-  /** Tổng hợp sẵn audio của câu sắp đọc (ví dụ bước kế tiếp) để khi đọc thì phát ngay. */
-  prefetch(text: string): void;
   /** Trạng thái cuộc gọi (giai đoạn, dấu hiệu nạn nhân), đã đồng bộ với bước đang hiển thị. */
   callState(): CallState;
   /** Chuyển trạng thái cuộc gọi và thực thi các việc đi kèm (câu nói cố định, chuyển bước). */

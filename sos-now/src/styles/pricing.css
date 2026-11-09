@@ -1,0 +1,51 @@
+/* Bảng giá: 3 thẻ, gói giữa (Pro) nổi bật hơn */
+.pricing .pill { margin: 0; }
+.plans { display: grid; grid-template-columns: 1fr 1.2fr 1fr; align-items: center; gap: clamp(16px, 2vw, 24px); max-width: 960px; margin: 56px auto 0; padding: 0 clamp(0px, 3vw, 32px); }
+
+.plan { position: relative; color: var(--ink); font-family: var(--font-nav); }
+.plan-body { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: 360px; padding: 68px 22px 30px; border: 2px solid #6f6f6f; border-radius: 36px; background: #c3d9ef; }
+.plan-featured .plan-body { min-height: 390px; padding: 22px 24px 30px; border-color: #111; background: #fff; box-shadow: 0 0 70px 24px rgba(241, 187, 46, .14); }
+
+/* Tên gói: Free/Ultra là nhãn vàng nhô ra ngoài góc thẻ, Pro nằm trong thẻ */
+.plan-name { margin: 0; font: 400 26px/1 var(--font-display); text-transform: uppercase; }
+.plan-free .plan-name, .plan-ultra .plan-name { position: absolute; top: -2px; padding: 6px 16px 8px; border: 2px solid #111; border-radius: 999px; background: var(--yellow-500); }
+.plan-free .plan-name { left: -28px; }
+.plan-ultra .plan-name { right: -28px; }
+
+/* Dải xanh "Đề xuất cho bạn" ló ra phía trên thẻ Pro */
+.plan-ribbon { position: absolute; z-index: 0; top: -18px; left: 5px; right: 5px; height: 64px; padding-top: 1px; border-radius: 36px 36px 0 0; background: #c3d9ef; color: #333; font-size: 11px; text-align: center; }
+
+.plan-price { display: flex; align-items: baseline; gap: 2px; margin: 0 0 28px; }
+.plan-featured .plan-price { margin: 20px 0 20px; }
+.plan-price strong { font-size: clamp(22px, 2vw, 26px); font-weight: 700; letter-spacing: -.01em; }
+.plan-price span { font-size: 14px; }
+.plan-includes { margin: 0 0 12px; font-size: 14px; }
+.plan-features { display: grid; gap: 10px; margin: 0; padding: 0 0 0 10px; list-style: none; }
+.plan-features li { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; line-height: 1.4; }
+.plan-features svg { flex: none; width: 15px; height: 15px; margin-top: 2px; color: var(--red-500); stroke-width: 2.5; }
+
+/* Các thẻ hiện lần lượt khi cuộn tới */
+.plans .plan { opacity: 0; transform: translateY(32px); transition: opacity .6s ease, transform .6s ease; transition-delay: calc(var(--i) * 120ms); }
+.plans.in-view .plan { opacity: 1; transform: none; }
+
+@media (max-width: 799px) {
+  .plans { grid-template-columns: 1fr; gap: 40px; max-width: 380px; margin-top: 44px; padding: 0 16px; }
+  .plan-body, .plan-featured .plan-body { min-height: 0; }
+  .plan-free .plan-name { left: -16px; }
+  .plan-ultra .plan-name { right: -16px; }
+}
+
+@media (max-width: 479px) {
+  .plans { padding: 0 8px; }
+  .plan-body { padding: 60px 20px 26px; border-radius: 30px; }
+  .plan-featured .plan-body { padding: 20px 20px 26px; }
+  .plan-ribbon { border-radius: 30px 30px 0 0; }
+  .plan-name { font-size: 24px; }
+  .plan-free .plan-name { left: -8px; }
+  .plan-ultra .plan-name { right: -8px; }
+  .plan-features { padding-left: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plans .plan { opacity: 1; transform: none; transition: none; }
+}

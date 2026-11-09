@@ -129,7 +129,7 @@ export function joinLines(lines: string[]) {
 
 /** Câu cố định khi vừa mở hướng dẫn: báo người dùng làm theo từng bước và cách chuyển bước. */
 export function guideIntro(guide: FirstAidGuide) {
-  return `Tôi sẽ hướng dẫn bạn ${guide.title.toLowerCase()} theo ${guide.method.toLowerCase()}, gồm ${guide.steps.length} bước. Bạn hãy làm theo hình trên màn hình, làm xong mỗi bước thì nói "xong" để sang bước tiếp theo.`
+  return `Đây là hướng dẫn ${guide.title.toLowerCase()} theo ${guide.method.toLowerCase()}, gồm ${guide.steps.length} bước. Hãy làm theo từng bước trên màn hình và nói "xong" khi hoàn tất mỗi bước.`
 }
 
 /** Trạng thái guide mà giao diện đang hiển thị, đồng bộ qua participant attributes. */

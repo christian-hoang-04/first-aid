@@ -1,0 +1,43 @@
+/* Về chúng tôi: băng chuyền 3D, thẻ giữa nổi bật, các thẻ hai bên nghiêng và mờ dần */
+/* clip (không phải hidden) để cuộn tới #doi-ngu không làm lệch ngang băng chuyền */
+.team { --card-w: 230px; overflow: hidden; overflow: clip; }
+.team-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-top: 16px; }
+.team-title { margin: 0; color: var(--ink); font: 900 clamp(28px, 3.4vw, 42px)/1.2 var(--font-heading); }
+.team-title span { color: var(--yellow-500); }
+.team-subtitle { margin: 8px 0 0; color: var(--muted); font: 400 16px/1.5 var(--font-body); }
+.team-arrows { display: flex; flex: none; gap: 12px; }
+.team-arrows button { display: grid; place-items: center; width: 46px; height: 46px; padding: 0; border: 1px solid #f0d9d4; border-radius: 50%; background: #fff; color: var(--red-500); cursor: pointer; transition: background .2s, color .2s; }
+.team-arrows button:hover { background: var(--red-500); color: #fff; }
+.team-arrows svg { width: 22px; height: 22px; }
+
+.team-stage { position: relative; height: calc(var(--card-w) * 1.417 + 40px); margin-top: 32px; perspective: 1400px; outline: none; touch-action: pan-y; user-select: none; }
+.team-stage:focus-visible { outline: 3px solid var(--yellow-500); outline-offset: -3px; }
+.team-card { position: absolute; top: 20px; left: 50%; width: var(--card-w); aspect-ratio: 360 / 510; margin-left: calc(var(--card-w) / -2); overflow: hidden; border-radius: 22px; box-shadow: 0 20px 40px -16px rgba(20, 30, 80, .35); cursor: pointer; transform: translateX(calc(var(--card-w) * var(--shift))) rotateY(var(--tilt)) scale(var(--scale)); transition: transform .6s cubic-bezier(.22, .8, .3, 1), opacity .4s ease; }
+.team-card.is-active { cursor: default; }
+.team-card img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* Lớp phủ trắng mờ cho thẻ ở xa */
+.team-card::after { content: ''; position: absolute; inset: 0; background: rgba(240, 242, 250, var(--fade)); pointer-events: none; transition: background .6s; }
+
+/* Ô kính mờ ở chân thẻ */
+.team-card-panel { position: absolute; left: 10px; right: 10px; bottom: 10px; padding: 8px 12px; border: 1px solid rgba(255, 255, 255, .35); border-radius: 14px; background: rgba(255, 255, 255, .16); backdrop-filter: blur(10px); color: #fff; }
+.team-card-panel span { display: grid; gap: 2px; }
+.team-card-panel strong { font: 600 13px var(--font); }
+.team-card-panel small { font: 400 12px var(--font-nav); opacity: .9; }
+
+.team-dots { display: flex; justify-content: center; gap: 8px; margin-top: 28px; }
+.team-dots button { width: 10px; height: 10px; padding: 0; border: 0; border-radius: 999px; background: #d9dbe6; cursor: pointer; transition: width .3s, background .3s; }
+.team-dots button.active { width: 28px; background: var(--red-500); }
+
+@media (max-width: 767px) {
+  .team { --card-w: 180px; }
+  .team-head { flex-direction: column; align-items: flex-start; }
+  .team-stage { margin-top: 32px; }
+  .team-card { border-radius: 18px; }
+  .team-card-panel { left: 8px; right: 8px; bottom: 8px; padding: 6px 10px; border-radius: 12px; }
+  .team-card-panel strong { font-size: 12px; }
+  .team-card-panel small { font-size: 11px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-card, .team-card::after { transition: none; }
+}

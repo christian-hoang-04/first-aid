@@ -1,0 +1,33 @@
+/* Câu hỏi thường gặp: giới thiệu bên trái, danh sách câu hỏi mở/đóng bên phải */
+.faq-inner { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: start; gap: clamp(32px, 5vw, 72px); }
+.faq-title { margin: 8px 0 0; color: var(--ink); font: 900 clamp(32px, 3.6vw, 46px)/1.15 var(--font-heading); letter-spacing: -.01em; text-shadow: 3px 4px 6px rgba(0, 0, 0, .2); }
+.faq-title span { color: var(--yellow-500); }
+.faq-subtitle { margin: 10px 0 0; color: var(--muted); font: 400 16px/1.5 var(--font-body); }
+
+
+.faq-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.faq-item { border-radius: 12px; background: #f1f1f1; transition: background .2s, box-shadow .2s; }
+.faq-item.open { background: #fff; box-shadow: 0 14px 32px rgba(0, 0, 0, .08), inset 0 0 0 1px var(--line); }
+.faq-item h3 { margin: 0; }
+.faq-item button { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; padding: 18px 20px; border: 0; background: none; color: var(--ink); font: 700 16px/1.4 var(--font-nav); text-align: left; cursor: pointer; }
+.faq-toggle { display: grid; flex: none; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: #fff; color: var(--red-500); transition: transform .3s, background .2s, color .2s; }
+.faq-toggle svg { width: 18px; height: 18px; }
+.faq-item.open .faq-toggle { background: var(--red-500); color: #fff; transform: rotate(45deg); }
+.faq-answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+.faq-item.open .faq-answer { grid-template-rows: 1fr; }
+.faq-answer > div { overflow: hidden; }
+.faq-answer p { margin: 0; padding: 0 20px 18px; color: var(--muted); font: 400 15px/1.6 var(--font-body); }
+
+@media (max-width: 899px) {
+  .faq-inner { grid-template-columns: 1fr; gap: 28px; }
+}
+
+@media (max-width: 479px) {
+  .faq-title { font-size: 30px; }
+  .faq-item button { padding: 16px; font-size: 15px; }
+  .faq-answer p { padding: 0 16px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-answer, .faq-toggle { transition: none; }
+}

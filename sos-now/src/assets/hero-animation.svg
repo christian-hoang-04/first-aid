@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 540" width="680" height="540" role="img" aria-labelledby="t d">
+<title id="t">Minh họa isometric các tính năng SOS NOW</title>
+<desc id="d">Điện thoại SOS NOW nằm giữa, quanh là 5 trạm isometric nối bằng đường nét đứt: AI Voice hướng dẫn, SOS gọi 115, định vị vị trí, tìm bệnh viện, được hỗ trợ. Mỗi trạm lần lượt sáng lên và màn hình điện thoại đổi chú thích theo, vòng lặp 10 giây.</desc>
+<style>
+.th{font:600 14px 'Be Vietnam Pro',Arial,sans-serif}
+.ts{font:400 12px 'Be Vietnam Pro',Arial,sans-serif}
+.st{animation:hl 10s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes hl{0%,17%{opacity:1;transform:translateY(-8px)}21%,96%{opacity:.38;transform:translateY(0)}100%{opacity:1;transform:translateY(-8px)}}
+.sp{animation:sp 10s infinite}
+@keyframes sp{0%,17%{opacity:1}21%,96%{opacity:.15}100%{opacity:1}}
+.lb{animation:lb 10s infinite}
+@keyframes lb{0%,17%{opacity:1}21%,96%{opacity:.45}100%{opacity:1}}
+.cap{animation:cap 10s infinite;opacity:0}
+@keyframes cap{0%,18.5%{opacity:1}19.5%,98.5%{opacity:0}100%{opacity:1}}
+.d1{animation-delay:0s}.d2{animation-delay:-8s}.d3{animation-delay:-6s}.d4{animation-delay:-4s}.d5{animation-delay:-2s}
+.dash{stroke-dasharray:4 5;animation:mv 1.2s linear infinite}
+@keyframes mv{to{stroke-dashoffset:-18}}
+.bar{transform-box:fill-box;transform-origin:center;animation:bar .9s ease-in-out infinite}
+@keyframes bar{50%{transform:scaleY(.3)}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}.cap.d1{opacity:1}}
+</style>
+<rect x="0" y="0" width="680" height="540" rx="16" fill="#ffffff"/>
+<g stroke="#efefef" stroke-width="0.6">
+<path d="M-40 80 L560 380 M-40 180 L440 420 M-40 280 L320 460 M-40 380 L200 500 M40 0 L700 330 M180 0 L700 260 M320 0 L700 190 M460 0 L700 120 M-40 520 L700 150 M-40 440 L620 110 M-40 360 L460 110 M-40 280 L300 110 M-40 200 L160 100 M120 540 L700 250 M280 540 L700 330 M440 540 L700 410"/>
+</g>
+
+<path class="dash" d="M141 212 L388 129 L569 282 L434 455 L169 417 Z" fill="none" stroke="#2a2929" stroke-width="1"/>
+<circle r="5" fill="#da361a"><animateMotion dur="10s" repeatCount="indefinite" path="M141 212 L388 129 L569 282 L434 455 L169 417 Z"/></circle>
+
+<g stroke="#da361a" stroke-width="1.4" stroke-dasharray="3 4" fill="none">
+<path class="sp d1" d="M340 300 L141 212"/><path class="sp d2" d="M340 300 L388 129"/><path class="sp d3" d="M340 300 L569 282"/><path class="sp d4" d="M340 300 L434 450"/><path class="sp d5" d="M340 300 L169 417"/>
+</g>
+
+<g>
+<polygon points="340,248 444,300 340,352 236,300" fill="#ffffff" stroke="#2a2929" stroke-width="1.4"/>
+<polygon points="236,300 340,352 340,366 236,314" fill="#2a2929"/>
+<polygon points="444,300 340,352 340,366 444,314" fill="#555"/>
+<polygon points="340,258 424,300 340,342 256,300" fill="#fdf0ed" stroke="#2a2929" stroke-width="0.6"/>
+<polygon points="322,262 342,272 336,275 316,265" fill="#2a2929"/>
+<text class="th" x="340" y="296" text-anchor="middle" fill="#da361a">SOS NOW</text>
+<text class="ts cap d1" x="340" y="314" text-anchor="middle" fill="#2a2929">Đang nghe...</text>
+<text class="ts cap d2" x="340" y="314" text-anchor="middle" fill="#2a2929">Đang gọi 115</text>
+<text class="ts cap d3" x="340" y="314" text-anchor="middle" fill="#2a2929">Đã định vị</text>
+<text class="ts cap d4" x="340" y="314" text-anchor="middle" fill="#2a2929">Bệnh viện · 1,2 km</text>
+<text class="ts cap d5" x="340" y="314" text-anchor="middle" fill="#2a2929">Xe cấp cứu đang đến</text>
+</g>
+
+<g class="st d1">
+<polygon points="141,190 185,212 141,234 97,212" fill="#ffffff" stroke="#2a2929" stroke-width="1.2"/>
+<polygon points="97,212 141,234 141,240 97,218" fill="#2a2929"/>
+<polygon points="185,212 141,234 141,240 185,218" fill="#555"/>
+<rect x="104" y="150" width="76" height="34" rx="10" fill="#ffffff" stroke="#2a2929" stroke-width="1.2"/>
+<polygon points="128,184 140,184 132,194" fill="#ffffff" stroke="#2a2929" stroke-width="1.2"/>
+<path d="M129 183 L139 183" stroke="#ffffff" stroke-width="2"/>
+<rect class="bar" x="116" y="158" width="4" height="18" rx="2" fill="#da361a"/>
+<rect class="bar" x="124" y="158" width="4" height="18" rx="2" fill="#da361a" style="animation-delay:.15s"/>
+<rect class="bar" x="132" y="158" width="4" height="18" rx="2" fill="#da361a" style="animation-delay:.3s"/>
+<rect class="bar" x="140" y="158" width="4" height="18" rx="2" fill="#da361a" style="animation-delay:.45s"/>
+<circle cx="164" cy="167" r="9" fill="#f1bb2e" stroke="#2a2929" stroke-width="1"/>
+<rect x="161" y="161" width="6" height="9" rx="3" fill="#2a2929"/>
+<path d="M158 167 A6 6 0 0 0 170 167 M164 173 L164 175" fill="none" stroke="#2a2929" stroke-width="1"/>
+</g>
+
+<g class="st d2">
+<polygon points="388,107 432,129 388,151 344,129" fill="#ffffff" stroke="#2a2929" stroke-width="1.2"/>
+<polygon points="344,129 388,151 388,157 344,135" fill="#2a2929"/>
+<polygon points="432,129 388,151 388,157 432,135" fill="#555"/>
+<ellipse cx="388" cy="127" rx="26" ry="13" fill="#f7c1c1" opacity="0.6"><animate attributeName="rx" values="18;30;18" dur="1.4s" repeatCount="indefinite"/><animate attributeName="ry" values="9;15;9" dur="1.4s" repeatCount="indefinite"/></ellipse>
+<ellipse cx="388" cy="129" rx="18" ry="9" fill="#a32d2d"/>
+<ellipse cx="388" cy="125" rx="18" ry="9" fill="#da361a"/>
+<text class="ts" x="388" y="129" text-anchor="middle" fill="#ffffff">SOS</text>
+<polygon points="360,63 404,63 416,81 372,81" fill="#ffffff" stroke="#2a2929" stroke-width="1.2"/>
+<text class="th" x="388" y="77" text-anchor="middle" fill="#da361a">115</text>
+<path d="M388 83 L388 111" stroke="#2a2929" stroke-width="0.8" stroke-dasharray="2 3"/>
+</g>
+
+<g class="st d3">
+<polygon points="569,255 623,282 569,309 515,282" fill="#ffffff" stroke="#2a2929" stroke-width="1.2"/>
+<polygon points="515,282 569,309 569,315 515,288" fill="#2a2929"/>
+<polygon points="623,282 569,309 569,315 623,288" fill="#555"/>
+<path d="M535 275 L585 300 M550 265 L604 292 M545 293 L595 268 M530 285 L578 261" fill="none" stroke="#b4b2a9" stroke-width="0.8"/>
+<ellipse cx="569" cy="285" rx="8" ry="4" fill="none" stroke="#da361a" stroke-width="1.2"><animate attributeName="rx" values="6;34" dur="2s" repeatCount="indefinite"/><animate attributeName="ry" values="3;17" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite"/></ellipse>
+<path d="M569 285 C559 270 556 264 556 257 A13 13 0 1 1 582 257 C582 264 579 270 569 285 Z" fill="#da361a" stroke="#2a2929" stroke-width="1"/>
+<circle cx="569" cy="257" r="5" fill="#ffffff"/>
+</g>
+
+<g class="st d4">
+<polygon points="434,407 470,425 434,443 398,425" fill="#ffffff" stroke="#2a2929" stroke-width="1.2"/>
+<polygon points="398,425 434,443 434,493 398,475" fill="#ffffff" stroke="#2a2929" stroke-width="1.2"/>
+<polygon points="470,425 434,443 434,493 470,475" fill="#d3d1c7" stroke="#2a2929" stroke-width="1.2"/>
+<polygon points="408,447 424,455 424,465 408,457" fill="#2a2929"/>
+<polygon points="408,467 424,475 424,485 408,477" fill="#2a2929"/>
+<polygon points="444,453 460,445 460,455 444,463" fill="#ffffff" stroke="#2a2929" stroke-width="0.8"/>
+<polygon points="429,415 439,415 439,420 444,420 444,426 439,426 439,431 429,431 429,426 424,426 424,420 429,420" fill="#da361a"/>
+</g>
+
+<g class="st d5">
+<polygon points="169,392 219,417 169,442 119,417" fill="#ffffff" stroke="#2a2929" stroke-width="1.2"/>
+<polygon points="119,417 169,442 169,448 119,423" fill="#2a2929"/>
+<polygon points="219,417 169,442 169,448 219,423" fill="#555"/>
+<polygon points="141,400 181,420 181,438 141,418" fill="#ffffff" stroke="#2a2929" stroke-width="1.2"/>
+<polygon points="141,400 165,388 205,408 181,420" fill="#ffffff" stroke="#2a2929" stroke-width="1.2"/>
+<polygon points="181,420 205,408 205,426 181,438" fill="#d3d1c7" stroke="#2a2929" stroke-width="1.2"/>
+<path d="M141 410 L181 430" stroke="#da361a" stroke-width="2.5"/>
+<rect x="167" y="387" width="9" height="5" rx="1" fill="#da361a"><animate attributeName="fill" values="#da361a;#378add;#da361a" dur="0.8s" repeatCount="indefinite"/></rect>
+<circle cx="215" cy="390" r="11" fill="#f1bb2e" stroke="#2a2929" stroke-width="1"/>
+<path d="M210 390 L214 394 L221 386" fill="none" stroke="#2a2929" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+
+<g>
+<g class="lb d1"><rect x="20" y="108" width="156" height="28" rx="14" fill="#ffffff" stroke="#2a2929" stroke-width="0.8"/><circle cx="35" cy="122" r="9" fill="#da361a"/><text class="ts" x="35" y="126" text-anchor="middle" fill="#ffffff">1</text><text class="ts" x="50" y="126" fill="#2a2929">AI Voice hướng dẫn</text></g>
+<g class="lb d2"><rect x="434" y="98" width="122" height="28" rx="14" fill="#ffffff" stroke="#2a2929" stroke-width="0.8"/><circle cx="449" cy="112" r="9" fill="#da361a"/><text class="ts" x="449" y="116" text-anchor="middle" fill="#ffffff">2</text><text class="ts" x="464" y="116" fill="#2a2929">SOS, gọi 115</text></g>
+<g class="lb d3"><rect x="528" y="326" width="130" height="28" rx="14" fill="#ffffff" stroke="#2a2929" stroke-width="0.8"/><circle cx="543" cy="340" r="9" fill="#da361a"/><text class="ts" x="543" y="344" text-anchor="middle" fill="#ffffff">3</text><text class="ts" x="558" y="344" fill="#2a2929">Định vị vị trí</text></g>
+<g class="lb d4"><rect x="484" y="472" width="132" height="28" rx="14" fill="#ffffff" stroke="#2a2929" stroke-width="0.8"/><circle cx="499" cy="486" r="9" fill="#da361a"/><text class="ts" x="499" y="490" text-anchor="middle" fill="#ffffff">4</text><text class="ts" x="514" y="490" fill="#2a2929">Tìm bệnh viện</text></g>
+<g class="lb d5"><rect x="40" y="466" width="124" height="28" rx="14" fill="#ffffff" stroke="#2a2929" stroke-width="0.8"/><circle cx="55" cy="480" r="9" fill="#da361a"/><text class="ts" x="55" y="484" text-anchor="middle" fill="#ffffff">5</text><text class="ts" x="70" y="484" fill="#2a2929">Được hỗ trợ</text></g>
+</g>
+</svg>
