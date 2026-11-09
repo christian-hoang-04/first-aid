@@ -1,0 +1,33 @@
+# Install this inside nginx's http {} context. Supply your real domain and TLS certificates.
+# This example assumes nginx and the API run on the same machine.
+# Logs deliberately contain $uri (path only), never $request or $request_uri (query string).
+log_format esmarch_safe '$remote_addr $request_method $uri $status $body_bytes_sent';
+
+server {
+    listen 80;
+    server_name api.example.com;
+    # Reject rather than redirect a URL containing coordinates over HTTP.
+    access_log off;
+    error_log /dev/null crit;
+    return 426;
+}
+
+server {
+    listen 443 ssl;
+    server_name api.example.com;
+    ssl_certificate /etc/nginx/tls/fullchain.pem;
+    ssl_certificate_key /etc/nginx/tls/privkey.pem;
+
+    # Buffer the request URL neither in access logs nor in upstream error logs.
+    access_log /var/log/nginx/esmarch.access.log esmarch_safe;
+    error_log /dev/null crit;
+
+    location /api/ {
+        proxy_pass http://127.0.0.1:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        # Overwrite the client-supplied header. Do not append untrusted addresses.
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header Forwarded "";
+    }
+}

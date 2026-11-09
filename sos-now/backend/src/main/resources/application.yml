@@ -1,0 +1,53 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:file:./.data/esmarch;MODE=PostgreSQL;DB_CLOSE_ON_EXIT=FALSE}
+    username: ${DATABASE_USERNAME:sa}
+    password: ${DATABASE_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  h2:
+    console:
+      enabled: false
+  mvc:
+    log-request-details: false
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: never
+    include-binding-errors: never
+    include-stacktrace: never
+  tomcat:
+    accesslog:
+      enabled: false
+# Keep request URLs and rejected coordinates out of application logs, including debug deployments.
+logging:
+  level:
+    org.springframework.web: 'OFF'
+    org.apache.coyote.http11: 'OFF'
+app:
+  map:
+    provider-name: ${MAP_PROVIDER_NAME:OpenStreetMap}
+    tile-url: ${MAP_TILE_URL:}
+    attribution-text: ${MAP_ATTRIBUTION_TEXT:© OpenStreetMap contributors}
+    attribution-url: ${MAP_ATTRIBUTION_URL:https://www.openstreetmap.org/copyright}
+    max-zoom: ${MAP_MAX_ZOOM:19}
+  ai-base-url: ${AI_BASE_URL:http://localhost:8000}
+  ai:
+    enabled: ${AI_SERVICE_ENABLED:false}
+  cors-origins: ${CORS_ORIGINS:${CORS_ORIGIN:http://localhost:5173}}
+  require-https: ${REQUIRE_HTTPS:false}
+  facilities:
+    data-file: ${FACILITIES_DATA_FILE:data/facilities.json}
+  guides:
+    data-file: ${GUIDES_DATA_FILE:}
+  aeds:
+    data-file: ${AEDS_DATA_FILE:}
+  support:
+    admin-token: ${SUPPORT_ADMIN_TOKEN:}
+  public-api:
+    rate-limit:
+      requests: ${PUBLIC_API_RATE_LIMIT_REQUESTS:60}
+      window: ${PUBLIC_API_RATE_LIMIT_WINDOW:60s}
+      max-clients: ${PUBLIC_API_MAX_CLIENTS:10000}

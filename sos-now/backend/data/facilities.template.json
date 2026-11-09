@@ -1,0 +1,21 @@
+[
+  {
+    "id": "replace-with-facility-slug",
+    "name": "THAY BẰNG TÊN CƠ SỞ ĐÃ KIỂM CHỨNG",
+    "type": "HOSPITAL",
+    "address": "THAY BẰNG ĐỊA CHỈ THỰC TẾ",
+    "district": "Bình Thạnh",
+    "latitude": null,
+    "longitude": null,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Cấp cứu",
+        "number": "THAY_BANG_SO_DA_KIEM_CHUNG",
+        "is24h": true
+      }
+    ],
+    "verifiedAt": null,
+    "verificationSource": "THAY BẰNG NGƯỜI KIỂM CHỨNG VÀ NGUỒN/BIÊN BẢN KIỂM CHỨNG"
+  }
+]

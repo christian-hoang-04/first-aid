@@ -1,0 +1,1237 @@
+[
+  {
+    "id": "trung-tam-cap-cuu-115-tp-ho-chi-minh",
+    "name": "TRUNG TÂM CẤP CỨU 115 TP. HỒ CHÍ MINH",
+    "type": "MEDICAL_STATION",
+    "address": "Số 266A, đường Lý Thường Kiệt, Phường Diên Hồng, TP. Hồ Chí Minh",
+    "district": "Phường Diên Hồng",
+    "latitude": 10.7761,
+    "longitude": 106.6531,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Cấp cứu 115",
+        "number": "115",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-sai-gon",
+    "name": "BỆNH VIỆN ĐA KHOA SÀI GÒN",
+    "type": "HOSPITAL",
+    "address": "Số 125, đường Lê Lợi, Phường Bến Thành, TP. Hồ Chí Minh",
+    "district": "Phường Bến Thành",
+    "latitude": 10.7721,
+    "longitude": 106.6996,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02839142704",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-binh-tan",
+    "name": "BỆNH VIỆN ĐA KHOA BÌNH TÂN",
+    "type": "HOSPITAL",
+    "address": "Số 809, đường Hương lộ 2, Phường Bình Trị Đông, TP. Hồ Chí Minh",
+    "district": "Phường Bình Trị Đông",
+    "latitude": 10.7649,
+    "longitude": 106.603,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02837541784",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-xuyen-a",
+    "name": "BỆNH VIỆN XUYÊN Á",
+    "type": "HOSPITAL",
+    "address": "Số 42, đường Phan Văn Khải, ấp Chợ A, Xã Củ Chi, TP. Hồ Chí Minh",
+    "district": "Xã Củ Chi",
+    "latitude": 10.9278,
+    "longitude": 106.558,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02837966888",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-thu-duc",
+    "name": "BỆNH VIỆN ĐA KHOA THỦ ĐỨC",
+    "type": "HOSPITAL",
+    "address": "Số 29, đường Phú Châu, Phường Tam Bình, TP. Hồ Chí Minh",
+    "district": "Phường Tam Bình",
+    "latitude": 10.8644,
+    "longitude": 106.7456,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "0325441088",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-le-van-thinh",
+    "name": "BỆNH VIỆN LÊ VĂN THỊNH",
+    "type": "HOSPITAL",
+    "address": "Số 387, đường Lê Văn Việt, Phường Tăng Nhơn Phú, TP. Hồ Chí Minh",
+    "district": "Phường Tăng Nhơn Phú",
+    "latitude": 10.7823,
+    "longitude": 106.7685,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "0912440115",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-nguyen-thi-thap",
+    "name": "BỆNH VIỆN ĐA KHOA NGUYỄN THỊ THẬP",
+    "type": "HOSPITAL",
+    "address": "Số 101, đường Nguyễn Thị Thập, Phường Tân Mỹ, TP. Hồ Chí Minh",
+    "district": "Phường Tân Mỹ",
+    "latitude": 10.7373,
+    "longitude": 106.7241,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02837731421",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-trieu-an",
+    "name": "BỆNH VIỆN ĐA KHOA TRIỀU AN",
+    "type": "HOSPITAL",
+    "address": "Số 425, đường Kinh Dương Vương, Phường An Lạc, TP. Hồ Chí Minh",
+    "district": "Phường An Lạc",
+    "latitude": 10.746,
+    "longitude": 106.612,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "0963848115",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-dkkv-cu-chi",
+    "name": "BỆNH VIỆN ĐKKV CỦ CHI",
+    "type": "HOSPITAL",
+    "address": "Số 9A, đường Nguyễn Văn Hoài, ấp Bàu Tre 2B, Xã Tân An Hội, TP. Hồ Chí Minh",
+    "district": "Xã Tân An Hội",
+    "latitude": 10.9747,
+    "longitude": 106.4802,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02837909559",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-go-vap",
+    "name": "BỆNH VIỆN ĐA KHOA GÒ VẤP",
+    "type": "HOSPITAL",
+    "address": "Số 641, đường Quang Trung, Phường Thông Tây Hội, TP. Hồ Chí Minh",
+    "district": "Phường Thông Tây Hội",
+    "latitude": 10.8329,
+    "longitude": 106.6645,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02835895699",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-lanh-binh-thang",
+    "name": "BỆNH VIỆN ĐA KHOA LÃNH BINH THĂNG",
+    "type": "HOSPITAL",
+    "address": "Số 72, Cư xá Bình Thới, Phường Bình Thới, TP. Hồ Chí Minh",
+    "district": "Phường Bình Thới",
+    "latitude": 10.7607,
+    "longitude": 106.6479,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02838585961",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-sai-gon-ito-phu-nhuan",
+    "name": "BỆNH VIỆN SÀI GÒN ITO PHÚ NHUẬN",
+    "type": "HOSPITAL",
+    "address": "Số 140C, đường Nguyễn Trọng Tuyển, Phường Phú Nhuận, TP. Hồ Chí Minh",
+    "district": "Phường Phú Nhuận",
+    "latitude": 10.7979,
+    "longitude": 106.6768,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02838456139",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-binh-chanh",
+    "name": "BỆNH VIỆN ĐA KHOA BÌNH CHÁNH",
+    "type": "HOSPITAL",
+    "address": "Số 1, Đường số 1, Khu Trung tâm hành chính, Xã Tân Nhựt, TP. Hồ Chí Minh",
+    "district": "Xã Tân Nhựt",
+    "latitude": 10.6914,
+    "longitude": 106.5862,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02837602774",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-cu-chi",
+    "name": "BỆNH VIỆN ĐA KHOA CỦ CHI",
+    "type": "HOSPITAL",
+    "address": "Số 1307, tỉnh lộ 7, ấp Chợ Củ, Xã An Nhơn Tây, TP. Hồ Chí Minh",
+    "district": "Xã An Nhơn Tây",
+    "latitude": 11.01,
+    "longitude": 106.46,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02837946394",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-nha-be",
+    "name": "BỆNH VIỆN ĐA KHOA NHÀ BÈ",
+    "type": "HOSPITAL",
+    "address": "Số 281A, đường Lê Văn Lương, Xã Nhà Bè, TP. Hồ Chí Minh",
+    "district": "Xã Nhà Bè",
+    "latitude": 10.668,
+    "longitude": 106.74,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02837816574",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-le-van-viet",
+    "name": "BỆNH VIỆN LÊ VĂN VIỆT",
+    "type": "HOSPITAL",
+    "address": "Số 387, đường Lê Văn Việt, Phường Tăng Nhơn Phú, TP. Hồ Chí Minh",
+    "district": "Phường Tăng Nhơn Phú",
+    "latitude": 10.8449,
+    "longitude": 106.7902,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02837360515",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "trung-tam-y-te-khu-vuc-can-gio",
+    "name": "TRUNG TÂM Y TẾ KHU VỰC CẦN GIỜ",
+    "type": "MEDICAL_STATION",
+    "address": "Đường Lương Văn Nho, Ấp Miễu Ba, Xã Cần Giờ, TP. Hồ Chí Minh",
+    "district": "Xã Cần Giờ",
+    "latitude": 10.4045,
+    "longitude": 106.9376,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02838740115",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-tan-phu",
+    "name": "BỆNH VIỆN ĐA KHOA TÂN PHÚ",
+    "type": "HOSPITAL",
+    "address": "Số 609-611, đường Âu Cơ, Phường Tân Phú, TP. Hồ Chí Minh",
+    "district": "Phường Tân Phú",
+    "latitude": 10.7835,
+    "longitude": 106.6419,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02838657948",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-khanh-hoi",
+    "name": "BỆNH VIỆN ĐA KHOA KHÁNH HỘI",
+    "type": "HOSPITAL",
+    "address": "Số 63-65, đường Bến Vân Đồn, Phường Xóm Chiếu, TP. Hồ Chí Minh",
+    "district": "Phường Xóm Chiếu",
+    "latitude": 10.7653,
+    "longitude": 106.7022,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02838261596",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-dk-tam-tri-sai-gon",
+    "name": "BỆNH VIỆN ĐK TÂM TRÍ SÀI GÒN",
+    "type": "HOSPITAL",
+    "address": "Số 171/3, đường Trường Chinh, Phường Đông Hưng Thuận, TP. Hồ Chí Minh",
+    "district": "Phường Đông Hưng Thuận",
+    "latitude": 10.8317,
+    "longitude": 106.6216,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "0901696115",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-binh-thanh",
+    "name": "BỆNH VIỆN ĐA KHOA BÌNH THẠNH",
+    "type": "HOSPITAL",
+    "address": "Số 132, đường Lê Văn Duyệt, Phường Gia Định, TP. Hồ Chí Minh",
+    "district": "Phường Gia Định",
+    "latitude": 10.798,
+    "longitude": 106.6967,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "0918517900",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-phuc-hoi-chuc-nang-dieu-tri-benh-nghe-nghiep",
+    "name": "BỆNH VIỆN PHỤC HỒI CHỨC NĂNG - ĐIỀU TRỊ BỆNH NGHỀ NGHIỆP",
+    "type": "HOSPITAL",
+    "address": "Số 313, đường Âu Dương Lân, Phường Chánh Hưng, TP. Hồ Chí Minh",
+    "district": "Phường Chánh Hưng",
+    "latitude": 10.7414,
+    "longitude": 106.6864,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02838569147",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-trung-my-tay",
+    "name": "BỆNH VIỆN ĐA KHOA TRUNG MỸ TÂY",
+    "type": "HOSPITAL",
+    "address": "Số 111, đường Dương Thị Mười, Phường Trung Mỹ Tây, TP. Hồ Chí Minh",
+    "district": "Phường Trung Mỹ Tây",
+    "latitude": 10.8606,
+    "longitude": 106.6306,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02822238115",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-khu-vuc-hoc-mon",
+    "name": "BỆNH VIỆN ĐA KHOA KHU VỰC HÓC MÔN",
+    "type": "HOSPITAL",
+    "address": "Số 79, đường Bà Triệu, Xã Hóc Môn, TP. Hồ Chí Minh",
+    "district": "Xã Hóc Môn",
+    "latitude": 10.8825,
+    "longitude": 106.593,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "028366117115",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-tan-dinh",
+    "name": "BỆNH VIỆN ĐA KHOA TÂN ĐỊNH",
+    "type": "HOSPITAL",
+    "address": "Số 338, đường Hai Bà Trưng, Phường Tân Định, TP. Hồ Chí Minh",
+    "district": "Phường Tân Định",
+    "latitude": 10.7902,
+    "longitude": 106.6896,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02838206544",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-hoan-my-sai-gon",
+    "name": "BỆNH VIỆN HOÀN MỸ SÀI GÒN",
+    "type": "HOSPITAL",
+    "address": "Số 60-60A, đường Phan Xích Long, Phường Cầu Kiệu, TP. Hồ Chí Minh",
+    "district": "Phường Cầu Kiệu",
+    "latitude": 10.802,
+    "longitude": 106.68,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02839959861",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "phong-kham-da-khoa-tan-quy",
+    "name": "PHÒNG KHÁM ĐA KHOA TÂN QUY",
+    "type": "CLINIC",
+    "address": "Số 1312, Tỉnh lộ 8, Ấp 12, Xã Phú Hòa Đông, TP. Hồ Chí Minh",
+    "district": "Xã Phú Hòa Đông",
+    "latitude": 10.963,
+    "longitude": 106.56,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02869067279",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-quan-y-175",
+    "name": "BỆNH VIỆN QUÂN Y 175",
+    "type": "HOSPITAL",
+    "address": "Số 786, đường Nguyễn Kiệm, Phường Hạnh Thông, TP. Hồ Chí Minh",
+    "district": "Phường Hạnh Thông",
+    "latitude": 10.8188,
+    "longitude": 106.6806,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "0968115175",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "phong-kham-da-khoa-linh-xuan",
+    "name": "PHÒNG KHÁM ĐA KHOA LINH XUÂN",
+    "type": "CLINIC",
+    "address": "Số 79, đường Quốc lộ 1A, Phường Linh Xuân, TP. Hồ Chí Minh",
+    "district": "Phường Linh Xuân",
+    "latitude": 10.8558,
+    "longitude": 106.7665,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02862710840",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-nhi-dong-thanh-pho",
+    "name": "BỆNH VIỆN NHI ĐỒNG THÀNH PHỐ",
+    "type": "HOSPITAL",
+    "address": "Số 15, đường Võ Trần Chí, Xã Tân Nhựt, TP. Hồ Chí Minh",
+    "district": "Xã Tân Nhựt",
+    "latitude": 10.739,
+    "longitude": 106.57,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02862858618",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-gia-an-115",
+    "name": "BỆNH VIỆN GIA AN 115",
+    "type": "HOSPITAL",
+    "address": "Số 5, đường số 17A, Khu phố 11, Phường An Lạc, TP. Hồ Chí Minh",
+    "district": "Phường An Lạc",
+    "latitude": 10.7407,
+    "longitude": 106.6081,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02862655115",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-chanh-hung",
+    "name": "BỆNH VIỆN ĐA KHOA CHÁNH HƯNG",
+    "type": "HOSPITAL",
+    "address": "Số 82, đường Cao Lỗ, Phường Chánh Hưng, TP. Hồ Chí Minh",
+    "district": "Phường Chánh Hưng",
+    "latitude": 10.744,
+    "longitude": 106.689,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02838506130",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-phu-nhuan",
+    "name": "BỆNH VIỆN ĐA KHOA PHÚ NHUẬN",
+    "type": "HOSPITAL",
+    "address": "Số 274, đường Nguyễn Trọng Tuyển, Phường Phú Nhuận, TP. Hồ Chí Minh",
+    "district": "Phường Phú Nhuận",
+    "latitude": 10.7983,
+    "longitude": 106.6718,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02839974553",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-ung-buou-cs2",
+    "name": "BỆNH VIỆN UNG BƯỚU CS2",
+    "type": "HOSPITAL",
+    "address": "Số 12 Đường 400, Phường Tăng Nhơn Phú, TP. Hồ Chí Minh",
+    "district": "TP. Hồ Chí Minh",
+    "latitude": 10.87022,
+    "longitude": 106.80933,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài (nhánh 393 hoặc 398)",
+        "number": "02838433021",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "Address confirmed from the official B?nh vi?n Ung B??u contact page; coordinates from the OpenStreetMap hospital outline (way 605281204). Phone source: user-confirmed facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-dkqt-nam-sai-gon",
+    "name": "BỆNH VIỆN ĐKQT NAM SÀI GÒN",
+    "type": "HOSPITAL",
+    "address": "Số 88, đường số 8, Khu dân cư Trung Sơn, Xã Bình Hưng, TP. Hồ Chí Minh",
+    "district": "Xã Bình Hưng",
+    "latitude": 10.736,
+    "longitude": 106.69,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02836222218",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-dkqt-hoan-my-thu-duc",
+    "name": "BỆNH VIỆN ĐKQT HOÀN MỸ THỦ ĐỨC",
+    "type": "HOSPITAL",
+    "address": "Số 241, đường QL1K, Phường Linh Xuân, TP. Hồ Chí Minh",
+    "district": "Phường Linh Xuân",
+    "latitude": 10.875,
+    "longitude": 106.777,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02873061061",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-quan-dan-y-mien-dong",
+    "name": "BỆNH VIỆN QUÂN DÂN Y MIỀN ĐÔNG",
+    "type": "HOSPITAL",
+    "address": "Số 50, đường Lê Văn Việt, Phường Tăng Nhơn Phú, TP. Hồ Chí Minh",
+    "district": "Phường Tăng Nhơn Phú",
+    "latitude": 10.844,
+    "longitude": 106.79,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02837307125",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-dkkv-thu-duc",
+    "name": "BỆNH VIỆN ĐKKV THỦ ĐỨC",
+    "type": "HOSPITAL",
+    "address": "Số 64, đường Lê Văn Chí, Phường Linh Xuân, TP. Hồ Chí Minh",
+    "district": "Phường Linh Xuân",
+    "latitude": 10.865,
+    "longitude": 106.77,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02838966894",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-tan-binh",
+    "name": "BỆNH VIỆN ĐA KHOA TÂN BÌNH",
+    "type": "HOSPITAL",
+    "address": "Số 605, đường Hoàng Văn Thụ, Phường Tân Sơn Nhất, TP. Hồ Chí Minh",
+    "district": "Phường Tân Sơn Nhất",
+    "latitude": 10.803,
+    "longitude": 106.655,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02838442771",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-hong-duc-ii",
+    "name": "BỆNH VIỆN ĐA KHOA HỒNG ĐỨC II",
+    "type": "HOSPITAL",
+    "address": "Số 259, đường An Phú Đông 3, Khu phố 5, Phường An Phú Đông, TP. Hồ Chí Minh",
+    "district": "Phường An Phú Đông",
+    "latitude": 10.862,
+    "longitude": 106.665,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài (Nhánh 2102)",
+        "number": "02888869999",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-tan-hung",
+    "name": "BỆNH VIỆN ĐA KHOA TÂN HƯNG",
+    "type": "HOSPITAL",
+    "address": "Số 871, đường Trần Xuân Soạn, Phường Tân Hưng, TP. Hồ Chí Minh",
+    "district": "Phường Tân Hưng",
+    "latitude": 10.747,
+    "longitude": 106.722,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02837760722",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-tam-anh",
+    "name": "BỆNH VIỆN ĐA KHOA TÂM ANH",
+    "type": "HOSPITAL",
+    "address": "Số 2B, đường Phổ Quang, Phường Tân Sơn Hòa, TP. Hồ Chí Minh",
+    "district": "Phường Tân Sơn Hòa",
+    "latitude": 10.799,
+    "longitude": 106.665,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài (Line 3)",
+        "number": "02871026789",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-hong-duc-iii",
+    "name": "BỆNH VIỆN ĐA KHOA HỒNG ĐỨC III",
+    "type": "HOSPITAL",
+    "address": "Số 32/2, đường Thống Nhất, Phường Gò Vấp, TP. Hồ Chí Minh",
+    "district": "Phường Gò Vấp",
+    "latitude": 10.829,
+    "longitude": 106.69,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "0976828777",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-an-binh",
+    "name": "BỆNH VIỆN AN BÌNH",
+    "type": "HOSPITAL",
+    "address": "Số 146, đường An Bình, Phường An Đông, TP. Hồ Chí Minh",
+    "district": "Phường An Đông",
+    "latitude": 10.756,
+    "longitude": 106.666,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02839234260",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-van-phuc-city",
+    "name": "BỆNH VIỆN VẠN PHÚC CITY",
+    "type": "HOSPITAL",
+    "address": "Số 01, đường 10, Khu dân cư Vạn Phúc, Khu phố 5, Phường Hiệp Bình, TP. Hồ Chí Minh",
+    "district": "Phường Hiệp Bình",
+    "latitude": 10.846,
+    "longitude": 106.724,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02836364115",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "trung-tam-y-te-khu-vuc-binh-dong",
+    "name": "TRUNG TÂM Y TẾ KHU VỰC BÌNH ĐÔNG",
+    "type": "MEDICAL_STATION",
+    "address": "Số 28, đường số 1, Phường Bình Đông, TP. Hồ Chí Minh",
+    "district": "Phường Bình Đông",
+    "latitude": 10.735,
+    "longitude": 106.69,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "0843999079",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-ba-ria",
+    "name": "BỆNH VIỆN ĐA KHOA BÀ RỊA",
+    "type": "HOSPITAL",
+    "address": "Số 686, đường Võ Văn Kiệt, Phường Tam Long, TP. Hồ Chí Minh",
+    "district": "Phường Tam Long",
+    "latitude": 10.5,
+    "longitude": 107.18,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02543742331",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-vung-tau",
+    "name": "BỆNH VIỆN ĐA KHOA VŨNG TÀU",
+    "type": "HOSPITAL",
+    "address": "Số 27, đường 2/9, Phường Phước Thắng, TP. Hồ Chí Minh",
+    "district": "Phường Phước Thắng",
+    "latitude": 10.36,
+    "longitude": 107.08,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "0862742174",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-quan-y-4-cuc-hau-can-ky-thuat-quan-khu-7",
+    "name": "BỆNH VIỆN QUÂN Y 4, CỤC HẬU CẦN - KỸ THUẬT, QUÂN KHU 7",
+    "type": "HOSPITAL",
+    "address": "Số 137, ĐT 743, KP Thống Nhất 2, Phường Dĩ An, TP. Hồ Chí Minh",
+    "district": "Phường Dĩ An",
+    "latitude": 10.905,
+    "longitude": 106.78,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "069666339",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-binh-duong",
+    "name": "BỆNH VIỆN ĐA KHOA BÌNH DƯƠNG",
+    "type": "HOSPITAL",
+    "address": "Số 05, đường Phạm Ngọc Thạch, Phường Phú Lợi, TP. Hồ Chí Minh",
+    "district": "Phường Phú Lợi",
+    "latitude": 10.98,
+    "longitude": 106.65,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02743822107",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "trung-tam-y-te-khu-vuc-thuan-an",
+    "name": "TRUNG TÂM Y TẾ KHU VỰC THUẬN AN",
+    "type": "MEDICAL_STATION",
+    "address": "Đường Nguyễn Văn Tiết, Phường Lái Thiêu, TP. Hồ Chí Minh",
+    "district": "Phường Lái Thiêu",
+    "latitude": 10.91,
+    "longitude": 106.7,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "0334138115",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "trung-tam-y-te-khu-vuc-di-an",
+    "name": "TRUNG TÂM Y TẾ KHU VỰC DĨ AN",
+    "type": "MEDICAL_STATION",
+    "address": "Số 500, đường ĐT743, Khu phố Đông Tác, Phường Dĩ An, TP. Hồ Chí Minh",
+    "district": "Phường Dĩ An",
+    "latitude": 10.9,
+    "longitude": 106.77,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02743773887",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "trung-tam-y-te-khu-vuc-dau-tieng",
+    "name": "TRUNG TÂM Y TẾ KHU VỰC DẦU TIẾNG",
+    "type": "MEDICAL_STATION",
+    "address": "Số 02, đường Nguyễn Bỉnh Khiêm, ấp Cầu Đúc, Xã Dầu Tiếng, TP. Hồ Chí Minh",
+    "district": "Xã Dầu Tiếng",
+    "latitude": 11.28,
+    "longitude": 106.35,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02743521149",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-my-phuoc",
+    "name": "BỆNH VIỆN ĐA KHOA MỸ PHƯỚC",
+    "type": "HOSPITAL",
+    "address": "Đường TC3, Khu phố An Phước, Phường Bến Cát, TP. Hồ Chí Minh",
+    "district": "Phường Bến Cát",
+    "latitude": 11.15,
+    "longitude": 106.6,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02743535115",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "trung-tam-y-te-khu-vuc-thu-dau-mot",
+    "name": "TRUNG TÂM Y TẾ KHU VỰC THỦ DẦU MỘT",
+    "type": "MEDICAL_STATION",
+    "address": "Số 03, đường Văn Công Khai, Phường Thủ Dầu Một, TP. Hồ Chí Minh",
+    "district": "Phường Thủ Dầu Một",
+    "latitude": 10.98,
+    "longitude": 106.65,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02743555115",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "trung-tam-y-te-khu-vuc-long-dat",
+    "name": "TRUNG TÂM Y TẾ KHU VỰC LONG ĐẤT",
+    "type": "MEDICAL_STATION",
+    "address": "Ấp An Thạnh, Xã Long Điền, TP. Hồ Chí Minh",
+    "district": "Xã Long Điền",
+    "latitude": 10.49,
+    "longitude": 107.22,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02543869430",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "trung-tam-y-te-khu-vuc-ho-tram",
+    "name": "TRUNG TÂM Y TẾ KHU VỰC HỒ TRÀM",
+    "type": "MEDICAL_STATION",
+    "address": "Quốc lộ 55, Xã Hồ Tràm, TP. Hồ Chí Minh",
+    "district": "Xã Hồ Tràm",
+    "latitude": 10.47,
+    "longitude": 107.39,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02543874142",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "trung-tam-y-te-khu-vuc-bau-bang",
+    "name": "TRUNG TÂM Y TẾ KHU VỰC BÀU BÀNG",
+    "type": "MEDICAL_STATION",
+    "address": "Đường D7-N9, Khu Công nghiệp và Đô thị Bàu Bàng, Xã Bàu Bàng, TP. Hồ Chí Minh",
+    "district": "Xã Bàu Bàng",
+    "latitude": 11.2,
+    "longitude": 106.65,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02743568115",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "trung-tam-y-te-khu-vuc-phu-giao",
+    "name": "TRUNG TÂM Y TẾ KHU VỰC PHÚ GIÁO",
+    "type": "MEDICAL_STATION",
+    "address": "Ấp 3, Xã Phú Giáo, TP. Hồ Chí Minh",
+    "district": "Xã Phú Giáo",
+    "latitude": 11.3,
+    "longitude": 106.75,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02743673121",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "trung-tam-y-te-khu-vuc-bac-tan-uyen",
+    "name": "TRUNG TÂM Y TẾ KHU VỰC BẮC TÂN UYÊN",
+    "type": "MEDICAL_STATION",
+    "address": "Ấp Tân Thành 2, Xã Bắc Tân Uyên, TP. Hồ Chí Minh",
+    "district": "Xã Bắc Tân Uyên",
+    "latitude": 11.12,
+    "longitude": 106.84,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02743683212",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "trung-tam-y-te-khu-vuc-phu-my",
+    "name": "TRUNG TÂM Y TẾ KHU VỰC PHÚ MỸ",
+    "type": "MEDICAL_STATION",
+    "address": "Số 106, đường Trường Chinh, Phường Phú Mỹ, TP. Hồ Chí Minh",
+    "district": "Phường Phú Mỹ",
+    "latitude": 10.59,
+    "longitude": 107.05,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02543932700",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "trung-tam-y-te-khu-vuc-chau-duc",
+    "name": "TRUNG TÂM Y TẾ KHU VỰC CHÂU ĐỨC",
+    "type": "MEDICAL_STATION",
+    "address": "Số 31, Điện Biên Phủ (nối dài), Xã Ngãi Giao, TP. Hồ Chí Minh",
+    "district": "Xã Ngãi Giao",
+    "latitude": 10.65,
+    "longitude": 107.27,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02543881805",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "trung-tam-y-te-khu-vuc-ben-cat",
+    "name": "TRUNG TÂM Y TẾ KHU VỰC BẾN CÁT",
+    "type": "MEDICAL_STATION",
+    "address": "Số 103, Khu phố Long Hưng, Phường Bến Cát, TP. Hồ Chí Minh",
+    "district": "Phường Bến Cát",
+    "latitude": 11.15,
+    "longitude": 106.6,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02743564703",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "trung-tam-y-te-khu-vuc-tan-uyen",
+    "name": "TRUNG TÂM Y TẾ KHU VỰC TÂN UYÊN",
+    "type": "MEDICAL_STATION",
+    "address": "Đường ĐT 747, Khu phố Uyên Hưng 7, Phường Tân Uyên, TP. Hồ Chí Minh",
+    "district": "Phường Tân Uyên",
+    "latitude": 11.05,
+    "longitude": 106.78,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "0903482073",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  },
+  {
+    "id": "benh-vien-da-khoa-hoan-hao-di-an",
+    "name": "BỆNH VIỆN ĐA KHOA HOÀN HẢO DĨ AN",
+    "type": "HOSPITAL",
+    "address": "Số 26/14, Khu phố Bình Đường 2, Phường Dĩ An, TP. Hồ Chí Minh",
+    "district": "Phường Dĩ An",
+    "latitude": 10.91,
+    "longitude": 106.78,
+    "hasEmergency": true,
+    "phones": [
+      {
+        "label": "Tổng đài",
+        "number": "02747306411",
+        "is24h": false
+      }
+    ],
+    "verifiedAt": "2026-10-31T00:00:00Z",
+    "verificationSource": "User-confirmed authoritative locations list in the working folder: facilities.js and facility-coordinates.js; phone source from facilities.js. 24/7 availability was not supplied."
+  }
+]

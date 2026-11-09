@@ -1,0 +1,13 @@
+app:
+  require-https: true
+  cors-origins: ${CORS_ORIGINS}
+  facilities:
+    data-file: ${FACILITIES_DATA_FILE:}
+server:
+  # Only enable proxy processing in production. Default trust is loopback only.
+  forward-headers-strategy: native
+  tomcat:
+    remoteip:
+      internal-proxies: ${TRUSTED_PROXY_REGEX:127\.0\.0\.1|::1|0:0:0:0:0:0:0:1}
+      remote-ip-header: x-forwarded-for
+      protocol-header: x-forwarded-proto

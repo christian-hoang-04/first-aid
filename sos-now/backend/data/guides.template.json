@@ -1,0 +1,24 @@
+[
+  {
+    "scenarioId": "cardiac",
+    "locale": "vi",
+    "audience": "ADULT",
+    "title": "THAY BẰNG TIÊU ĐỀ ĐÃ ĐƯỢC CHUYÊN GIA DUYỆT",
+    "steps": [
+      {
+        "number": 1,
+        "title": "THAY BẰNG TÊN BƯỚC",
+        "text": "THAY BẰNG HƯỚNG DẪN ĐÃ ĐƯỢC DUYỆT",
+        "keywords": ["THAY BẰNG TỪ KHÓA CHO BƯỚC NÀY"],
+        "media": [
+          {"type": "IMAGE", "url": "REPLACE_WITH_HTTPS_URL", "mimeType": "image/webp", "alt": "THAY BẰNG MÔ TẢ ẢNH", "startSeconds": null, "endSeconds": null},
+          {"type": "VIDEO", "url": "REPLACE_WITH_HTTPS_URL", "mimeType": "video/mp4", "alt": "THAY BẰNG MÔ TẢ ĐOẠN VIDEO", "startSeconds": 0, "endSeconds": 5},
+          {"type": "MODEL_3D", "url": "REPLACE_WITH_HTTPS_URL", "mimeType": "model/gltf-binary", "alt": "THAY BẰNG MÔ TẢ MÔ HÌNH", "startSeconds": null, "endSeconds": null}
+        ]
+      }
+    ],
+    "reviewedAt": null,
+    "reviewedBy": "THAY BẰNG NGƯỜI DUYỆT CHUYÊN MÔN",
+    "sources": ["THAY BẰNG NGUỒN HƯỚNG DẪN VÀ GIẤY PHÉP MEDIA"]
+  }
+]

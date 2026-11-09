@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:esmarch-tests;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ''
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+app:
+  ai:
+    enabled: false
+  require-https: false
+  cors-origins: http://localhost:5173,https://esmarch.example
+  facilities:
+    data-file: ''
+  guides:
+    data-file: ''
+  aeds:
+    data-file: ''
+  support:
+    admin-token: ''
+  public-api:
+    rate-limit:
+      requests: 10000
+      window: 60s
+      max-clients: 10000

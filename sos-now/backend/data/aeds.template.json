@@ -1,0 +1,17 @@
+[
+  {
+    "id": "replace-with-aed-slug",
+    "name": "THAY BẰNG TÊN ĐIỂM ĐẶT AED",
+    "address": "THAY BẰNG ĐỊA CHỈ",
+    "district": "Bình Thạnh",
+    "latitude": null,
+    "longitude": null,
+    "accessInstructions": "THAY BẰNG TẦNG PHÒNG LỐI VÀO VÀ ĐIỀU KIỆN LẤY MÁY",
+    "openingHours": "THAY BẰNG GIỜ CÓ THỂ TIẾP CẬN",
+    "is24h": false,
+    "status": "UNKNOWN",
+    "verifiedAt": null,
+    "lastInspectedAt": null,
+    "verificationSource": "THAY BẰNG NGƯỜI VÀ NGUỒN KIỂM CHỨNG"
+  }
+]
