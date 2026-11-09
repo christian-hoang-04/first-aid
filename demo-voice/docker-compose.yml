@@ -1,0 +1,10 @@
+# LiveKit server cho môi trường dev local: API key `devkey`, secret `secret`.
+services:
+  livekit:
+    image: livekit/livekit-server:v1.13.10
+    command: --dev --bind 0.0.0.0 --node-ip 127.0.0.1
+    ports:
+      - "7880:7880" # signaling (WebSocket) + HTTP API
+      - "7881:7881" # WebRTC qua TCP
+      - "7882:7882/udp" # WebRTC qua UDP
+    restart: unless-stopped

@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101b25" />
+    <title>Vietnamese ASR Lab</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #101b25; --panel: #182632; --line: #324452;
+        --muted: #a5b4bd; --text: #f2f5f5; --mint: #b9f2ce;
+        --mint-ink: #10251b; --orange: #ffb27c; --red: #ff9a96;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; background: radial-gradient(ellipse at 4% 0%, #263845 0, transparent 34rem), var(--bg); color: var(--text); font: 15px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+      button, input { font: inherit; }
+      .shell { max-width: 1100px; margin: 0 auto; padding: 30px 22px 56px; }
+      header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 42px; }
+      .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .02em; }
+      .brand-mark { display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid #5d7a7b; border-radius: 12px; color: var(--mint); background: #1d3638; font-size: 19px; }
+      .local-pill { border: 1px solid #476356; border-radius: 999px; padding: 7px 11px; color: var(--mint); font-size: 11px; font-weight: 700; letter-spacing: .12em; }
+      .eyebrow { color: var(--orange); font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+      h1 { max-width: 800px; margin: 9px 0 12px; font-size: clamp(34px, 5vw, 58px); line-height: 1.04; letter-spacing: -.045em; }
+      .intro { max-width: 720px; margin: 0; color: var(--muted); font-size: 16px; }
+      .model-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 29px 0 28px; }
+      .model-card, .panel { border: 1px solid var(--line); border-radius: 16px; background: color-mix(in srgb, var(--panel) 94%, transparent); }
+      .model-card { min-height: 150px; padding: 17px; }
+      .model-title { display: flex; align-items: start; justify-content: space-between; gap: 8px; font-weight: 700; }
+      .model-size { color: var(--mint); font-size: 12px; white-space: nowrap; }
+      .model-card p { margin: 9px 0 0; color: var(--muted); font-size: 13px; }
+      .bench { display: inline-block; margin-top: 11px; color: #d9c7b8; font-size: 11px; }
+      .workspace { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+      .panel { padding: 22px; }
+      .panel h2 { margin: 0; font-size: 19px; letter-spacing: -.02em; }
+      .panel-lead { margin: 6px 0 20px; color: var(--muted); font-size: 13px; }
+      .live-box { display: flex; min-height: 190px; flex-direction: column; justify-content: space-between; padding: 17px; border: 1px solid #435661; border-radius: 12px; background: #13212a; }
+      .live-status { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; }
+      .dot { width: 8px; height: 8px; border-radius: 50%; background: #6d818c; }
+      .dot.active { background: #fb826c; box-shadow: 0 0 0 5px #fb826c22; }
+      .live-text { min-height: 72px; margin: 15px 0; font-size: 17px; overflow-wrap: anywhere; }
+      .live-controls, .submit-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+      .button { cursor: pointer; border: 0; border-radius: 9px; padding: 11px 15px; color: var(--mint-ink); background: var(--mint); font-weight: 750; transition: transform .15s ease, opacity .15s ease; }
+      .button:hover { transform: translateY(-1px); }
+      .button:disabled { cursor: wait; opacity: .55; transform: none; }
+      .button.secondary { border: 1px solid #52636e; color: var(--text); background: #293a46; }
+      .button.stop { color: #2b1715; background: #ffad98; }
+      .hint { margin: 12px 0 0; color: #91a2ad; font-size: 12px; }
+      .timer { display: block; color: var(--mint); font-size: 36px; font-variant-numeric: tabular-nums; letter-spacing: -.04em; }
+      .reference { width: 100%; margin: 0 0 13px; padding: 10px 12px; border: 1px solid #52636e; border-radius: 9px; color: var(--text); background: #14212b; }
+      .upload-area { position: relative; display: grid; min-height: 100px; place-items: center; border: 1px dashed #59717d; border-radius: 12px; background: #14222c; text-align: center; }
+      .upload-area:hover, .upload-area.drag { border-color: var(--mint); background: #1a2c35; }
+      .upload-area input { position: absolute; inset: 0; width: 100%; height: 100%; cursor: pointer; opacity: 0; }
+      .upload-copy strong { display: block; margin-bottom: 3px; }
+      .upload-copy span { color: var(--muted); font-size: 12px; }
+      .filename { margin: 10px 0 17px; color: #a9d6f4; font-size: 12px; overflow-wrap: anywhere; }
+      .checks { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+      .check { display: flex; align-items: center; gap: 7px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 9px; color: #dbe2e4; background: #14212b; font-size: 12px; }
+      .check input { accent-color: #a8e8c1; }
+      .submit-row { justify-content: space-between; }
+      .results-panel { margin-top: 16px; }
+      .results-panel[hidden] { display: none; }
+      .results { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+      .result-card { padding: 14px; border: 1px solid var(--line); border-radius: 11px; background: #14222c; }
+      .result-head { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 12px; }
+      .result-head strong { color: var(--text); font-size: 13px; }
+      .result-text { margin: 10px 0 0; color: #e8eeee; white-space: pre-wrap; overflow-wrap: anywhere; }
+      .result-wer { margin: 8px 0 0; color: var(--mint); font-size: 12px; }
+      .error { color: var(--red); }
+      .notice { margin: 22px 0 0; padding: 12px 14px; border-left: 2px solid #d8a27e; color: var(--muted); background: #1a252d; font-size: 12px; }
+      .notice strong { color: #f4c39e; }
+      footer { margin-top: 22px; color: #8496a1; font-size: 11px; }
+      @media (max-width: 760px) { .shell { padding: 22px 16px 40px; } header { margin-bottom: 32px; } .model-grid, .workspace, .results { grid-template-columns: 1fr; } .model-grid { gap: 9px; } .model-card { min-height: auto; } .panel { padding: 18px; } }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header>
+        <div class="brand"><span class="brand-mark">◖</span><span>ASR LAB <span style="color:#93a5ae;font-weight:500">/ TIẾNG VIỆT</span></span></div>
+        <span class="local-pill">CHẠY CỤC BỘ · CPU</span>
+      </header>
+
+      <section>
+        <div class="eyebrow">FIRST AID · SPEECH RECOGNITION</div>
+        <h1>Nói một lần.<br />So sánh ba model.</h1>
+        <p class="intro">Ghi âm trực tiếp bằng microphone. Cùng một bản ghi sẽ được chạy lần lượt qua Qwen3-ASR, Cohere Transcribe và Fun-ASR; kết quả xuất hiện ngay trên trang này.</p>
+      </section>
+
+      <section class="model-grid" aria-label="Các mô hình được so sánh">
+        <article class="model-card">
+          <div class="model-title"><span>Qwen3-ASR-1.7B</span><span class="model-size">Q8_0 · 2,04 GB</span></div>
+          <p>Bản đa ngôn ngữ, được đánh giá tốt trong benchmark tiếng Việt.</p>
+          <span class="bench">WER tham khảo 6,15% · CPU 2,5× realtime</span>
+        </article>
+        <article class="model-card">
+          <div class="model-title"><span>Cohere Transcribe 03-2026</span><span class="model-size">Q8_0 · 2,25 GB</span></div>
+          <p>Model nhận dạng đa ngôn ngữ, tốc độ CPU cao theo benchmark.</p>
+          <span class="bench">WER tham khảo 7,39% · CPU 4,3× realtime</span>
+        </article>
+        <article class="model-card">
+          <div class="model-title"><span>Fun-ASR-MLT-Nano-2512</span><span class="model-size">Q8_0 · 0,83 GB</span></div>
+          <p>Model nhỏ gọn, xử lý audio tiếng Việt trên CPU.</p>
+          <span class="bench">WER tham khảo 8,32% · CPU 5,5× realtime</span>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <article class="panel">
+          <div class="eyebrow">01 · MICROPHONE</div>
+          <h2>Nói trực tiếp để so sánh</h2>
+          <p class="panel-lead">Bấm ghi âm, nói một câu, rồi dừng. Bản ghi sẽ chạy qua cả ba model.</p>
+          <input class="reference" id="referenceText" type="text" placeholder="Câu nói chuẩn để tính WER (không bắt buộc)" aria-label="Transcript tham chiếu tùy chọn" />
+          <div class="live-box">
+            <div class="live-status"><span class="dot" id="micDot"></span><span id="micStatus">Sẵn sàng</span></div>
+            <div class="live-text" aria-live="polite">
+              <span class="timer" id="recordingTimer">00:00</span>
+              <span id="micMessage" style="color:#b7c4ca">Transcript của cả ba model sẽ xuất hiện bên dưới sau khi dừng.</span>
+            </div>
+            <div class="live-controls">
+              <button class="button" id="startMic">Bắt đầu ghi âm</button>
+              <button class="button stop" id="stopMic" disabled>Dừng và so sánh</button>
+            </div>
+          </div>
+          <p class="hint">Cho phép truy cập microphone. Audio được gửi tới server cục bộ để chạy lần lượt ba model. Giới hạn 6 phút 40 giây.</p>
+        </article>
+
+        <article class="panel">
+          <div class="eyebrow">02 · CÙNG MỘT AUDIO</div>
+          <h2>Hoặc tải tệp âm thanh</h2>
+          <p class="panel-lead">Chọn model cần chạy. Thời gian tải model lần đầu không tính vào thời gian nhận dạng.</p>
+          <form id="uploadForm">
+            <label class="upload-area" id="dropArea">
+              <input type="file" id="audioFile" accept=".wav,.flac,.ogg,audio/wav,audio/flac,audio/ogg" required />
+              <span class="upload-copy"><strong>Chọn hoặc thả tệp vào đây</strong><span>WAV, FLAC, OGG · tối đa 50 MB / 6 phút 40 giây</span></span>
+            </label>
+            <div class="filename" id="filename">Chưa chọn tệp</div>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="model" value="qwen3" checked /> Qwen3-ASR</label>
+              <label class="check"><input type="checkbox" name="model" value="cohere" checked /> Cohere</label>
+              <label class="check"><input type="checkbox" name="model" value="funasr" checked /> Fun-ASR</label>
+            </div>
+            <div class="submit-row">
+              <button class="button" id="runButton" type="submit">Chạy so sánh</button>
+              <span class="hint" id="runStatus" style="margin:0;text-align:right"></span>
+            </div>
+          </form>
+        </article>
+      </section>
+
+      <section class="panel results-panel" id="resultsPanel" aria-live="polite" hidden>
+        <div class="eyebrow">03 · KẾT QUẢ</div>
+        <h2>Kết quả trên cùng một audio</h2>
+        <div class="results" id="results"></div>
+      </section>
+
+      <div class="notice"><strong>Lưu ý:</strong> WER và tốc độ trên thẻ là số tham khảo từ benchmark FLEURS tiếng Việt, không phải phép đo của bản ghi hiện tại. Lần đầu dùng mỗi model cần tải weights khoảng 0,83–2,25 GB; những lần sau dùng cache. Cohere nhận tối đa 400 giây audio.</div>
+      <footer>Demo thử nghiệm nhận dạng tiếng Việt. Các model chạy tuần tự trên CPU; kết quả phụ thuộc microphone, giọng vùng miền và môi trường.</footer>
+    </main>
+
+    <script type="module">
+      const startButton = document.querySelector("#startMic");
+      const stopButton = document.querySelector("#stopMic");
+      const micStatus = document.querySelector("#micStatus");
+      const micDot = document.querySelector("#micDot");
+      const recordingTimer = document.querySelector("#recordingTimer");
+      const micMessage = document.querySelector("#micMessage");
+      const referenceText = document.querySelector("#referenceText");
+      let audioContext = null;
+      let micStream = null;
+      let sourceNode = null;
+      let processorNode = null;
+      let silentNode = null;
+      let recordedChunks = [];
+      let recording = false;
+      let recordingStartedAt = 0;
+      let recordingLimitSeconds = 400;
+      let timerHandle = null;
+
+      const audioFile = document.querySelector("#audioFile");
+      const dropArea = document.querySelector("#dropArea");
+      const filename = document.querySelector("#filename");
+      const form = document.querySelector("#uploadForm");
+      const runButton = document.querySelector("#runButton");
+      const runStatus = document.querySelector("#runStatus");
+      const results = document.querySelector("#results");
+      const resultsPanel = document.querySelector("#resultsPanel");
+      const modelNames = {
+        qwen3: "Qwen3-ASR-1.7B · Q8_0",
+        cohere: "Cohere Transcribe 03-2026 · Q8_0",
+        funasr: "Fun-ASR-MLT-Nano-2512 · Q8_0",
+      };
+      const allModels = ["qwen3", "cohere", "funasr"];
+
+      function updateRecordingTimer() {
+        const elapsed = Math.min(recordingLimitSeconds, Math.floor((Date.now() - recordingStartedAt) / 1000));
+        recordingTimer.textContent = `${String(Math.floor(elapsed / 60)).padStart(2, "0")}:${String(elapsed % 60).padStart(2, "0")}`;
+        if (recording && elapsed >= recordingLimitSeconds) finishRecording();
+      }
+
+      function makeWav(chunks, sampleRate) {
+        const sampleCount = chunks.reduce((total, chunk) => total + chunk.length, 0);
+        const buffer = new ArrayBuffer(44 + sampleCount * 2);
+        const view = new DataView(buffer);
+        const writeText = (offset, value) => { for (let i = 0; i < value.length; i += 1) view.setUint8(offset + i, value.charCodeAt(i)); };
+        writeText(0, "RIFF"); view.setUint32(4, 36 + sampleCount * 2, true);
+        writeText(8, "WAVE"); writeText(12, "fmt "); view.setUint32(16, 16, true);
+        view.setUint16(20, 1, true); view.setUint16(22, 1, true);
+        view.setUint32(24, sampleRate, true); view.setUint32(28, sampleRate * 2, true);
+        view.setUint16(32, 2, true); view.setUint16(34, 16, true);
+        writeText(36, "data"); view.setUint32(40, sampleCount * 2, true);
+        let offset = 44;
+        for (const chunk of chunks) for (const sample of chunk) {
+          const clipped = Math.max(-1, Math.min(1, sample));
+          view.setInt16(offset, clipped < 0 ? clipped * 32768 : clipped * 32767, true);
+          offset += 2;
+        }
+        return new Blob([buffer], { type: "audio/wav" });
+      }
+
+      startButton.addEventListener("click", async () => {
+        startButton.disabled = true;
+        micStatus.textContent = "Đang xin quyền microphone…";
+        micMessage.textContent = "Hãy nói sau khi thấy đồng hồ bắt đầu chạy.";
+        recordingTimer.textContent = "00:00";
+        try {
+          micStream = await navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
+          try { audioContext = new AudioContext({ sampleRate: 16000 }); } catch { audioContext = new AudioContext(); }
+          await audioContext.resume();
+          recordingLimitSeconds = Math.min(400, Math.floor((50 * 1024 * 1024 - 44) / (audioContext.sampleRate * 2)));
+          recordedChunks = [];
+          sourceNode = audioContext.createMediaStreamSource(micStream);
+          processorNode = audioContext.createScriptProcessor(4096, 1, 1);
+          silentNode = audioContext.createGain(); silentNode.gain.value = 0;
+          processorNode.onaudioprocess = (event) => recordedChunks.push(new Float32Array(event.inputBuffer.getChannelData(0)));
+          sourceNode.connect(processorNode); processorNode.connect(silentNode); silentNode.connect(audioContext.destination);
+          recording = true; recordingStartedAt = Date.now();
+          timerHandle = window.setInterval(updateRecordingTimer, 250); updateRecordingTimer();
+          micStatus.textContent = "Đang ghi âm"; micDot.classList.add("active"); stopButton.disabled = false;
+        } catch (error) {
+          micStatus.textContent = error?.message || "Không thể mở microphone";
+          micMessage.textContent = "Kiểm tra quyền truy cập microphone của trình duyệt rồi thử lại.";
+          startButton.disabled = false; micDot.classList.remove("active");
+          micStream?.getTracks().forEach((track) => track.stop()); micStream = null;
+          if (audioContext && audioContext.state !== "closed") await audioContext.close();
+          audioContext = null;
+        }
+      });
+
+      async function finishRecording() {
+        if (!recording) return;
+        recording = false; stopButton.disabled = true; window.clearInterval(timerHandle); timerHandle = null;
+        updateRecordingTimer(); micDot.classList.remove("active");
+        const sampleRate = audioContext.sampleRate;
+        processorNode.onaudioprocess = null; sourceNode.disconnect(); processorNode.disconnect(); silentNode.disconnect();
+        micStream.getTracks().forEach((track) => track.stop()); await audioContext.close();
+        audioContext = null; micStream = null; sourceNode = null; processorNode = null; silentNode = null;
+        const wav = makeWav(recordedChunks, sampleRate); recordedChunks = [];
+        if (wav.size <= 44) {
+          micStatus.textContent = "Bản ghi quá ngắn"; micMessage.textContent = "Hãy ghi ít nhất một câu rồi thử lại.";
+          startButton.disabled = false; return;
+        }
+        micStatus.textContent = "Đang chạy cả ba model…";
+        micMessage.textContent = "Cùng một bản ghi đang được gửi tới ba model.";
+        await compareAudio(wav, allModels, "mic");
+      }
+      stopButton.addEventListener("click", finishRecording);
+
+      audioFile.addEventListener("change", () => { filename.textContent = audioFile.files[0]?.name || "Chưa chọn tệp"; });
+      for (const eventName of ["dragenter", "dragover"]) dropArea.addEventListener(eventName, (event) => { event.preventDefault(); dropArea.classList.add("drag"); });
+      for (const eventName of ["dragleave", "drop"]) dropArea.addEventListener(eventName, (event) => { event.preventDefault(); dropArea.classList.remove("drag"); });
+      dropArea.addEventListener("drop", (event) => { if (event.dataTransfer.files.length) { audioFile.files = event.dataTransfer.files; filename.textContent = audioFile.files[0].name; } });
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (recording) { runStatus.textContent = "Dừng ghi âm trước khi chạy so sánh tệp."; return; }
+        if (!audioFile.files.length) return;
+        const selected = [...form.querySelectorAll('input[name="model"]:checked')].map((input) => input.value);
+        if (!selected.length) { runStatus.textContent = "Chọn ít nhất một model."; return; }
+        await compareAudio(audioFile.files[0], selected, "upload");
+      });
+
+      function normalizedWords(value) {
+        return value.normalize("NFKC").toLocaleLowerCase("vi").replace(/[.,!?;:…“”‘’"()\[\]{}]/gu, " ").trim().split(/\s+/u).filter(Boolean);
+      }
+      function wordErrorRate(reference, hypothesis) {
+        const ref = normalizedWords(reference); const hyp = normalizedWords(hypothesis);
+        if (!ref.length) return null;
+        let previous = Array.from({ length: hyp.length + 1 }, (_, index) => index);
+        for (let i = 1; i <= ref.length; i += 1) {
+          const current = [i];
+          for (let j = 1; j <= hyp.length; j += 1) current[j] = Math.min(current[j - 1] + 1, previous[j] + 1, previous[j - 1] + (ref[i - 1] === hyp[j - 1] ? 0 : 1));
+          previous = current;
+        }
+        return previous[hyp.length] / ref.length;
+      }
+
+      async function compareAudio(file, selected, source) {
+        startButton.disabled = true; stopButton.disabled = true; runButton.disabled = true; audioFile.disabled = true;
+        runStatus.textContent = source === "mic" ? "Đang chạy ba model…" : "Đang so sánh…";
+        resultsPanel.hidden = false; results.replaceChildren();
+        for (const model of selected) {
+          const card = document.createElement("article"); card.className = "result-card";
+          const head = document.createElement("div"); head.className = "result-head";
+          const title = document.createElement("strong"); title.textContent = modelNames[model] || model;
+          const timing = document.createElement("span"); timing.textContent = "Đang chạy…";
+          const text = document.createElement("p"); text.className = "result-text"; text.textContent = "Đang xử lý cùng một audio.";
+          head.append(title, timing); card.append(head, text); results.append(card);
+        }
+        resultsPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+        const data = new FormData();
+        data.append("file", file, file.name || (source === "mic" ? "microphone-recording.wav" : "audio"));
+        selected.forEach((model) => data.append("models", model));
+        try {
+          const response = await fetch("/api/transcribe", { method: "POST", body: data });
+          const payload = await response.json();
+          if (!response.ok) throw new Error(payload.detail || "Không thể xử lý tệp.");
+          results.replaceChildren();
+          for (const item of payload.results) {
+            const card = document.createElement("article"); card.className = "result-card";
+            const head = document.createElement("div"); head.className = "result-head";
+            const title = document.createElement("strong"); title.textContent = modelNames[item.model] || item.model;
+            const timing = document.createElement("span");
+            timing.textContent = item.seconds == null ? "" : `${item.seconds.toFixed(2)} giây · ${item.realtime_factor?.toFixed(2) ?? "–"}×`;
+            head.append(title, timing);
+            const text = document.createElement("p"); text.className = `result-text${item.error ? " error" : ""}`;
+            text.textContent = item.error || item.text || "(Không nhận được lời nói.)"; card.append(head, text);
+            const reference = referenceText.value.trim();
+            if (!item.error && reference) {
+              const wer = wordErrorRate(reference, item.text || "");
+              const werLine = document.createElement("p"); werLine.className = "result-wer";
+              werLine.textContent = wer == null ? "Nhập transcript tham chiếu để tính WER." : `WER bản ghi này (ước tính): ${(wer * 100).toFixed(1)}%`;
+              card.append(werLine);
+            }
+            results.append(card);
+          }
+          runStatus.textContent = `Audio dài ${payload.duration.toFixed(1)} giây · thời gian model chưa gồm tải lần đầu`;
+          if (source === "mic") { micStatus.textContent = "Đã xong · cả ba kết quả ở bên dưới"; micMessage.textContent = "Có thể ghi câu tiếp theo hoặc dùng phần tải tệp."; }
+        } catch (error) {
+          runStatus.textContent = error?.message || "Có lỗi khi chạy model."; results.replaceChildren();
+          const message = document.createElement("p"); message.className = "result-text error"; message.textContent = error?.message || "Không thể chạy các model."; results.append(message);
+          if (source === "mic") { micStatus.textContent = "So sánh thất bại"; micMessage.textContent = "Xem thông báo lỗi ở phần kết quả rồi thử lại."; }
+        } finally { runButton.disabled = false; audioFile.disabled = false; startButton.disabled = false; stopButton.disabled = true; }
+      }
+    </script>
+  </body>
+</html>

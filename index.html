@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f3f7f3" />
+    <meta name="description" content="First Aid — bắt đầu tìm hướng dẫn sơ cứu phù hợp với bạn." />
+    <title>First Aid — Bạn cần giúp gì?</title>
+    <link rel="stylesheet" href="vendor/leaflet/1.9.4/leaflet.css" />
+    <link rel="stylesheet" href="vendor/maplibre-gl/6.3.0/maplibre-gl.css" />
+    <link rel="stylesheet" href="styles.css?v=map-places-20261031" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+    <div class="page" id="top">
+      <main id="main">
+        <section class="emergency-first" aria-labelledby="emergency-first-title">
+          <div class="emergency-first-copy">
+            <div class="emergency-first-grid">
+              <div class="emergency-first-intro">
+                <h1 id="emergency-first-title">Gọi trợ giúp<br /><em>trước tiên.</em></h1>
+                <div class="emergency-actions">
+                  <a class="emergency-call-primary" href="tel:115"><span class="emergency-phone" aria-hidden="true">☎</span><span><strong>Gọi 115</strong><small>Cấp cứu y tế</small></span></a>
+                </div>
+              </div>
+              <div class="emergency-first-nearest">
+                <p class="location-status" id="location-status" role="status">Cho phép vị trí để tìm cơ sở cấp cứu gần bạn.</p>
+                <div class="facility-map" id="facility-map" hidden>
+                  <div class="facility-map-heading"><span>BẢN ĐỒ KHU VỰC</span><small id="facility-map-note"></small></div>
+                  <div class="facility-map-view" id="facility-map-view" role="region" tabindex="0" aria-label="Bản đồ vị trí của bạn và các cơ sở hỗ trợ gần nhất." aria-describedby="facility-map-note"></div>
+                  <div class="facility-map-legend" aria-hidden="true"><span><i class="facility-map-dot facility-map-dot--you"></i>Bạn</span><span><i class="facility-map-dot facility-map-dot--facility"></i>Cơ sở hỗ trợ</span></div>
+                </div>
+                <div class="facility-results" id="facility-results" aria-live="polite"></div>
+              </div>
+            </div>
+            <a class="continue-to-guide" href="#help-options">Tôi đã sẵn sàng, xem hướng dẫn <span>↓</span></a>
+          </div>
+        </section>
+
+        <section class="help-section help-section--direct" id="help-options" aria-labelledby="help-title">
+          <div class="section-intro"><h1 id="help-title">Chọn cách bạn muốn bắt đầu.</h1></div>
+          <div class="choice-list">
+            <button class="choice-card" type="button" data-mode="voice"><span class="choice-number">01</span><span class="choice-icon choice-icon--voice" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="12" rx="4"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"></path></svg></span><span class="choice-text"><strong>Nói bằng giọng nói</strong><small>Mô tả nhanh điều đang xảy ra</small></span><span class="choice-arrow" aria-hidden="true">↗</span></button>
+            <button class="choice-card" type="button" data-mode="chat"><span class="choice-number">02</span><span class="choice-icon choice-icon--chat" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 6.5h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H11l-4.5 3v-3H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2Z"></path><path d="M8 12h.01M12 12h.01M16 12h.01"></path></svg></span><span class="choice-text"><strong>Trò chuyện</strong><small>Đi từng câu hỏi, từng bước một</small></span><span class="choice-arrow" aria-hidden="true">↗</span></button>
+            <button class="choice-card" type="button" data-mode="problem"><span class="choice-number">03</span><span class="choice-icon choice-icon--problem" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 21 20H3L12 3Z"></path><path d="M12 9v5M12 17h.01"></path></svg></span><span class="choice-text"><strong>Chọn vấn đề</strong><small>Chọn tình huống bạn nhận thấy</small></span><span class="choice-arrow" aria-hidden="true">↗</span></button>
+          </div>
+          <div class="mode-panel" id="mode-panel" aria-live="polite"></div>
+        </section>
+
+        <section class="safety-section" aria-labelledby="safety-title">
+          <div class="safety-mark">!</div>
+          <div><p class="eyebrow">Trước khi giúp người khác</p><h2 id="safety-title">Hãy nhìn quanh.<br />Đảm bảo bạn an toàn.</h2><p>Nếu có điện, lửa, giao thông hoặc nguy hiểm khác, giữ khoảng cách và gọi người có chuyên môn.</p></div>
+        </section>
+
+        <section class="emergency-section" aria-labelledby="emergency-title">
+          <p class="eyebrow">Tình huống khẩn cấp</p><h2 id="emergency-title">Cần trợ giúp y tế ngay?</h2><a class="call-button" href="tel:115"><span>☎</span><strong>Gọi 115</strong><small>Cấp cứu y tế</small></a>
+        </section>
+      </main>
+
+      <footer class="site-footer"><span>FIRST AID / EDUCATION DEMO</span><span>Thông tin giáo dục · Không thay thế nhân viên y tế</span></footer>
+    </div>
+    <script src="facilities.js"></script>
+    <script src="facility-coordinates.js"></script>
+    <script src="vendor/leaflet/1.9.4/leaflet.js"></script>
+    <script type="module">
+      import * as maplibreModule from "./vendor/maplibre-gl/6.3.0/maplibre-gl.mjs";
+
+      window.maplibregl = maplibreModule;
+
+      const appScript = document.createElement("script");
+      appScript.src = "script.js?v=street-map-20261031-cluster";
+      document.body.appendChild(appScript);
+    </script>
+  </body>
+</html>

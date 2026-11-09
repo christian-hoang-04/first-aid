@@ -1,0 +1,8 @@
+fastapi>=0.115
+uvicorn[standard]>=0.34
+python-multipart>=0.0.20
+numpy>=1.26
+scipy>=1.13
+soundfile>=0.13
+huggingface_hub>=0.30
+transcribe-cpp==0.4.1
