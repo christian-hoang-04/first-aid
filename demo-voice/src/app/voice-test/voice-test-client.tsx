@@ -13,7 +13,11 @@ import {
   type AgentState,
 } from "@livekit/components-react";
 import { TokenSource, Track } from "livekit-client";
-import styles from "./voice-test.module.css";
+import "./voice-test.css";
+
+const styles = new Proxy({} as Record<string, string>, {
+  get: (_target, key) => `voiceTest-${String(key)}`,
+});
 
 const tokenSource = TokenSource.endpoint("/api/livekit/token");
 
@@ -190,38 +194,31 @@ function VoiceTestPanel() {
           <span className={styles.brandMark}>S</span>
           <span>SOS NOW <small>/ VOICE LAB</small></span>
         </Link>
-        <span className={styles.localBadge}><i /> Kiểm tra cục bộ</span>
+        <span className={styles.localBadge}><i /> MÔI TRƯỜNG THỬ NGHIỆM</span>
       </header>
 
       <section className={styles.intro}>
-        <p className={styles.eyebrow}>LIVE VOICE TEST BENCH</p>
-        <h1>Thử giọng nói.<br /><em>Đo từng lượt.</em></h1>
-        <p className={styles.lede}>
-          Một trang gọn để kiểm tra hội thoại tiếng Việt và so sánh độ trễ giữa các lượt nói.
-        </p>
+        <div className={styles.introCopy}>
+          <p className={styles.eyebrow}>SOS NOW / VOICE LAB</p>
+          <h1>Thử giọng nói.<br /><em>Đo từng lượt.</em></h1>
+          <p className={styles.lede}>
+            Kiểm tra hội thoại tiếng Việt, theo dõi transcript và so sánh độ trễ ngay trong một phiên.
+          </p>
+        </div>
+        <div className={styles.introNote}>
+          <span>LIVE TEST BENCH</span>
+          <strong>Bắt đầu bằng một câu ngắn</strong>
+          <small>Cấp quyền microphone khi bạn sẵn sàng.</small>
+        </div>
       </section>
 
-      <section className={styles.pipeline} aria-label="Các giai đoạn xử lý giọng nói">
-        <div><span className={styles.stageNumber}>01</span><strong>Microphone</strong><small>Trình duyệt</small></div>
-        <span className={styles.pipelineArrow} aria-hidden="true">→</span>
-        <div><span className={styles.stageNumber}>02</span><strong>FunASR</strong><small>Local · nhận dạng</small></div>
-        <span className={styles.pipelineArrow} aria-hidden="true">→</span>
-        <div><span className={styles.stageNumber}>03</span><strong>Voice agent</strong><small>Model theo cấu hình hiện tại</small></div>
-        <span className={styles.pipelineArrow} aria-hidden="true">→</span>
-        <div><span className={styles.stageNumber}>04</span><strong>VieNeu</strong><small>Local · giọng nói</small></div>
-      </section>
-
-      <section className={styles.metrics} aria-label="Đo độ trễ">
-        <Metric label="Phòng LiveKit kết nối" value={formatDuration(roomConnectMs)} detail="Từ lúc bấm gọi" />
-        <Metric label="Trợ lý sẵn sàng" value={formatDuration(agentReadyMs)} detail="Từ lúc bấm gọi" />
-        <Metric label="Transcript → trả lời chữ" value={formatDuration(replyMedian)} detail={"Trung vị · " + replyLatencySamples.length + " lượt"} />
-        <Metric label="Agent nghĩ → bắt đầu nói" value={formatDuration(speechMedian)} detail={"Trung vị · " + speechStartSamples.length + " lượt"} />
-      </section>
-
-      <section className={styles.workspace}>
+      <section className={styles.workspace} aria-label="Phiên thử giọng nói">
         <article className={styles.sessionCard}>
           <div className={styles.cardTopline}>
-            <span className={styles.eyebrow}>VOICE SESSION</span>
+            <div>
+              <span className={styles.eyebrow}>VOICE SESSION</span>
+              <h2 className={styles.cardTitle}>Phiên thoại</h2>
+            </div>
             <span className={styles.statePill}>
               <i className={stateClass} />
               {connected ? stateLabels[agent.state] : roomConnecting ? "Đang kết nối phòng" : "Chưa kết nối"}
@@ -231,20 +228,21 @@ function VoiceTestPanel() {
           <div className={styles.voiceCore}>
             <div className={styles.voiceHalo + " " + (connected ? styles["halo-" + agent.state] ?? "" : "")}>
               <span className={styles.voiceCoreInner}>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
                   <rect x="9" y="2" width="6" height="13" rx="3" />
                   <path d="M5 11a7 7 0 0 0 14 0M12 18v4m-4 0h8" />
                 </svg>
               </span>
             </div>
-            <h2>{connected ? stateLabels[agent.state] : "Sẵn sàng kiểm tra"}</h2>
-            <p>{connected ? "Nói một câu ngắn bằng tiếng Việt, rồi đợi trợ lý trả lời." : "Bắt đầu phiên để cấp quyền microphone và gọi voice agent."}</p>
+            <div>
+              <h2>{connected ? stateLabels[agent.state] : "Sẵn sàng kiểm tra"}</h2>
+              <p>{connected ? "Nói một câu ngắn bằng tiếng Việt, rồi đợi trợ lý trả lời." : "Bắt đầu phiên để cấp quyền microphone và gọi voice agent."}</p>
+            </div>
           </div>
 
           <div className={styles.controls}>
             {!connected ? (
               <button className={styles.primaryButton} type="button" onClick={startSession} disabled={roomConnecting}>
-                <span aria-hidden="true">☎</span>
                 {roomConnecting ? "Đang kết nối…" : "Bắt đầu phiên"}
               </button>
             ) : (
@@ -316,6 +314,35 @@ function VoiceTestPanel() {
             <span>{replyLatencySamples.length} phép đo</span>
           </footer>
         </article>
+      </section>
+
+      <section className={styles.metricsSection} aria-label="Đo độ trễ">
+        <div className={styles.sectionHeading}>
+          <span className={styles.eyebrow}>PERFORMANCE</span>
+          <h2>Số đo phiên này</h2>
+        </div>
+        <div className={styles.metrics}>
+          <Metric label="Phòng LiveKit kết nối" value={formatDuration(roomConnectMs)} detail="Từ lúc bấm gọi" />
+          <Metric label="Trợ lý sẵn sàng" value={formatDuration(agentReadyMs)} detail="Từ lúc bấm gọi" />
+          <Metric label="Transcript → trả lời chữ" value={formatDuration(replyMedian)} detail={"Trung vị · " + replyLatencySamples.length + " lượt"} />
+          <Metric label="Agent nghĩ → bắt đầu nói" value={formatDuration(speechMedian)} detail={"Trung vị · " + speechStartSamples.length + " lượt"} />
+        </div>
+      </section>
+
+      <section className={styles.pipelineSection} aria-label="Các giai đoạn xử lý giọng nói">
+        <div className={styles.sectionHeading}>
+          <span className={styles.eyebrow}>VOICE PIPELINE</span>
+          <h2>Luồng xử lý</h2>
+        </div>
+        <div className={styles.pipeline}>
+          <div><span className={styles.stageNumber}>01</span><strong>Microphone</strong><small>Trình duyệt</small></div>
+          <span className={styles.pipelineArrow} aria-hidden="true">→</span>
+          <div><span className={styles.stageNumber}>02</span><strong>FunASR</strong><small>Local · nhận dạng</small></div>
+          <span className={styles.pipelineArrow} aria-hidden="true">→</span>
+          <div><span className={styles.stageNumber}>03</span><strong>Voice agent</strong><small>Model theo cấu hình worker</small></div>
+          <span className={styles.pipelineArrow} aria-hidden="true">→</span>
+          <div><span className={styles.stageNumber}>04</span><strong>VieNeu</strong><small>Local · giọng nói</small></div>
+        </div>
       </section>
 
       <footer className={styles.pageFooter}>

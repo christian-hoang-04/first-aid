@@ -1,0 +1,162 @@
+.liveVoiceLab-page {
+  --lv-ink: #18271f;
+  --lv-muted: #66766d;
+  --lv-line: #dce5db;
+  --lv-paper: #eef3ee;
+  --lv-card: #fffefa;
+  --lv-green: #1d7852;
+  --lv-deep: #173b2c;
+  --lv-lime: #d8ee7b;
+  --lv-coral: #dc755d;
+  min-height: 100dvh;
+  padding: 0 clamp(1rem, 5vw, 5.25rem) 2.25rem;
+  background: radial-gradient(ellipse at 88% 0, rgba(210, 234, 190, .5), transparent 31rem), var(--lv-paper);
+  color: var(--lv-ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.liveVoiceLab-page *,
+.liveVoiceLab-page *::before,
+.liveVoiceLab-page *::after { box-sizing: border-box; }
+.liveVoiceLab-page button,
+.liveVoiceLab-page textarea,
+.liveVoiceLab-page select { font: inherit; }
+.liveVoiceLab-page button:focus-visible,
+.liveVoiceLab-page a:focus-visible,
+.liveVoiceLab-page textarea:focus-visible,
+.liveVoiceLab-page select:focus-visible { outline: 3px solid rgba(29, 120, 82, .3); outline-offset: 3px; }
+
+.liveVoiceLab-header {
+  align-items: center; border-bottom: 1px solid var(--lv-line); display: flex;
+  justify-content: space-between; margin: 0 auto; max-width: 1340px; min-height: 72px; width: 100%;
+}
+.liveVoiceLab-brand { align-items: center; color: inherit; display: inline-flex; font-size: .78rem; font-weight: 800; gap: .7rem; letter-spacing: .075em; text-decoration: none; }
+.liveVoiceLab-brand small { color: var(--lv-muted); font: 500 .62rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .1em; }
+.liveVoiceLab-brandMark { align-items: center; background: var(--lv-deep); border-radius: 10px; color: var(--lv-lime); display: inline-flex; font: 800 .8rem/1 ui-monospace, monospace; height: 32px; justify-content: center; width: 32px; }
+.liveVoiceLab-headerRight { align-items: center; display: flex; gap: 1rem; }
+.liveVoiceLab-localBadge { align-items: center; background: rgba(255,255,255,.7); border: 1px solid var(--lv-line); border-radius: 999px; color: #866044; display: inline-flex; font: 650 .58rem/1 ui-monospace, monospace; gap: .48rem; letter-spacing: .07em; padding: .58rem .75rem; }
+.liveVoiceLab-localBadge i,.liveVoiceLab-statusDot { background: #d59a43; border-radius: 50%; display: inline-block; height: .45rem; width: .45rem; }
+.liveVoiceLab-localBadge.is-ready i,.liveVoiceLab-statusDot.is-ready { background: #39a46d; }
+.liveVoiceLab-backLink { color: var(--lv-muted); font-size: .7rem; text-decoration: none; }
+.liveVoiceLab-backLink:hover,.liveVoiceLab-reportLink:hover { color: var(--lv-green); }
+
+.liveVoiceLab-intro { align-items: end; display: grid; gap: clamp(1.5rem, 5vw, 5rem); grid-template-columns: minmax(0,1fr) minmax(230px,.36fr); margin: 0 auto; max-width: 1340px; padding: clamp(2.5rem,5vw,4.2rem) 0 2rem; }
+.liveVoiceLab-eyebrow { color: var(--lv-green); display: block; font: 650 .61rem/1.45 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .14em; }
+.liveVoiceLab-intro .liveVoiceLab-eyebrow span { color: var(--lv-coral); }
+.liveVoiceLab-intro h1 { font-size: clamp(2.7rem,6.5vw,5.1rem); letter-spacing: -.075em; line-height: .96; margin: .75rem 0 .85rem; }
+.liveVoiceLab-intro h1 em { color: var(--lv-coral); font-style: normal; }
+.liveVoiceLab-lede { color: var(--lv-muted); font-size: .91rem; line-height: 1.7; margin: 0; max-width: 590px; }
+.liveVoiceLab-introNote { background: rgba(255,254,250,.76); border: 1px solid var(--lv-line); border-radius: 14px; padding: 1rem 1.1rem; }
+.liveVoiceLab-noteIndex { color: var(--lv-muted); display: block; font: 600 .56rem/1.4 ui-monospace, monospace; letter-spacing: .12em; }
+.liveVoiceLab-introNote strong { display: block; font-size: .95rem; margin: .56rem 0 .33rem; }
+.liveVoiceLab-introNote p { color: var(--lv-muted); font-size: .71rem; line-height: 1.5; margin: 0; }
+
+.liveVoiceLab-grid { align-items: start; display: grid; gap: 1rem; grid-template-columns: minmax(0,1.55fr) minmax(290px,.8fr); margin: 0 auto; max-width: 1340px; }
+.liveVoiceLab-workbench,.liveVoiceLab-serviceCard,.liveVoiceLab-metricsCard,.liveVoiceLab-compareCard { background: var(--lv-card); border: 1px solid var(--lv-line); border-radius: 16px; }
+.liveVoiceLab-workbench { padding: clamp(1rem,2.4vw,1.7rem); }
+.liveVoiceLab-cardHeader,.liveVoiceLab-historyHeader { align-items: center; display: flex; justify-content: space-between; }
+.liveVoiceLab-cardHeader h2,.liveVoiceLab-historyHeader h2 { font-size: 1.35rem; letter-spacing: -.04em; margin: .28rem 0 0; }
+.liveVoiceLab-refresh,.liveVoiceLab-clear { background: transparent; border: 0; color: var(--lv-muted); cursor: pointer; font-size: .68rem; padding: .45rem 0 .45rem .5rem; }
+.liveVoiceLab-refresh:disabled,.liveVoiceLab-clear:disabled { cursor: default; opacity: .45; }
+.liveVoiceLab-pipeline { align-items: center; background: #f4f7f2; border: 1px solid #e8eee5; border-radius: 9px; color: #63746a; display: flex; font: 600 .53rem/1 ui-monospace, monospace; justify-content: space-between; letter-spacing: .05em; margin: 1.15rem 0; overflow: hidden; padding: .8rem .7rem; white-space: nowrap; }
+.liveVoiceLab-pipeline span { align-items: center; display: inline-flex; gap: .35rem; }
+.liveVoiceLab-pipeline b { color: var(--lv-green); font-size: .51rem; }
+.liveVoiceLab-pipeline i { background: #c9d9cc; height: 1px; margin: 0 .4rem; min-width: .4rem; width: 7%; }
+.liveVoiceLab-recorder { align-items: center; background: #f8faf6; border: 1px solid var(--lv-line); border-radius: 12px; display: flex; gap: .8rem; min-height: 72px; padding: .8rem .9rem; }
+.liveVoiceLab-recorderOrb { align-items: center; background: #e7efe4; border-radius: 50%; display: flex; flex: 0 0 auto; height: 40px; justify-content: center; width: 40px; }
+.liveVoiceLab-recorderOrb span { background: var(--lv-green); border-radius: 50%; height: 10px; width: 10px; }
+.liveVoiceLab-recorder.is-recording { background: #fff7f2; border-color: #f0d2c5; }
+.liveVoiceLab-recorder.is-recording .liveVoiceLab-recorderOrb { background: #fae5dc; }
+.liveVoiceLab-recorder.is-recording .liveVoiceLab-recorderOrb span { animation: liveVoiceLab-pulse 1.15s ease-in-out infinite; background: var(--lv-coral); }
+@keyframes liveVoiceLab-pulse { 50% { box-shadow: 0 0 0 9px rgba(220,117,93,.13); transform: scale(.88); } }
+.liveVoiceLab-recorderCopy { display: grid; gap: .3rem; min-width: 0; }
+.liveVoiceLab-recorderCopy strong { font-size: .78rem; }
+.liveVoiceLab-recorderCopy span { color: var(--lv-muted); font-size: .65rem; }
+.liveVoiceLab-recorder time { color: var(--lv-muted); font: 600 .67rem ui-monospace,monospace; margin-left: auto; white-space: nowrap; }
+.liveVoiceLab-recordButton { align-items: center; background: var(--lv-deep); border: 0; border-radius: 9px; color: white; cursor: pointer; display: flex; font-size: .76rem !important; font-weight: 700 !important; gap: .58rem; justify-content: center; margin-top: .75rem; min-height: 44px; padding: .7rem 1rem; transition: background .15s, transform .15s; width: 100%; }
+.liveVoiceLab-recordButton:hover:not(:disabled) { background: #24563e; transform: translateY(-1px); }
+.liveVoiceLab-recordButton:disabled { cursor: wait; opacity: .6; }
+.liveVoiceLab-recordButton span { color: var(--lv-lime); font-size: .68rem; }
+.liveVoiceLab-recordButton.is-stop { background: #a94737; }
+.liveVoiceLab-privacy { color: var(--lv-muted); font-size: .62rem; margin: .5rem 0 0; text-align: center; }
+.liveVoiceLab-divider { align-items: center; color: var(--lv-muted); display: flex; font: 600 .55rem ui-monospace,monospace; gap: .6rem; letter-spacing: .12em; margin: 1.2rem 0 .55rem; }
+.liveVoiceLab-divider i { background: var(--lv-line); flex: 1; height: 1px; }
+.liveVoiceLab-transcript { background: #fbfcf9; border: 1px solid var(--lv-line); border-radius: 9px; font-size: .86rem; line-height: 1.55; min-height: 58px; padding: .72rem .8rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+.liveVoiceLab-placeholder { color: #9ba89f; }
+.liveVoiceLab-replyLabel { color: var(--lv-muted); display: block; font: 600 .54rem ui-monospace,monospace; letter-spacing: .1em; margin: 1rem 0 .4rem; }
+.liveVoiceLab-reply { background: #fbfcf9; border: 1px solid var(--lv-line); border-radius: 9px; color: var(--lv-ink); font-size: .76rem !important; line-height: 1.5; padding: .7rem .8rem; resize: vertical; width: 100%; }
+.liveVoiceLab-outputControls { align-items: center; display: flex; gap: .5rem; margin-top: .62rem; }
+.liveVoiceLab-voiceSelectLabel { color: var(--lv-muted); font-size: .62rem; }
+.liveVoiceLab-voiceSelect { background: white; border: 1px solid var(--lv-line); border-radius: 7px; color: var(--lv-ink); font-size: .67rem !important; max-width: 44%; min-height: 35px; padding: 0 .45rem; }
+.liveVoiceLab-speakButton { background: #e6efdb; border: 1px solid #d7e5ca; border-radius: 7px; color: var(--lv-deep); cursor: pointer; font-size: .66rem !important; font-weight: 700 !important; margin-left: auto; min-height: 35px; padding: .45rem .75rem; }
+.liveVoiceLab-speakButton:disabled { cursor: default; opacity: .5; }
+.liveVoiceLab-audio { display: block; height: 37px; margin-top: .6rem; width: 100%; }
+.liveVoiceLab-notice,.liveVoiceLab-error { border-radius: 7px; font-size: .66rem; line-height: 1.45; margin: .5rem 0 0; padding: .52rem .65rem; }
+.liveVoiceLab-notice { background: #f1f6ed; color: var(--lv-green); }
+.liveVoiceLab-error { background: #fff1ed; color: #9c3d2e; }
+
+.liveVoiceLab-side { display: grid; gap: .8rem; }
+.liveVoiceLab-serviceCard,.liveVoiceLab-metricsCard,.liveVoiceLab-compareCard { padding: 1rem; }
+.liveVoiceLab-sideTitle { align-items: center; display: flex; justify-content: space-between; }
+.liveVoiceLab-serviceCard h2 { font-size: 1rem; letter-spacing: -.035em; margin: .48rem 0 .8rem; }
+.liveVoiceLab-serviceRow { align-items: center; border-top: 1px solid #edf0ea; display: flex; gap: .58rem; padding: .64rem 0; }
+.liveVoiceLab-serviceIcon { align-items: center; background: #edf4e9; border-radius: 7px; color: var(--lv-green); display: inline-flex; flex: 0 0 auto; font: 700 .48rem ui-monospace,monospace; height: 29px; justify-content: center; width: 29px; }
+.liveVoiceLab-serviceRow div { display: grid; gap: .23rem; min-width: 0; }
+.liveVoiceLab-serviceRow strong { font-size: .65rem; overflow-wrap: anywhere; }
+.liveVoiceLab-serviceRow small { color: var(--lv-muted); font-size: .58rem; }
+.liveVoiceLab-serviceRow > b { color: #ad7650; font: 700 .5rem ui-monospace,monospace; margin-left: auto; }
+.liveVoiceLab-serviceRow > b.is-up { color: var(--lv-green); }
+.liveVoiceLab-serviceRow > b.is-down { color: #b9503d; }
+.liveVoiceLab-metricHint { color: #95a197; font: 500 .5rem ui-monospace,monospace; letter-spacing: .08em; }
+.liveVoiceLab-metrics { display: grid; gap: .5rem; grid-template-columns: 1fr 1fr; margin: .75rem 0 .65rem; }
+.liveVoiceLab-metrics div { background: #f6f8f3; border-radius: 8px; display: grid; gap: .28rem; padding: .62rem; }
+.liveVoiceLab-metrics span { color: var(--lv-muted); font-size: .56rem; }
+.liveVoiceLab-metrics strong { font: 700 .9rem ui-monospace,monospace; letter-spacing: -.045em; }
+.liveVoiceLab-metricsCard > p { color: var(--lv-muted); font-size: .59rem; line-height: 1.5; margin: 0; }
+.liveVoiceLab-candidate { align-items: center; border-top: 1px solid #edf0ea; display: flex; gap: .55rem; padding: .64rem 0; }
+.liveVoiceLab-candidateMark { align-items: center; background: #f1f3e7; border-radius: 7px; color: #69743c; display: inline-flex; flex: 0 0 auto; font: 700 .6rem ui-monospace,monospace; height: 26px; justify-content: center; width: 26px; }
+.liveVoiceLab-candidate div { display: grid; gap: .2rem; min-width: 0; }
+.liveVoiceLab-candidate strong { font-size: .63rem; }
+.liveVoiceLab-candidate small { color: var(--lv-muted); font-size: .54rem; line-height: 1.35; }
+.liveVoiceLab-candidate > b { color: #7c8a76; font: 700 .48rem ui-monospace,monospace; margin-left: auto; }
+.liveVoiceLab-reportLink { align-items: center; border-top: 1px solid #edf0ea; color: var(--lv-green); display: flex; font-size: .62rem; font-weight: 700; justify-content: space-between; padding-top: .72rem; text-decoration: none; }
+
+.liveVoiceLab-history { background: var(--lv-card); border: 1px solid var(--lv-line); border-radius: 14px; margin: 1rem auto 0; max-width: 1340px; padding: 1rem 1.2rem; }
+.liveVoiceLab-historyHeader h2 { font-size: 1.1rem; }
+.liveVoiceLab-tableWrap { margin-top: .8rem; overflow-x: auto; }
+.liveVoiceLab-table { border-collapse: collapse; font-size: .62rem; min-width: 740px; text-align: left; width: 100%; }
+.liveVoiceLab-table th { color: var(--lv-muted); font: 600 .5rem ui-monospace,monospace; letter-spacing: .06em; padding: .5rem .6rem; text-transform: uppercase; }
+.liveVoiceLab-table td { border-top: 1px solid #edf0ea; max-width: 360px; overflow-wrap: anywhere; padding: .62rem .6rem; }
+.liveVoiceLab-table td:not(:first-child) { font-family: ui-monospace,monospace; white-space: nowrap; }
+.liveVoiceLab-emptyHistory { color: var(--lv-muted); font-size: .65rem; margin: .8rem 0 .15rem; }
+.liveVoiceLab-footer { color: #7e8e82; display: flex; font: 500 .5rem ui-monospace,monospace; justify-content: space-between; letter-spacing: .06em; margin: 1.1rem auto 0; max-width: 1340px; }
+.liveVoiceLab-footer span { align-items: center; display: flex; gap: .48rem; }
+.liveVoiceLab-footer i { background: #b3c3b6; border-radius: 50%; height: 3px; width: 3px; }
+
+@media (max-width: 980px) {
+  .liveVoiceLab-grid { grid-template-columns: minmax(0,1fr) minmax(260px,.72fr); }
+  .liveVoiceLab-pipeline { font-size: .47rem; }
+}
+@media (max-width: 760px) {
+  .liveVoiceLab-page { padding-left: 1rem; padding-right: 1rem; }
+  .liveVoiceLab-header { min-height: 62px; }
+  .liveVoiceLab-headerRight { gap: .55rem; }
+  .liveVoiceLab-backLink { display: none; }
+  .liveVoiceLab-intro { align-items: start; gap: 1rem; grid-template-columns: 1fr; padding: 2rem 0 1rem; }
+  .liveVoiceLab-intro h1 { font-size: clamp(2.8rem,13vw,4.2rem); }
+  .liveVoiceLab-introNote { display: grid; grid-template-columns: 1fr; padding: .8rem .9rem; }
+  .liveVoiceLab-introNote strong { margin: .35rem 0 .2rem; }
+  .liveVoiceLab-grid { grid-template-columns: 1fr; }
+  .liveVoiceLab-side { grid-template-columns: 1fr; }
+  .liveVoiceLab-pipeline { overflow-x: auto; }
+  .liveVoiceLab-footer { align-items: flex-start; flex-direction: column; gap: .5rem; }
+}
+@media (max-width: 430px) {
+  .liveVoiceLab-brand { font-size: .68rem; gap: .55rem; white-space: nowrap; }
+  .liveVoiceLab-brand small { font-size: .56rem; }
+  .liveVoiceLab-localBadge { font-size: .45rem; letter-spacing: .02em; padding: .5rem .5rem; white-space: nowrap; }
+  .liveVoiceLab-workbench { padding: .85rem; }
+  .liveVoiceLab-pipeline { gap: .2rem; justify-content: flex-start; }
+  .liveVoiceLab-pipeline i { min-width: .35rem; }
+  .liveVoiceLab-recorderCopy span { font-size: .59rem; }
+}

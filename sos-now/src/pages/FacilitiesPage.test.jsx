@@ -30,14 +30,14 @@ describe('facility screen', () => {
   it('opens the call dialog when coming from the SOS button, with the list behind it', async () => {
     await render({ sos: true })
     expect(document.querySelector('[role="dialog"]')).toBeTruthy()
-    expect(container.textContent).toContain('Bệnh viện Nhân dân Gia Định')
-    expect(container.textContent).toContain('028 3841 2692')
+    expect(container.textContent).toContain('BỆNH VIỆN ĐA KHOA BÌNH THẠNH')
+    expect(container.textContent).toContain('0918 517 900')
   })
   it('never dials in the demo: Call only shows a calling state', async () => {
     await render({ sos: true })
     await act(async () => { button('Gọi').click(); await settle() })
     expect(document.querySelector('[role="dialog"]').textContent).toContain('không thực hiện cuộc gọi thật')
-    expect(document.querySelector('a[href^="tel:"]')).toBeNull()
+    expect(document.querySelector('[role="dialog"] a[href^="tel:"]')).toBeNull()
     await act(async () => { button('Kết thúc').click(); await settle() })
     expect(document.querySelector('[role="dialog"]')).toBeNull()
   })

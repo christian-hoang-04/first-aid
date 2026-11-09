@@ -6,6 +6,7 @@ import AppPage from './pages/AppPage'
 import SosPage from './pages/SosPage'
 import VoicePage from './pages/VoicePage'
 import FacilitiesPage from './pages/FacilitiesPage'
+import NearbyHelpersPage from './pages/NearbyHelpersPage'
 import Guide3DPage from './pages/Guide3DPage'
 import { guides3d } from './content/guides3d'
 import { appPages, appStart, authPages } from './content/app'
@@ -21,9 +22,16 @@ import './styles/app.css'
 import './styles/sos.css'
 import './styles/voice.css'
 import './styles/facilities-page.css'
+import './styles/responsive-scale.css'
+import './styles/mobile-experience.css'
 
 // Trang đã có giao diện thật; các trang khác vẫn là trang rỗng chỉ có mô tả
-const builtPages = { '/app/sos': SosPage, '/app/co-so-y-te': FacilitiesPage, '/app/ai-voice': VoicePage }
+const builtPages = {
+  '/app/sos': SosPage,
+  '/app/co-so-y-te': FacilitiesPage,
+  '/app/ai-voice': VoicePage,
+  '/app/aed': NearbyHelpersPage,
+}
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

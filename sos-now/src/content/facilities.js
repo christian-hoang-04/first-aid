@@ -29,7 +29,7 @@ export function distanceMeters(a, b) {
 
 export function nearestFacilities(point, limit = 5) {
   return facilities
-    .map((facility) => ({ ...facility, distanceMeters: distanceMeters(point, { lat: facility.latitude, lng: facility.longitude }) }))
+    .map((facility) => ({ ...facility, distanceMeters: distanceMeters(point, { lat: facility.latitude, lng: facility.longitude }), distanceMethod: 'STRAIGHT_LINE' }))
     .sort((a, b) => a.distanceMeters - b.distanceMeters)
     .slice(0, limit)
 }

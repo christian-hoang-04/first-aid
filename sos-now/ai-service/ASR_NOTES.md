@@ -1,0 +1,8 @@
+# Fun-ASR microphone integration
+
+- The existing SOS NOW microphone button uses the browser's built-in Vietnamese speech recognition when `VITE_AI_API_URL` is unset.
+- When `VITE_AI_API_URL` is configured, the button records up to 60 seconds of mono microphone audio as PCM16 WAV. Tap the microphone again to stop early; the recording is sent to the AI service's `POST /transcribe` endpoint. The resulting transcript then follows the existing `/triage` flow.
+- `/transcribe` runs `Fun-ASR-MLT-Nano-2512` Q8_0 through `transcribe.cpp` on CPU. It accepts WAV audio only, up to 60 seconds and 10 MB.
+- The first transcription downloads the pinned 891 MB GGUF from [handy-computer/Fun-ASR-MLT-Nano-2512-gguf](https://huggingface.co/handy-computer/Fun-ASR-MLT-Nano-2512-gguf). Later requests use the local cache. Set `ASR_MODEL_CACHE` to choose a cache directory; defaults are `%LOCALAPPDATA%\sos-now\models\fun-asr-mlt-nano-2512` on Windows and `~/.cache/sos-now/models/fun-asr-mlt-nano-2512` elsewhere.
+- Model files are fetched at runtime and are not committed to Git. The model uses the [FunASR Model Open Source License Agreement v1.1](https://github.com/modelscope/FunASR/blob/main/MODEL_LICENSE), which requires source/author attribution and retaining the model name. Attribute FunASR to Alibaba Group. The agreement describes the model as intended for reference and learning.
+- To enable it locally, install `ai-service/requirements.txt`, start `uvicorn app.main:app --reload` from `ai-service`, then run the Vite app with `VITE_AI_API_URL=http://localhost:8000`. Set `CORS_ORIGINS` to the frontend origin when hosting the service elsewhere.

@@ -2,8 +2,39 @@ import { useEffect, useRef, useState } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
-const MAPLIBRE_MODULE_URL = '/vendor/maplibre-gl/6.3.0/maplibre-gl.mjs'
-const MAPLIBRE_STYLE_URL = 'https://tiles.openfreemap.org/styles/liberty'
+const MAPBOX_GL_JS_URL = 'https://api.mapbox.com/mapbox-gl-js/v3.33.0/mapbox-gl.js'
+const MAPBOX_GL_CSS_URL = 'https://api.mapbox.com/mapbox-gl-js/v3.33.0/mapbox-gl.css'
+const MAPBOX_STYLE_URL = 'mapbox://styles/mapbox/streets-v12'
+const MAPBOX_ACCESS_TOKEN = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN?.trim() || ''
+let mapboxLibraryPromise
+
+function loadMapboxLibrary() {
+  if (window.mapboxgl) return Promise.resolve(window.mapboxgl)
+  if (!mapboxLibraryPromise) {
+    if (!document.querySelector('link[data-mapbox-gl-css]')) {
+      const stylesheet = document.createElement('link')
+      stylesheet.rel = 'stylesheet'
+      stylesheet.href = MAPBOX_GL_CSS_URL
+      stylesheet.dataset.mapboxGlCss = 'true'
+      document.head.append(stylesheet)
+    }
+    mapboxLibraryPromise = new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = MAPBOX_GL_JS_URL
+      script.async = true
+      script.dataset.mapboxGlJs = 'true'
+      const fail = () => {
+        mapboxLibraryPromise = null
+        script.remove()
+        reject(new Error('Mapbox GL JS could not be loaded'))
+      }
+      script.onload = () => window.mapboxgl ? resolve(window.mapboxgl) : fail()
+      script.onerror = fail
+      document.head.append(script)
+    })
+  }
+  return mapboxLibraryPromise
+}
 
 // Leaflet treats string popup content as HTML; use text nodes for catalog/provider data.
 function attribution(config) {
@@ -44,7 +75,7 @@ export default function FacilityMap({ config, facilities, location, selectedId, 
   const container = useRef(null)
   const mapRef = useRef(null)
   const mapEngineRef = useRef(null)
-  const mapLibreRef = useRef(null)
+  const mapboxRef = useRef(null)
   const markersRef = useRef(new Map())
   const onSelectRef = useRef(onSelect)
   const [mapEngine, setMapEngine] = useState('loading')
@@ -74,7 +105,7 @@ export default function FacilityMap({ config, facilities, location, selectedId, 
     const resize = new ResizeObserver(() => {
       const map = mapRef.current
       if (!map) return
-      if (mapEngineRef.current === 'maplibre') map.resize()
+      if (mapEngineRef.current === 'mapbox') map.resize()
       else map.invalidateSize({ pan: false })
       if (!selectedRef.current) fitRef.current?.()
     })
@@ -85,7 +116,7 @@ export default function FacilityMap({ config, facilities, location, selectedId, 
       fallbackStarted = true
       clearTimeout(startupTimer)
       removeMarkers()
-      if (mapRef.current && mapEngineRef.current === 'maplibre') mapRef.current.remove()
+      if (mapRef.current && mapEngineRef.current === 'mapbox') mapRef.current.remove()
       mapRef.current = null
       mapEngineRef.current = null
       setMapMessage('vector-fallback')
@@ -110,15 +141,21 @@ export default function FacilityMap({ config, facilities, location, selectedId, 
       }
     }
 
-    async function startMapLibre() {
+    async function startMapbox() {
+      if (!MAPBOX_ACCESS_TOKEN || import.meta.env.MODE === 'test') {
+        startLeafletFallback()
+        return
+      }
       try {
-        // URL đầy đủ để Vite dev không gắn ?import vào file trong public/ (gây lỗi overlay)
-        const maplibregl = await import(/* @vite-ignore */ new URL(MAPLIBRE_MODULE_URL, window.location.origin).href)
-        if (disposed) return
-        mapLibreRef.current = maplibregl
-        const map = new maplibregl.Map({
+        // Fall back even if the CDN request never settles (for example, when offline).
+        startupTimer = setTimeout(startLeafletFallback, 20000)
+        const mapboxgl = await loadMapboxLibrary()
+        if (disposed || fallbackStarted) return
+        mapboxRef.current = mapboxgl
+        mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN
+        const map = new mapboxgl.Map({
           container: container.current,
-          style: MAPLIBRE_STYLE_URL,
+          style: MAPBOX_STYLE_URL,
           center: [config.defaultCenter.lng, config.defaultCenter.lat],
           zoom: config.defaultZoom,
           maxZoom: config.maxZoom,
@@ -126,13 +163,12 @@ export default function FacilityMap({ config, facilities, location, selectedId, 
           attributionControl: false,
         })
         mapRef.current = map
-        mapEngineRef.current = 'maplibre'
-        map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'bottom-right')
-        map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-left')
-        startupTimer = setTimeout(startLeafletFallback, 20000)
+        mapEngineRef.current = 'mapbox'
+        map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right')
+        map.addControl(new mapboxgl.AttributionControl({ compact: true }), 'bottom-left')
         map.once('style.load', () => {
           if (disposed || mapRef.current !== map) return
-          setMapEngine('maplibre')
+          setMapEngine('mapbox')
         })
         map.once('load', () => {
           if (disposed || mapRef.current !== map) return
@@ -147,7 +183,7 @@ export default function FacilityMap({ config, facilities, location, selectedId, 
       }
     }
 
-    startMapLibre()
+    startMapbox()
     return () => {
       disposed = true
       clearTimeout(startupTimer)
@@ -161,18 +197,18 @@ export default function FacilityMap({ config, facilities, location, selectedId, 
 
   useEffect(() => {
     const map = mapRef.current
-    if (!map || mapEngine !== mapEngineRef.current || !['maplibre', 'leaflet'].includes(mapEngine)) return
+    if (!map || mapEngine !== mapEngineRef.current || !['mapbox', 'leaflet'].includes(mapEngine)) return
     const markers = new Map()
     const points = []
     const removeMarkers = () => markers.forEach(marker => marker.remove())
 
-    if (mapEngine === 'maplibre') {
-      const maplibregl = mapLibreRef.current
-      if (!maplibregl) return
+    if (mapEngine === 'mapbox') {
+      const mapboxgl = mapboxRef.current
+      if (!mapboxgl) return
       if (location) {
         const point = [location.lng, location.lat]
         const element = markerElement('facility-map-marker facility-map-marker--user', 'Vị trí của bạn', 'U')
-        const marker = new maplibregl.Marker({ element, anchor: 'bottom' }).setLngLat(point).addTo(map)
+        const marker = new mapboxgl.Marker({ element, anchor: 'bottom' }).setLngLat(point).addTo(map)
         markers.set('__user-location__', marker)
         points.push(point)
       }
@@ -185,10 +221,10 @@ export default function FacilityMap({ config, facilities, location, selectedId, 
         const markerText = document.createElement('span')
         markerText.textContent = String(index + 1)
         element.append(markerText)
-        const marker = new maplibregl.Marker({ element, anchor: 'bottom' })
+        const marker = new mapboxgl.Marker({ element, anchor: 'bottom' })
           .setLngLat(point)
           // focusAfterOpen: false để mở popup từ danh sách không làm trình duyệt cuộn cả trang tới bản đồ
-          .setPopup(new maplibregl.Popup({ offset: 23, maxWidth: '280px', focusAfterOpen: false })
+          .setPopup(new mapboxgl.Popup({ offset: 23, maxWidth: '280px', focusAfterOpen: false })
             .setDOMContent(facilityPopup(facility, id => onSelectRef.current(id))))
           .addTo(map)
         element.addEventListener('click', () => onSelectRef.current(facility.id))
@@ -199,7 +235,7 @@ export default function FacilityMap({ config, facilities, location, selectedId, 
       fitRef.current = () => {
         if (points.length === 1) map.setCenter(points[0]).setZoom(Math.min(15, config.maxZoom))
         else if (points.length > 1) {
-          const bounds = new maplibregl.LngLatBounds()
+          const bounds = new mapboxgl.LngLatBounds()
           points.forEach(point => bounds.extend(point))
           map.fitBounds(bounds, { padding: 36, maxZoom: 15, duration: 0 })
         } else map.setCenter([config.defaultCenter.lng, config.defaultCenter.lat]).setZoom(config.defaultZoom)
@@ -242,7 +278,7 @@ export default function FacilityMap({ config, facilities, location, selectedId, 
     const marker = markersRef.current.get(selectedId)
     const map = mapRef.current
     if (!marker || !map || mapEngine !== mapEngineRef.current) return
-    if (mapEngine === 'maplibre') {
+    if (mapEngine === 'mapbox') {
       const point = marker.getLngLat()
       map.flyTo({ center: point, zoom: Math.min(16, config.maxZoom) })
       if (!marker.getPopup()?.isOpen()) marker.togglePopup()
@@ -261,7 +297,7 @@ export default function FacilityMap({ config, facilities, location, selectedId, 
         : ''
 
   return <div className="facility-map-frame">
-    <div ref={container} className={`facility-map-canvas${mapEngine === 'maplibre' ? ' facility-map-canvas--vector' : ''}`} role="region" aria-label="Bản đồ cơ sở y tế. Kéo để di chuyển, dùng nút thu phóng hoặc chọn một ghim để xem thông tin." />
+    <div ref={container} className={`facility-map-canvas${mapEngine === 'mapbox' ? ' facility-map-canvas--mapbox' : ''}`} role="region" aria-label="Bản đồ cơ sở y tế. Kéo để di chuyển, dùng nút thu phóng hoặc chọn một ghim để xem thông tin." />
     <p className="facility-map-legend"><span className="facility-pin-dot"/> Cơ sở y tế <span className="facility-user-dot"/> Vị trí của bạn</p>
     {message && <p className="facility-feedback" role="status">{message} <button type="button" onClick={() => { setMapMessage(''); setRetry(value => value + 1) }}>Tải lại bản đồ</button></p>}
   </div>

@@ -135,10 +135,10 @@ export default function FacilityFinder({ location, locationStatus, onLocation, e
         <ol>{facilities.map((facility, index) => <li key={facility.id} className={selectedId === facility.id ? 'facility-selected' : ''}>
           <h3><span>{index + 1}</span>{facility.name}</h3>
           <p>{facility.address}</p>
-          <div className="facility-tags">{facility.hasEmergency && <span>Có cấp cứu</span>}{facility.hasEmergency && facility.phones.some(p => p.is24h) && <span>Có số trực 24/7</span>}{mode === 'nearby' && formatDistance(facility.distanceMeters) && <span>{formatDistance(facility.distanceMeters)} · đường chim bay</span>}</div>
+          <div className="facility-tags">{facility.hasEmergency && <span>Có cấp cứu</span>}{facility.hasEmergency && facility.phones.some(p => p.is24h) && <span>Có số trực 24/7</span>}{mode === 'nearby' && formatDistance(facility.distanceMeters) && <span>{formatDistance(facility.distanceMeters)} · {facility.distanceMethod === 'ROAD' ? 'đường bộ ước tính' : 'đường chim bay'}</span>}</div>
           <div className="facility-card-actions"><button type="button" aria-pressed={selectedId === facility.id} disabled={waiting && !mapAllowed} onClick={() => { selectFacility(facility.id); if (!mapAllowed) setMapAllowed(true) }}>Xem trên bản đồ</button>{facility.phones.map((phone, phoneIndex) => <a key={`${phone.number}-${phoneIndex}`} href={`tel:${phone.number}`}><Phone size={14}/>{phone.label}: {phone.number}</a>)}</div>
         </li>)}</ol>
-        <p className="facility-footnote">Chỉ hiển thị cơ sở đã được nhóm kiểm chứng. Bản đồ đánh dấu vị trí, chưa tính tuyến đường hoặc thời gian di chuyển.</p>
+        <p className="facility-footnote">Khoảng cách đường bộ là ước tính trong vùng có dữ liệu; nơi ngoài vùng dùng đường chim bay. Bản đồ chưa tính thời gian di chuyển.</p>
       </div>
     </div>
   </section>

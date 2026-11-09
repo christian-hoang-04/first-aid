@@ -1,0 +1,28 @@
+# Local secrets and configuration
+.env
+.env.*
+!.env.example
+!.env.*.example
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.*.example
+
+# Dependencies and generated files
+**/node_modules/
+**/.next/
+**/dist/
+**/build/
+**/out/
+**/coverage/
+**/target/
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/.data/
+**/*.tsbuildinfo
+**/.vercel/
+**/.claude/
+**/.openai/
+**/.sites-runtime/
+.DS_Store

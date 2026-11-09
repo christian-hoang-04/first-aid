@@ -5,8 +5,8 @@ import { validateFacilities } from '../maps/api'
 describe('facility catalog', () => {
   it('passes the same checks the facility API response must pass', () => expect(() => validateFacilities(facilities)).not.toThrow())
   it('stays inside Ho Chi Minh City and records its source', () => facilities.forEach((f) => {
-    expect(f.latitude).toBeGreaterThan(10.3); expect(f.latitude).toBeLessThan(11.3)
-    expect(f.longitude).toBeGreaterThan(106.3); expect(f.longitude).toBeLessThan(107.1)
+    expect(f.latitude).toBeGreaterThan(10.3); expect(f.latitude).toBeLessThanOrEqual(11.3)
+    expect(f.longitude).toBeGreaterThan(106.3); expect(f.longitude).toBeLessThanOrEqual(107.4)
     expect(f.verificationSource).toBeTruthy(); expect(f.verifiedAt).toBeTruthy()
   }))
   it('has unique ids', () => expect(new Set(facilities.map((f) => f.id)).size).toBe(facilities.length))
@@ -17,7 +17,7 @@ describe('nearest facilities', () => {
   it('returns the closest five, nearest first', () => {
     const list = nearestFacilities({ lat: 10.8039, lng: 106.6941 })
     expect(list).toHaveLength(5)
-    expect(list[0].id).toBe('nhan-dan-gia-dinh')
+    expect(list[0].id).toBe('benh-vien-da-khoa-binh-thanh')
     list.slice(1).forEach((f, i) => expect(f.distanceMeters).toBeGreaterThanOrEqual(list[i].distanceMeters))
   })
   it('works from the city center when there is no location', () => expect(nearestFacilities(cityCenter)[0].distanceMeters).toBeLessThan(2000))

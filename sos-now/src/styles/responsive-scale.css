@@ -1,0 +1,118 @@
+/* Keep the desktop composition proportional on narrower effective viewports.
+   Text retains readable CSS-pixel floors; existing mobile breakpoints still reflow. */
+@media (min-width: 1024px) and (max-width: 1919px) {
+  :root {
+    --container: min(1280px, 66.667vw);
+    --gutter: clamp(12px, .833vw, 16px);
+    --nav-height: clamp(42px, 3.542vw, 68px);
+    --responsive-section-space: clamp(32px, 2.5vw, 48px);
+    --responsive-gap: clamp(12px, 1.25vw, 24px);
+  }
+
+  .container { padding-inline: var(--gutter); }
+  .navbar-inner {
+    height: var(--nav-height);
+    padding-inline: max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter)));
+  }
+  .navbar.scrolled .navbar-inner {
+    height: calc(var(--nav-height) - 10px);
+    padding-inline: var(--gutter);
+  }
+  .logo img { height: clamp(20px, 1.771vw, 34px); }
+  .logo span { font-size: clamp(15px, 1.042vw, 20px); }
+  .nav-links { gap: clamp(14px, 2.292vw, 44px); }
+  .navbar:not(.navbar-plain) .nav-links a,
+  .nav-links a { font-size: clamp(14px, .833vw, 16px); }
+  .nav-auth { gap: clamp(8px, .625vw, 12px); }
+  .sign-up { font-size: clamp(14px, .885vw, 16px); }
+  .sign-in { min-height: clamp(28px, 2.083vw, 40px); padding-inline: clamp(14px, 1.25vw, 24px); font-size: clamp(14px, .833vw, 16px); }
+  .menu-toggle { width: 36px; height: 36px; }
+
+  .section { padding-block: var(--responsive-section-space); }
+  .hero { padding-block: clamp(16px, 1.25vw, 24px) clamp(28px, 2.5vw, 40px); }
+  .hero-inner { gap: var(--responsive-gap); }
+  .hero-copy { padding: 0; }
+  .hero-title { font-size: clamp(30px, 2.8125vw, 54px); }
+  .hero-description {
+    max-width: min(100%, 26.04vw);
+    margin-bottom: clamp(18px, 1.667vw, 24px);
+    font-size: clamp(14px, 1.094vw, 21px);
+    line-height: 1.3;
+  }
+  .hero-actions { gap: clamp(10px, .833vw, 14px); }
+  .hero-cta { min-width: clamp(132px, 12.083vw, 232px); min-height: clamp(32px, 2.708vw, 52px); padding-inline: clamp(14px, 1.25vw, 24px); font-size: clamp(16px, .938vw, 18px); }
+  .hero-next { width: clamp(32px, 2.917vw, 56px); height: clamp(32px, 2.917vw, 56px); }
+  .hero-image { width: min(100%, 34.375vw, 660px); }
+
+  .problem-title { font-size: clamp(24px, 2.188vw, 42px); }
+  .problem-grid { gap: var(--responsive-gap); margin-top: clamp(20px, 1.875vw, 36px); }
+  .problem-card { min-height: clamp(150px, 12vw, 230px); padding: clamp(12px, 1.04vw, 20px) clamp(11px, .938vw, 18px); }
+  .problem-card h3 { font-size: clamp(15px, .885vw, 17px); }
+  .problem-card p { font-size: clamp(13px, .729vw, 14px); }
+
+  .features-title { margin-bottom: clamp(24px, 2.083vw, 40px); }
+  .features-title-brand { font-size: clamp(24px, 2.396vw, 46px); }
+  .features-title-rest { font-size: clamp(16px, 1.354vw, 26px); }
+  .feature-list { gap: clamp(48px, 6.25vw, 120px); }
+  .feature { gap: clamp(24px, 4.583vw, 88px); }
+  .feature-title { font-size: clamp(22px, 1.771vw, 34px); }
+  .feature-visual { height: min(366px, 19.0625vw); border-radius: min(48px, 2.5vw); }
+  .mock { padding: clamp(14px, 1.25vw, 24px); }
+
+  .plans { max-width: min(960px, 50vw); gap: var(--responsive-gap); margin-top: clamp(28px, 2.917vw, 56px); }
+  .plan-body { min-height: min(360px, 18.75vw); padding: min(68px, 3.542vw) min(22px, 1.146vw) min(30px, 1.563vw); border-radius: min(36px, 1.875vw); }
+  .plan-featured .plan-body { min-height: min(390px, 20.313vw); padding: min(22px, 1.146vw) min(24px, 1.25vw) min(30px, 1.563vw); }
+  .plan-name { font-size: clamp(20px, 1.354vw, 26px); }
+  .plan-features { gap: clamp(6px, .521vw, 10px); }
+
+  .team { --card-w: min(230px, 12vw); }
+  .team-head { gap: clamp(16px, 1.25vw, 24px); }
+  .team-stage { margin-top: clamp(20px, 1.667vw, 32px); }
+  .faq-inner { gap: clamp(24px, 3.75vw, 72px); }
+  .faq-title { font-size: clamp(24px, 2.396vw, 46px); }
+  .faq-item button { gap: var(--responsive-gap); padding: clamp(12px, .938vw, 18px) clamp(12px, 1.042vw, 20px); }
+
+  .cta-inner { max-width: min(1080px, 56.25vw); gap: clamp(18px, 1.667vw, 32px); padding-top: clamp(28px, 2.5vw, 48px); }
+  .cta-title { font-size: clamp(24px, 1.771vw, 34px); }
+  .cta-phone { width: min(260px, 13.542vw); height: min(320px, 16.667vw); padding-top: min(66px, 3.438vw); border-width: min(7px, .365vw); }
+  .cta-phone .sos-ring { width: min(160px, 8.333vw); height: min(160px, 8.333vw); }
+  .cta-phone .sos-ring-2 { width: min(128px, 6.667vw); height: min(128px, 6.667vw); }
+  .cta-phone .sos-button { width: min(112px, 5.833vw); height: min(112px, 5.833vw); font-size: clamp(18px, 1.25vw, 22px); }
+  .footer { padding-block: clamp(20px, 1.667vw, 28px) clamp(14px, 1.042vw, 20px); }
+  .footer-main { grid-template-columns: minmax(0, 1fr) minmax(0, min(480px, 25vw)); gap: var(--responsive-gap); }
+  .footer-columns { gap: var(--responsive-gap); }
+
+  .app-page { max-width: min(820px, 42.708vw); padding-block: min(40px, 2.083vw) min(64px, 3.333vw); }
+  .app-title { font-size: clamp(24px, 2.292vw, 44px); }
+  .app-description { font-size: clamp(14px, .885vw, 16px); }
+  .app-emergency { margin-top: clamp(24px, 2.083vw, 36px); }
+
+  .voice { max-width: min(760px, 39.583vw); padding-block: min(24px, 1.25vw) min(28px, 1.458vw); }
+  .voice-orb-wrap { max-width: min(520px, 27.083vw); height: min(260px, 13.542vw); }
+  .voice .voice-orb, .voice .voice-orb-glow { width: min(170px, 8.854vw); height: min(170px, 8.854vw); }
+  .voice-question { font-size: clamp(22px, 1.667vw, 32px); }
+  .voice-composer { margin-top: min(24px, 1.25vw); padding: min(14px, .729vw); }
+
+  .facilities { padding-block: min(28px, 1.458vw) min(40px, 2.083vw); }
+  .facilities-title { font-size: clamp(20px, 1.875vw, 30px); }
+  .facilities-body { gap: min(20px, 1.042vw); margin-top: min(20px, 1.042vw); }
+  .facilities-map { height: clamp(300px, calc(100svh - var(--nav-height) - 24px), min(640px, 33.333vw)); }
+  .facilities-list { gap: min(12px, .625vw); }
+  .facilities-list > li { padding: min(16px, .833vw); }
+
+  .nearby-helpers-page { padding-block: min(32px, 1.667vw) min(54px, 2.813vw); }
+  .nearby-helpers-page-head { gap: min(20px, 1.042vw); margin-bottom: min(20px, 1.042vw); }
+  .nearby-helpers-page-head h1 { font-size: clamp(28px, 2.708vw, 52px); }
+  .nearby-helpers-page-head p { font-size: clamp(14px, .833vw, 16px); }
+  .nearby-helpers-workspace { gap: min(18px, .938vw); }
+  .nearby-helpers-search-card { padding: clamp(16px, 1.458vw, 28px); }
+  .nearby-helpers-map { height: min(660px, 34.375vw, 72svh); }
+  .nearby-helpers-map-footer-wash { height: min(160px, 8.333vw); }
+
+  .guide-modal { width: min(680px, 35.417vw); padding: min(30px, 1.563vw); border-radius: min(28px, 1.458vw); }
+  .cpr-modal { max-width: min(480px, 25vw); padding: min(30px, 1.563vw); }
+  .cpr-circle { width: min(220px, 11.458vw); height: min(220px, 11.458vw); }
+  .sos-dialog { width: min(400px, 20.833vw); padding: min(28px, 1.458vw) min(24px, 1.25vw); }
+  .sos-dialog-title { font-size: clamp(20px, 1.25vw, 24px); }
+  .nearby-helper-dialog { width: min(470px, 24.479vw); padding: min(28px, 1.458vw) min(26px, 1.354vw); }
+}

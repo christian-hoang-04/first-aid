@@ -33,6 +33,12 @@
 .facilities-phones svg { width: 14px; height: 14px; color: var(--red-500); }
 .facilities-phones strong { font-weight: 700; font-variant-numeric: tabular-nums; }
 .facilities-phones em { padding: 1px 8px; border-radius: 999px; background: #fff4d6; color: #8a5a00; font-size: 11px; font-style: normal; }
+.facilities-card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.facilities-card-actions .facilities-show { margin-top: 0; }
+.facilities-call-link { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 36px; padding: 7px 14px; border: 1px solid var(--red-500); border-radius: 999px; background: var(--red-500); color: #fff; font: 600 13px var(--font); text-decoration: none; }
+.facilities-call-link:hover { border-color: var(--red-600); background: var(--red-600); }
+.facilities-card-actions a:focus-visible, .facilities-card-actions button:focus-visible { outline: 3px solid var(--red-500); outline-offset: 3px; }
+.facilities-call-link svg { width: 14px; height: 14px; }
 .facilities-show { margin-top: 12px; padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink); font: 600 13px var(--font); cursor: pointer; }
 .facilities-show:hover, .facilities-show[aria-pressed="true"] { border-color: var(--red-500); color: var(--red-500); }
 .facilities-source { margin: 20px 0 0; color: var(--muted); font: 400 12px/1.6 var(--font-body); }

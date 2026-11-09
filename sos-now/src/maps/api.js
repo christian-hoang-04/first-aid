@@ -35,7 +35,7 @@ export function coordinatesValid(lat, lng) {
 export function validateFacilities(data) {
   if (!Array.isArray(data) || data.length > 10000 || data.some(f => !f || typeof f.id !== 'string'
     || typeof f.name !== 'string' || typeof f.address !== 'string' || !coordinatesValid(f.latitude, f.longitude)
-    || !Array.isArray(f.phones) || f.phones.some(p => typeof p?.label !== 'string' || !/^\+?\d{8,15}$/.test(p.number)))) {
+    || !Array.isArray(f.phones) || f.phones.some(p => typeof p?.label !== 'string' || !/^(?:115|\+?\d{8,15})$/.test(p.number)))) {
     throw new Error('Invalid facility response')
   }
   return data

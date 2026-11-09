@@ -52,6 +52,10 @@ export class FunAsrSTT extends stt.STT {
     return 'local';
   }
 
+  override stream(): never {
+    throw new Error('FunASR adapter is non-streaming; use recognize() after VAD ends the turn.');
+  }
+
   protected async _recognize(
     audio: AudioBuffer,
     abortSignal?: AbortSignal,

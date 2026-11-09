@@ -12,7 +12,7 @@
 .facility-feedback button { min-height: 44px; padding: 4px 12px; text-decoration: underline; border: 0; background: transparent; font: inherit; }
 .facility-workspace { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 22px; align-items: start; }
 .facility-map-panel { min-width: 0; border: 1px solid #e7e0d8; border-radius: 8px; overflow: hidden; background: #f2eee8; }
-/* Tự giữ position/overflow vì React đặt lại className và xóa class maplibregl-map mà MapLibre gắn vào */
+/* Tự giữ position/overflow vì React đặt lại className và xóa class mapboxgl-map mà Mapbox GL JS gắn vào */
 .facility-map-canvas { position: relative; overflow: hidden; height: 430px; width: 100%; isolation: isolate; z-index: 0; }
 .facility-map-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 430px; padding: 32px; }
 .facility-map-placeholder h3 { margin: 16px 0 12px; font-size: 18px; }
@@ -26,23 +26,23 @@
 .facility-map-canvas .leaflet-control-attribution { font-size: 11px; }
 .facility-map-canvas .leaflet-control-attribution a { text-decoration: underline; color: #075985; }
 .facility-map-canvas .leaflet-interactive { cursor: pointer; }
-.facility-map-canvas--vector { background: #e8efe8; color: #292624; font-family: inherit; }
-.facility-map-canvas .maplibregl-ctrl-group { overflow: hidden; border: 1px solid #e7e0d8; border-radius: 6px; box-shadow: 0 2px 8px rgb(34 38 41 / 18%); }
-.facility-map-canvas .maplibregl-ctrl-group button { width: 34px; min-height: 34px; height: 34px; padding: 0; border: 0; border-radius: 0; background-color: #fff; color: #292624; }
-.facility-map-canvas .maplibregl-ctrl-group button:hover { background-color: #f4f8f7; }
-.facility-map-canvas .maplibregl-ctrl-attrib { max-width: min(70vw, 390px); background: rgb(255 255 255 / 92%); color: #46423e; font-size: 10px; }
-.facility-map-canvas .maplibregl-ctrl-attrib a { color: #075985; }
-.facility-map-canvas .maplibregl-popup-content { max-width: min(280px, calc(100vw - 48px)); padding: 14px; border-radius: 7px; color: #292624; font: inherit; overflow-wrap: anywhere; }
-.facility-map-canvas .maplibregl-popup-content strong { display: block; margin-bottom: 7px; font-size: 14px; line-height: 1.5; }
-.facility-map-canvas .maplibregl-popup-content p { margin: 0 0 10px; font-size: 12px; line-height: 1.7; }
-.facility-map-canvas .maplibregl-popup-content button { min-height: 40px; padding: 7px 10px; border: 1px solid #d8cfc5; border-radius: 4px; background: #fff; color: #942025; font: inherit; cursor: pointer; }
+.facility-map-canvas--mapbox { background: #e8efe8; color: #292624; font-family: inherit; }
+.facility-map-canvas .mapboxgl-ctrl-group { overflow: hidden; border: 1px solid #e7e0d8; border-radius: 6px; box-shadow: 0 2px 8px rgb(34 38 41 / 18%); }
+.facility-map-canvas .mapboxgl-ctrl-group button { width: 34px; min-height: 34px; height: 34px; padding: 0; border: 0; border-radius: 0; background-color: #fff; color: #292624; }
+.facility-map-canvas .mapboxgl-ctrl-group button:hover { background-color: #f4f8f7; }
+.facility-map-canvas .mapboxgl-ctrl-attrib { max-width: min(70vw, 390px); background: rgb(255 255 255 / 92%); color: #46423e; font-size: 10px; }
+.facility-map-canvas .mapboxgl-ctrl-attrib a { color: #075985; }
+.facility-map-canvas .mapboxgl-popup-content { max-width: min(280px, calc(100vw - 48px)); padding: 14px; border-radius: 7px; color: #292624; font: inherit; overflow-wrap: anywhere; }
+.facility-map-canvas .mapboxgl-popup-content strong { display: block; margin-bottom: 7px; font-size: 14px; line-height: 1.5; }
+.facility-map-canvas .mapboxgl-popup-content p { margin: 0 0 10px; font-size: 12px; line-height: 1.7; }
+.facility-map-canvas .mapboxgl-popup-content button { min-height: 40px; padding: 7px 10px; border: 1px solid #d8cfc5; border-radius: 4px; background: #fff; color: #942025; font: inherit; cursor: pointer; }
 .facility-map-marker { position: relative; display: grid; width: 32px; height: 32px; place-items: center; padding: 0; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 2px 7px rgb(34 38 41 / 32%); color: #fff; font: inherit; font-size: 11px; font-weight: 700; line-height: 1; cursor: pointer; }
 .facility-map-marker::after { position: absolute; z-index: 0; bottom: -5px; left: 8px; width: 10px; height: 10px; border-right: 3px solid #fff; border-bottom: 3px solid #fff; background: inherit; content: ''; transform: rotate(45deg); }
 .facility-map-marker span { position: relative; z-index: 1; }
 .facility-map-marker--facility { background: #bf2b2f; }
 .facility-map-marker--user { background: #2563eb; cursor: default; }
-/* MapLibre tự đặt vị trí ghim bằng position: absolute + transform; position: relative ở trên làm các ghim xếp chồng và lệch dần */
-.maplibregl-marker.facility-map-marker { position: absolute; }
+/* Mapbox GL JS tự đặt vị trí ghim bằng position: absolute + transform; position: relative ở trên làm các ghim xếp chồng và lệch dần */
+.mapboxgl-marker.facility-map-marker { position: absolute; }
 .facility-map-marker:focus-visible { outline: 3px solid #f5cc53; outline-offset: 3px; }
 .facility-results { min-width: 0; }
 .facility-results-status { margin: 0 0 12px; }

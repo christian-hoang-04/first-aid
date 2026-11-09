@@ -1,0 +1,91 @@
+/* Mobile-only refinements for the existing app routes. */
+.mobile-app-tabs { display: none; }
+
+@media (max-width: 760px) {
+  :root { --gutter: 16px; }
+
+  .page:has(.mobile-app-tabs) {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .mobile-app-tabs {
+    position: fixed;
+    z-index: 40;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    height: calc(64px + env(safe-area-inset-bottom, 0px));
+    padding: 5px max(8px, env(safe-area-inset-right, 0px)) calc(5px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-left, 0px));
+    border-top: 1px solid rgba(42, 41, 41, .1);
+    background: rgba(255, 255, 255, .96);
+    box-shadow: 0 -8px 24px rgba(24, 22, 20, .08);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
+
+  .mobile-app-tab {
+    display: flex;
+    min-width: 0;
+    min-height: 48px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    border-radius: 12px;
+    color: #626262;
+    font: 700 10px/1.15 var(--font-body);
+    text-align: center;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-app-tab svg { width: 19px; height: 19px; stroke-width: 2.1; }
+  .mobile-app-tab.is-active { background: #fdf0ed; color: var(--red-600); }
+  .mobile-app-tab:focus-visible { outline: 3px solid var(--yellow-500); outline-offset: -2px; }
+
+  .sos-screen {
+    min-height: calc(100svh - var(--nav-height) - 64px - env(safe-area-inset-bottom, 0px));
+    padding: 28px 16px 24px;
+  }
+
+  .sos-screen-question { max-width: 100%; font-size: clamp(28px, 7vw, 38px); }
+  .sos-screen-hint { max-width: 460px; font-size: 15px; }
+  .sos-screen-stage { width: min(310px, 76vw); margin: 24px 0 18px; }
+
+  .voice {
+    min-height: calc(100svh - var(--nav-height) - 64px - env(safe-area-inset-bottom, 0px));
+    padding-top: 16px;
+    padding-bottom: 20px;
+  }
+
+  .voice-composer-actions button { width: 48px; height: 48px; }
+  .voice-result-actions { width: 100%; flex-direction: column; }
+  .voice-result-actions .button { width: 100%; }
+  .voice-live-guide-frame { height: clamp(240px, 42svh, 380px); min-height: 240px; }
+
+  .facilities { padding-top: 20px; padding-bottom: 28px; }
+  .facilities-head { align-items: stretch; }
+  .facilities-call { min-height: 48px; justify-content: center; }
+  .facilities-body { grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 16px; }
+  .facilities-map { position: relative; top: auto; height: clamp(250px, 42svh, 360px); min-height: 250px; }
+  .facilities-list > li { padding: 16px; }
+  .facilities-show, .facilities-call-link { min-height: 44px; }
+
+  .nearby-helpers-page { padding-top: 20px; padding-bottom: 28px; }
+  .nearby-helpers-page-head { margin-bottom: 16px; }
+  .nearby-helpers-map { height: clamp(300px, 44svh, 390px); }
+  .nearby-helpers-map-legend { top: 10px; right: 10px; }
+  .nearby-helpers-map-distance { bottom: 12px; left: 10px; }
+}
+
+@media (max-width: 380px) {
+  .mobile-app-tabs {
+    padding-right: max(5px, env(safe-area-inset-right, 0px));
+    padding-left: max(5px, env(safe-area-inset-left, 0px));
+  }
+  .mobile-app-tab { font-size: 9px; }
+  .sos-screen { padding-right: 12px; padding-left: 12px; }
+  .nearby-helpers-map-legend span { font-size: 9px; }
+}

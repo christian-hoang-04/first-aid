@@ -1,0 +1,25 @@
+﻿scenario,file,step,script
+xuc-thia,buoc-1.mp3,1,"Bước một. Chuẩn bị: cáng cứng, dây buộc, bốn người, trong đó có người chỉ huy."
+xuc-thia,buoc-2.mp3,2,"Bước hai. Xác định tổn thương, sơ cấp cứu tổn thương nếu có."
+xuc-thia,buoc-3.mp3,3,"Bước ba. Một người giữ đầu, ba người quỳ một phía nạn nhân, luồn hai tay tại các vị trí: dưới vai và lưng, dưới thắt lưng và dưới đùi, dưới khoeo chân và dưới cổ chân."
+xuc-thia,buoc-4.mp3,4,"Bước bốn. Thực hiện theo hiệu lệnh, đảm bảo nâng nạn nhân lên theo ba nấc: lên gối, úp nạn nhân vào người sơ cấp cứu, và đứng thẳng. Đảm bảo đầu và cột sống nạn nhân luôn thẳng trong khi nâng lên. Người giữ đầu nâng đầu nạn nhân thẳng với cột sống."
+xuc-thia,buoc-5.mp3,5,"Bước năm. Người trưởng nhóm chỉ huy nhóm đồng loạt bước đi, đưa nạn nhân đến vị trí cáng hoặc xe cứu thương."
+xuc-thia,buoc-6.mp3,6,"Bước sáu. Đặt nạn nhân vào cáng theo hai bước ngược lại: xuống gối, và xuống cáng."
+xuc-thia,buoc-7.mp3,7,"Bước bảy. Cố định nạn nhân vào cáng tại trán, cằm, vai, thắt lưng, đùi, cẳng chân, cổ chân."
+ep-bung,buoc-1.mp3,1,"Bước một. Nạn nhân đứng, đầu cúi thấp, miệng há ra."
+ep-bung,buoc-2.mp3,2,"Bước hai. Người sơ cấp cứu đứng phía sau nạn nhân, luồn một chân vào giữa hai chân nạn nhân."
+ep-bung,buoc-3.mp3,3,"Bước ba. Vòng hai tay phía trước bụng nạn nhân, một tay nắm đặt vào vị trí giữa rốn và mũi ức, tay kia bọc ra ngoài bàn tay trước."
+ep-bung,buoc-4.mp3,4,"Bước bốn. Ép bụng đột ngột, tối đa một lần, từ trước ra sau, lên trên."
+ep-bung,buoc-5.mp3,5,Bước năm. Đánh giá sự cải thiện tình trạng của nạn nhân sau mỗi lần ép.
+ep-bung,buoc-6.mp3,6,"Bước sáu. Nếu dị vật chưa ra: xen kẽ phương pháp vỗ lưng và ép bụng, cho đến khi dị vật bật ra."
+ep-bung,buoc-7.mp3,7,"Bước bảy. Nếu nạn nhân bất tỉnh: hồi sinh tim phổi cho nạn nhân theo chu trình, bắt đầu bằng động tác ép ngực."
+ep-bung,buoc-8.mp3,8,Bước tám. Chuyển nạn nhân tới cơ sở y tế sau khi nạn nhân thở trở lại.
+gay-xuong-dui,buoc-1.mp3,1,"Bước một. Chuẩn bị dụng cụ: hai nẹp, chín dây buộc, bông, vải, giấy mềm."
+gay-xuong-dui,buoc-2.mp3,2,"Bước hai. Động viên, an ủi nạn nhân, người nhà, và giải thích công việc sắp làm."
+gay-xuong-dui,buoc-3.mp3,3,Bước ba. Nạn nhân nằm ngửa.
+gay-xuong-dui,buoc-4.mp3,4,"Bước bốn. Luồn dây: hai dây qua eo lưng, năm dây qua khoeo chân, hai dây qua cổ chân. Rải dây: hai dây, một dây ngang ngực, một dây ngang hông. Năm dây, một dây sát bẹn, hai dây trên và dưới ổ gãy, hai dây ở đầu gối. Hai dây ở cổ chân."
+gay-xuong-dui,buoc-5.mp3,5,Bước năm. Đặt nẹp: một nẹp từ hõm nách đến quá cổ chân. Một nẹp từ nếp bẹn đến quá cổ chân.
+gay-xuong-dui,buoc-6.mp3,6,"Bước sáu. Đệm lót bông, vải hoặc giấy mềm ở cổ chân, đầu gối, đầu nẹp."
+gay-xuong-dui,buoc-7.mp3,7,"Bước bảy. Buộc dây cố định nẹp theo thứ tự: một dây trên ổ gãy, một dây dưới ổ gãy. Một dây dưới khớp gối. Một dây ngang hông. Một dây ngang ngực. Một dây sát bẹn. Một dây cổ chân. Hai dây cố định chi lành và chi gãy ở cổ chân và đầu gối."
+gay-xuong-dui,buoc-8.mp3,8,Bước tám. Kiểm tra lưu thông máu của chân.
+gay-xuong-dui,buoc-9.mp3,9,Bước chín. Chuyển nạn nhân đến cơ sở y tế.
